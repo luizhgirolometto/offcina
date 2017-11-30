@@ -18,7 +18,7 @@
 
 	if (count($aPeca) > 0) {
 		$demens = "Código da peça já cadastrado!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Peças";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Peças";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
@@ -43,7 +43,7 @@
 		IncluirDados("pecas", $aDados, $aNomes);
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Peças";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Peças";
 		$devolt = "pecas.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

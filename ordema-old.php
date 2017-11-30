@@ -186,7 +186,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Benvindo a <strong>Nova Aliança Auto Mecânica&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo a <strong>Nova Aliança Auto Mecânica&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -226,7 +226,7 @@
                                                 <?php } Else {?>
                                                     <?php $cdclie = formatar($cdclie, "cnpj");?>
                                                 <?php }?>
-                                                <label class="control-label" for="cdclie">Cpf/Cnpj</label>
+                                                <label class="control-label" for="cdclie">CPF/CNPJ</label>
                                                 <input id="cdclie" name="cdclie" type="text" value="<?php echo $cdclie; ?>" placeholder="" class="form-control" maxlength = "14" readonly="">
                                             </div>
                                         </div>
@@ -380,7 +380,7 @@
                                                 <?php } Else {?>
                                                     <?php $cdclie = formatar($cdclie, "cnpj");?>
                                                 <?php }?>
-                                                <label class="control-label" for="cdclie">Cpf/Cnpj</label>
+                                                <label class="control-label" for="cdclie">CPF/CNPJ</label>
                                                 <input id="cdclie" name="cdclie" type="text" value="<?php echo $cdclie; ?>" placeholder="" class="form-control" maxlength = "14" readonly="">
                                             </div>
                                         </div>

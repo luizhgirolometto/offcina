@@ -32,21 +32,21 @@
 
 	if ( $qtitem <= 0) {
 		$demens = "É preciso informar os itens do pedido!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Pedidos";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Pedidos";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
 
 	if ( empty($cdforn) == true) {
 		$demens = "É preciso informar o fornecedor!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Pedidos";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Pedidos";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
 
 	if ( empty(strtotime($dtpedi)) == true) {
 		$demens = "É preciso informar a data do pedido!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Pedidos";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Pedidos";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
@@ -160,7 +160,7 @@
 		}
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Pedidos";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Pedidos";
 		$devolt = "pedidos.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

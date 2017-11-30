@@ -47,7 +47,7 @@
 		IncluirDados("contas", $aDados, $aNomes);
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Contas a Pagar/Receber";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Contas a Pagar/Receber";
 		$devolt = "contas.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

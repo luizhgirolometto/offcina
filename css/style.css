@@ -6,6 +6,19 @@
  *   version 2.4
  *
 */
+
+.validate-msg {
+       position:absolute;
+       left:12px;
+       top:13px;
+       width:690px;
+       height:20px;
+       z-index:1;
+       background:#000;
+       color: red;
+
+}
+
 h1,
 h2,
 h3,
@@ -37,6 +50,11 @@ h4,
 h5 {
   margin-top: 5px;
   font-weight: 600;
+}
+.validate-msg {     
+       background-color: transparent;
+       color: red;
+
 }
 .nav > li > a {
   color: #a7b1c2;

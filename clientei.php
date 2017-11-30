@@ -78,6 +78,8 @@
     $aClie= ConsultarDados("", "", "","select * from clientes order by cdclie");
     $aEsta = ConsultarDados("", "", "","select * from estados order by cdesta");
 
+   
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -87,7 +89,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>H2O Hybrid&copy; | Principal </title>
+    <title>GiroMecanicas&copy; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -96,6 +98,83 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+	
+	$("#entrar").click(function(){
+		var ok = true;
+		if ($("#cdclie").val()==''){
+            ok = false;
+			$("#mensagem").html("Informe o CPF ou o CNPJ");
+			$("#cdclie").focus(); // foco no campo
+		}else {
+          $("#mensagem").html("");  
+        }
+
+        if ($("#declie").val() == ''){
+                ok = false;
+                $("#mensagem2").html("Campo obrigatório");
+			    $("#declie").focus(); // foco no campo
+		} else{
+             $("#mensagem2").html(""); 
+        }
+        if ($("#deende").val() == ''){
+                ok = false;
+                $("#mensagem3").html("Campo obrigatório");
+			    $("#deende").focus(); // foco no campo
+		} else{
+             $("#mensagem3").html(""); 
+        }          
+        if ($("#nrende").val() == ''){
+                ok = false;
+                $("#mensagem4").html("Campo obrigatório");
+			    $("#nrende").focus(); // foco no campo
+		} else{
+             $("#mensagem4").html(""); 
+        }  
+
+        if ($("#debair").val() == ''){
+                ok = false;
+                $("#mensagem5").html("Campo obrigatório");
+			    $("#debair").focus(); // foco no campo
+		} else{
+             $("#mensagem5").html(""); 
+        }  
+
+        if ($("#decida").val() == ''){
+                ok = false;
+                $("#mensagem6").html("Campo obrigatório");
+			    $("#decida").focus(); // foco no campo
+		} else{
+             $("#mensagem6").html(""); 
+        }   
+
+        if ($("#cdesta").val() == ''){
+                ok = false;
+                $("#mensagem7").html("Campo obrigatório");
+			    $("#cdesta").focus(); // foco no campo
+		} else{
+             $("#mensagem7").html(""); 
+        }        
+        if ($("#nrtele").val() == ''){
+                ok = false;
+                $("#mensagem8").html("Campo obrigatório");
+			    $("#nrtele").focus(); // foco no campo
+		} else{
+             $("#mensagem8").html(""); 
+        }
+        if (ok == true){        
+			$("#meuform").submit();
+        }	
+	
+    	});
+	
+    });
+</script>
+
 
 <body>
     <div id="wrapper">
@@ -147,7 +226,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Benvindo ao <strong>H2O Hybrid&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecanicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -167,7 +246,7 @@
                         </div>
 
                         <div class="ibox-content">
-                            <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="clienteg.php">
+                            <form id="meuform" name="meuform" class="form-horizontal" method="POST" enctype="multipart/form-data" action="clienteg.php">
 
                                 <!--div class="tab-content"-->
                                     <!--div id="tab-1" class="tab-pane active"-->
@@ -176,16 +255,19 @@
                                     <!--div class="col-lg-6"-->
                                         <br>
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label" for="textinput">Cpf/Cnpj</label>
+                                            <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                             <div class="col-md-3">
-                                                <input id="cdclie" name="cdclie" type="text" value="" placeholder="" class="form-control" maxlength = "14" autofocus required="">
+                                                <input id="cdclie" name="cdclie" type="text" value="" placeholder="Informe o CPF ou CNPJ" class="form-control" maxlength = "14" autofocus required="required">
+                                                <div id="mensagem"></div>
                                             </div>
+                                            
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-md-2 control-label" for="textinput">Nome/Razão Social</label>
                                             <div class="col-md-8 ">
-                                                <input id="declie" name="declie" value="" type="text" placeholder="" class="form-control" maxlength = "100" required="">
+                                                <input id="declie" name="declie" value="" type="text" placeholder="Informe o Nome/Razão Social" class="form-control" maxlength = "100" required="required">
+                                                <div id="mensagem2"></div>
                                             </div>
                                         </div>
 
@@ -221,7 +303,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label" for="textinput">Cep</label>
+                                            <label class="col-md-2 control-label" for="textinput">CEP</label>
                                             <div class="col-md-2">
                                                 <input id="nrcepi" name="nrcepi" value="" onblur="pesquisacep(this.value);" type="text" placeholder="" class="form-control" maxlength = "08">
                                             </div>
@@ -231,6 +313,7 @@
                                             <label class="col-md-2 control-label" for="textinput">Endereço</label>
                                             <div class="col-md-8">
                                                 <input id="deende" name="deende" value="" type="text" placeholder="" class="form-control" maxlength = "100">
+                                                <div id="mensagem3"></div>
                                             </div>
                                         </div>
 
@@ -238,6 +321,7 @@
                                             <label class="col-md-2 control-label" for="textinput">Número</label>
                                             <div class="col-md-2">
                                                 <input id="nrende" name="nrende" value="" type="number" placeholder="" class="form-control" maxlength = "10">
+                                                <div id="mensagem4"></div>
                                             </div>
                                         </div>
 
@@ -252,6 +336,7 @@
                                             <label class="col-md-2 control-label" for="textinput">Bairro</label>
                                             <div class="col-md-4">
                                                 <input id="debair" name="debair" value="" type="text" placeholder="" class="form-control" maxlength = "50">
+                                                <div id="mensagem5"></div>
                                             </div>
                                         </div>
 
@@ -259,6 +344,7 @@
                                             <label class="col-md-2 control-label" for="textinput">Cidade</label>
                                             <div class="col-md-4">
                                                 <input id="decida" name="decida" value="" type="text" placeholder="" class="form-control" maxlength = "50">
+                                                <div id="mensagem6"></div>
                                             </div>
                                         </div>
 
@@ -266,6 +352,7 @@
                                             <label class="col-md-2 control-label" for="textinput">Estado</label>
                                             <div class="col-md-4">
                                                 <input id="cdesta" name="cdesta" value="" type="text" placeholder="" class="form-control" maxlength = "02">
+                                                <div id="mensagem7"></div>
                                                 <!--select name="cdesta" id="cdesta" style="width:350px;"-->
                                                     <!--?php for($i=0;$i < count($aEsta);$i++) { ?-->
                                                       <!--option><?php echo str_pad($aEsta[$i]["cdesta"],02," ",STR_PAD_LEFT)." - ".$aEsta[$i]["deesta"];?></option-->
@@ -278,6 +365,7 @@
                                             <label class="col-md-2 control-label" for="textinput">Telefone</label>
                                             <div class="col-md-4">
                                                 <input id="nrtele" name="nrtele" value="" type="text" placeholder="(11) 1234-1234" class="form-control" maxlength = "20">
+                                                <div id="mensagem8"></div>
                                             </div>
                                         </div>
 
@@ -310,7 +398,8 @@
 
                                 <div>
                                     <center>
-                                        <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button>
+                                      <!--  <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button> -->
+                                        <input class="btn btn-sm btn-primary " type="button" name="entrar" id="entrar" value="entrar">
                                         <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
                                     </center>
                                 </div>

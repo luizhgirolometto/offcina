@@ -13,7 +13,7 @@
 		$cdusua=RetirarMascara($cdusua,"cpf");
 		if ( validaCPF($cdusua) == false) {
 			$demens = "Cpf inválido!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Usuários";
+			$detitu = "GiroMecânicas&copy; | Cadastro de Usuários";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
@@ -21,7 +21,7 @@
 		$cdusua=RetirarMascara($cdusua,"cnpj");
 		if ( validaCNPJ($cdusua) == false) {
 			$demens = "Cnpj inválido!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Usuários";
+			$detitu = "GiroMecânicas&copy; | Cadastro de Usuários";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
@@ -30,7 +30,7 @@
 	$aTrab = ConsultarDados("usuarios", "cdusua", $cdusua);
 	if ( count($aTrab) > 0) {
 		$demens = "Código já cadastrado!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Usuários";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Usuários";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
@@ -82,7 +82,7 @@
 		//GravarIPLog($cdusua, "Alterar Meus Dados:");
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de usuarios";
+		$detitu = "GiroMecânicas&copy; | Cadastro de usuarios";
 		$devolt = "usuarios.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

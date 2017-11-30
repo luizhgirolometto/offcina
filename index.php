@@ -75,8 +75,8 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $demails="emaildosuporte@nomedoprovedor.com";
-    $deteles="11 9-1234-5678";
+    $demails="marlon.pilonetto@gmail.com";
+    $deteles="(46) 98412 1475";
 
 ?>
 <!DOCTYPE html>
@@ -87,7 +87,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Oficina Light&copy; | Principal </title>
+    <title>GiroMecanicas&copy; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -118,7 +118,8 @@
                         </div>
                     </li>
 
-                     <li class="special_link">
+                    <!-- <li class="special_link"> -->
+                    <li>
                         <a href="cliente.php"><i class="fa fa-user"></i> <span class="nav-label">Cadastrar Clientes</span></a>
                     </li>
 
@@ -137,7 +138,8 @@
                     <?php }?>
 
                     <?php if ($cdtipo == 'A'){?>
-                        <li class="special_link">
+                        <!-- <li class="special_link"> -->
+                        <li>
                             <a href="contas.php"><i class="fa fa-money"></i> <span class="nav-label">Contas a Pagar/Receber</span></a>
                         </li>
                     <?php }?>
@@ -157,7 +159,8 @@
                     </li>
 
                     <?php if ($cdtipo == 'A'){?>
-                        <li class="special_link">
+                          <!-- <li class="special_link"> -->
+                        <li>
                             <a href="parametros.php"><i class="fa fa-key"></i> <span class="nav-label">Parâmetros</span></a>
                         </li>
                     <?php }?>
@@ -209,7 +212,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Benvindo ao <strong>Oficina Light&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecanicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">

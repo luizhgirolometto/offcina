@@ -18,7 +18,7 @@
 
 	if (count($aserv) > 0) {
 		$demens = "Código do serviço já cadastrado!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Serviços";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Serviços";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
@@ -43,7 +43,7 @@
 		IncluirDados("servicos", $aDados, $aNomes);
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Serviços";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Serviços";
 		$devolt = "servicos.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

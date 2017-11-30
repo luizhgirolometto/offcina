@@ -86,7 +86,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Demonstração Auto Mecânica&copy; | Principal </title>
+    <title>GiroMecânicas&copy; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -146,7 +146,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Benvindo ao <strong>Demonstração Auto Mecânica&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -176,7 +176,7 @@
                                 <table class="table table-striped table-bordered table-hover dataTables-example" >
                                     <thead>
                                         <tr>
-                                            <th>Cpf/Cnpj</th>
+                                            <th>CPF/CNPJ</th>
                                             <th>Nome/Razão</th>
                                             <th>Tipo</th>
                                             <th>Telefone</th>
@@ -215,7 +215,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Cpf/Cnpj</th>
+                                            <th>CPF/CNPJ</th>
                                             <th>Nome/Razão</th>
                                             <th>Tipo</th>
                                             <th>Telefone</th>

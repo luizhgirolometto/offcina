@@ -97,7 +97,7 @@
 		//gravar log
 		//GravarIPLog($cdusua, "Alterar Meus Dados:");
 		if ($flag2 == false) {
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Clientes";
+			$detitu = "GiroMecânicas&copy; | Cadastro de Clientes";
 			$devolt = "cliente.php";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 		}

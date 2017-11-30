@@ -35,7 +35,7 @@
 
 		AlterarDados("ordem", $aDados, $aNomes, "cdorde", $cdorde);
 
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de OS";
+		$detitu = "GiroMecânicas&copy; | Cadastro de OS";
 		$devolt = "fechaordem.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 

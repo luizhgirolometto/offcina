@@ -12,7 +12,7 @@
 		$cdforn=RetirarMascara($cdforn,"cpf");
 		if ( validaCPF($cdforn) == false) {
 			$demens = "Cpf inválido!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de fornecedores";
+			$detitu = "GiroMecânicas&copy; | Cadastro de fornecedores";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
@@ -20,7 +20,7 @@
 		$cdforn=RetirarMascara($cdforn,"cnpj");
 		if ( validaCNPJ($cdforn) == false) {
 			$demens = "Cnpj inválido!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de fornecedores";
+			$detitu = "GiroMecânicas&copy; | Cadastro de fornecedores";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
@@ -28,8 +28,8 @@
 
 	$aTrab = ConsultarDados("fornecedores", "cdforn", $cdforn);
 	if ( count($aTrab) > 0) {
-		$demens = "Cpf/Cnpj já cadastrado!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de fornecedores";
+		$demens = "CPF/CNPJ já cadastrado!";
+		$detitu = "GiroMecânicas&copy; | Cadastro de fornecedores";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
@@ -87,7 +87,7 @@
 		//GravarIPLog($cdusua, "Alterar Meus Dados:");
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de fornecedores";
+		$detitu = "GiroMecânicas&copy; | Cadastro de fornecedores";
 		$devolt = "fornecedores.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

@@ -104,7 +104,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Demonstração Auto Mecânica&copy; | Principal </title>
+    <title>GiroMecânicas&copy; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -164,7 +164,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Benvindo ao <strong>Demonstração Auto Mecânica&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -202,7 +202,7 @@
                                         <!--div class="col-lg-6"-->
                                             <br>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="textinput">Cpf/Cnpj</label>
+                                                <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                                 <div class="col-md-3">
                                                     <input id="cdforn" name="cdforn" type="text" value="<?php echo $aForn[0]["cdforn"];?>" placeholder="" class="form-control" maxlength = "14" autofocus readonly="">
                                                 </div>
@@ -345,7 +345,7 @@
                                         <!--div class="col-lg-6"-->
                                             <br>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="textinput">Cpf/Cnpj</label>
+                                                <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                                 <div class="col-md-3">
                                                     <input id="cdforn" name="cdforn" type="text" value="<?php echo $aForn[0]["cdforn"];?>" placeholder="" class="form-control" maxlength = "14" autofocus readonly="">
                                                 </div>

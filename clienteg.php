@@ -12,7 +12,7 @@
 		$cdclie=RetirarMascara($cdclie,"cpf");
 		if ( validaCPF($cdclie) == false) {
 			$demens = "Cpf inválido!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Clientes";
+			$detitu = "GiroMecânicas&copy; | Cadastro de Clientes";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
@@ -20,7 +20,7 @@
 		$cdclie=RetirarMascara($cdclie,"cnpj");
 		if ( validaCNPJ($cdclie) == false) {
 			$demens = "Cnpj inválido!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Clientes";
+			$detitu = "GiroMecânicas&copy; | Cadastro de Clientes";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
@@ -28,8 +28,8 @@
 
 	$aTrab = ConsultarDados("clientes", "cdclie", $cdclie);
 	if ( count($aTrab) > 0) {
-		$demens = "Cpf/Cnpj já cadastrado!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Clientes";
+		$demens = "CPF/CNPJ já cadastrado!";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Clientes";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
@@ -87,7 +87,7 @@
 		//GravarIPLog($cdusua, "Alterar Meus Dados:");
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Clientes";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Clientes";
 		$devolt = "cliente.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

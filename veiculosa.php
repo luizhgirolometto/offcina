@@ -109,7 +109,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Demonstração Auto Mecânica&copy; | Principal </title>
+    <title>GiroMecânicas&copy; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -172,7 +172,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Benvindo a <strong>Demonstração Auto Mecânica&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo a <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -212,7 +212,7 @@
                                                 <?php } Else {?>
                                                     <?php $cdclie = formatar($cdclie, "cnpj");?>
                                                 <?php }?>
-                                                <label class="col-md-2 control-label" for="textinput">Cpf/Cnpj</label>
+                                                <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                                 <div class="col-md-3">
                                                     <input id="cdclie" name="cdclie" type="text" value="<?php echo $cdclie; ?>" placeholder="" class="form-control" maxlength = "14" readonly="">
                                                 </div>
@@ -284,7 +284,7 @@
                                                 <?php } Else {?>
                                                     <?php $cdclie = formatar($cdclie, "cnpj");?>
                                                 <?php }?>
-                                                <label class="col-md-2 control-label" for="textinput">Cpf/Cnpj</label>
+                                                <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                                 <div class="col-md-3">
                                                     <input id="cdclie" name="cdclie" type="text" value="<?php echo $cdclie; ?>" placeholder="" class="form-control" maxlength = "14" readonly="">
                                                 </div>

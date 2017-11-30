@@ -147,7 +147,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Benvindo ao <strong>Aliança Auto Mecânica&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>Aliança Auto Mecânica&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label" for="textinput">Cpf/Cnpj</label>
+                                            <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                             <div class="col-md-6 ">
                                                 <?php if (strlen($cdusua) < 12 ) {?>
                                                     <input id="cdusua" name="cdusua" type="text" value="<?php echo formatar($cdusua,"cpf"); ?>" placeholder="" class="form-control" maxlength = "20" readonly="">

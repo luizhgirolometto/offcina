@@ -15,7 +15,7 @@
 
 	if (count($aVeic)-1 > 0) {
 		$demens = "Cliente já possui um veículo com essa placa!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Veículos";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Veículos";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
@@ -52,7 +52,7 @@
 		IncluirDados("m_veiculos", $aDados, $aNomes);
 
 		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de Veículos";
+		$detitu = "GiroMecânicas&copy; | Cadastro de Veículos";
 		$devolt = "veiculos.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}

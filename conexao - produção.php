@@ -7,7 +7,7 @@
     $conexao = mysqli_connect($bdServidor, $bdUsuario, $bdSenha, $bdBanco);
 
     if (mysqli_connect_errno($conexao)) {
-        echo "Problemas para conectar no banco de dados Oficina Light. Se o problema persistir, pedimos desculpas e, por favor, envie um e-mail para nós!";
+        echo "Problemas para conectar no banco de dados GiroMecanicas. Se o problema persistir, pedimos desculpas e, por favor, envie um e-mail para nós!";
         die();
     }
 

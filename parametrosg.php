@@ -40,7 +40,7 @@
 	AlterarDados("parametros", $aDados, $aNomes);
 
 	$demens = "Parâmetros atualizados com sucesso!";
-	$detitu = "Demonstração Auto Mecânica&copy; | Parâmetros do Sistema";
+	$detitu = "GiroMecânicas&copy; | Parâmetros do Sistema";
 	$devolt = "index.php";
 	header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 

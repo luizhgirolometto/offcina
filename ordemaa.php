@@ -43,21 +43,21 @@
 
 		if ( $qtitem <= 0) {
 			$demens = "É preciso informar os itens da OS!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de OS";
+			$detitu = "GiroMecânicas&copy; | Cadastro de OS";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
 
 		if ( empty($cdclie) == true) {
 			$demens = "É preciso informar o Cliente!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de OS";
+			$detitu = "GiroMecânicas&copy; | Cadastro de OS";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
 
 		if ( empty(strtotime($dtorde)) == true) {
 			$demens = "É preciso informar a data da OS!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de OS";
+			$detitu = "GiroMecânicas&copy; | Cadastro de OS";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 			$Flag=false;
 		}
@@ -181,7 +181,7 @@
 			}
 
 			$demens = "Alteração efetuada com sucesso!";
-			$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de OS";
+			$detitu = "GiroMecânicas&copy; | Cadastro de OS";
 			$devolt = "ordem.php";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 		}
@@ -200,7 +200,7 @@
 	}
 
 	if ($flag2 == false) {
-		$detitu = "Demonstração Auto Mecânica&copy; | Cadastro de OS";
+		$detitu = "GiroMecânicas&copy; | Cadastro de OS";
 		$devolt = "ordem.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}
