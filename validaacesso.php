@@ -7,47 +7,64 @@
 	// receber as variaveis usuario (e-mail) e senha
 	$cdusua = $_POST["cdusua"];
 	$desenh = trim(md5($_POST["desenh"]));
-	$sql="select * from usuarios where left(flativ,1) ='S' and cdusua = "."'{$cdusua}'";
+	$sql="select * from usuarios where left(flativ,1) ='S' and codempresa = "."'{$cdusua}'";
 
-	// verificar se email de usuario e senha conferem com o cadastro
-	$aDados = ConsultarDados("", "", "",$sql);
+	$sqlemp="select * from oficinas where ativo = '1' and codempresa = "."'{$cdusua}'";
 
-	if (count($aDados) > 0 ) {
+	$aDadosemp = ConsultarDados("", "", "",$sqlemp);
 
-		$desenhbd = trim($aDados[0]["desenh"]);
+	if (count($aDadosemp) > 0 ){
+		// verificar se email de usuario e senha conferem com o cadastro
+		$aDados = ConsultarDados("", "", "",$sql);
 
-		if ($desenhbd == $desenh) {
-			// dados ok
-			$cdusua=$aDados[0]["cdusua"];
-			$deusua=$aDados[0]["deusua"];
-			$cdtipo=substr($aDados[0]["cdtipo"],0,1);
-			$defoto=$aDados[0]["defoto"];
-			$demail=$aDados[0]["demail"];
+		if (count($aDados) > 0 ) {
 
-			setcookie("cdusua",$cdusua);
-			setcookie("deusua",$deusua);
-			setcookie("cdtipo",$cdtipo);
-			setcookie("defoto",$defoto);
-			setcookie("demail",$demail);
+			$desenhbd = trim($aDados[0]["desenh"]);
 
-		    $delog = "Acesso ao Sistema";
-		    GravarLog($cdusua, $delog);
+			if ($desenhbd == $desenh) {
+				// dados ok
+				$cdusua=$aDados[0]["cdusua"];
+				$deusua=$aDados[0]["deusua"];
+				$cdtipo=substr($aDados[0]["cdtipo"],0,1);
+				$defoto=$aDados[0]["defoto"];
+				$demail=$aDados[0]["demail"];
+				$codempresa = $aDados[0]["codempresa"];
+				$nomeempresa = $aDadosemp[0]["nomeempresa"];
 
-			header('Location: index.php');
+				setcookie("cdusua",$cdusua);
+				setcookie("deusua",$deusua);
+				setcookie("cdtipo",$cdtipo);
+				setcookie("defoto",$defoto);
+				setcookie("demail",$demail);
+				setcookie("codempresa", $codempresa);
+				setcookie("nomeempresa", $nomeempresa);
 
-		} else {
-			// senha NÃO confere
-			$demens = "A senha não confere. Tente novamente!";
-			$detitu = "Aliança Auto Mecânica | Acesso";
+				$delog = "Acesso ao Sistema";
+				GravarLog($cdusua, $delog);
+
+				header('Location: index.php');
+
+			} else {
+				// senha NÃO confere
+				$demens = "A senha não confere. Tente novamente!";
+				$detitu = "Aliança Auto Mecânica | Acesso";
+				header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
+			}
+
+		} 
+		else {
+			// e-mail NÃO encontrado
+			$demens = "Usuário não cadastrado ou inativo!";
+			$detitu = "GiroMecânicas | Acesso";
 			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		}
 
-	} 
-	else {
-		// e-mail NÃO encontrado
-		$demens = "Usuário não cadastrado ou inativo!";
-		$detitu = "Aliança Auto Mecânica | Acesso";
-		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
+	}else {
+			// e-mail NÃO encontrado
+			$demens = "Empresa não cadastrada ou inativa!";
+			$detitu = "GiroMecânicas | Acesso";
+			header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 	}
+
 
 ?>

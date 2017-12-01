@@ -24,7 +24,17 @@
     } Else {
         header('Location: index.html');
     }
+    if (isset($_COOKIE['codempresa'])) {
+        $codempresa = $_COOKIE['codempresa'];
+    } Else {
+        header('Location: index.html');
+    }
 
+    if (isset($_COOKIE['nomeempresa'])) {
+        $nomeempresa = $_COOKIE['nomeempresa'];
+    } Else {
+        header('Location: index.html');
+    } 
     // nome do usuario
     if (isset($_COOKIE['deusua'])) {
         $deusua = $_COOKIE['deusua'];
@@ -75,8 +85,10 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
+    $sql = "select * from usuarios where codempresa = "."'{$codempresa}'". " order by cdusua";
+
     // usuarios
-    $aUsua= ConsultarDados("", "", "","select * from usuarios order by cdusua");
+    $aUsua= ConsultarDados("", "", "",$sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -133,15 +145,15 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-left">
                         <br>
-                        <li>
+                          <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  formatar($cdusua,"cnpj")." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  formatar($cdusua,"cpf")." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $deusua1 ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">

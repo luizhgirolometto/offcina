@@ -38,7 +38,17 @@
     } Else {
         header('Location: index.html');
     }
+    if (isset($_COOKIE['codempresa'])) {
+        $codempresa = $_COOKIE['codempresa'];
+    } Else {
+        header('Location: index.html');
+    }
 
+    if (isset($_COOKIE['nomeempresa'])) {
+        $nomeempresa = $_COOKIE['nomeempresa'];
+    } Else {
+        header('Location: index.html');
+    } 
     //localização da foto
     if (isset($_COOKIE['defoto'])) {
         $defoto = $_COOKIE['defoto'];
@@ -133,17 +143,16 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-left">
                         <br>
-                        <li>
+                       <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  formatar($cdusua,"cnpj")." - ";?></span>
+                                <span><?php echo  $codempresa." - ";?></span>
                             <?php } Else {?>
-                                <span><?php echo  formatar($cdusua,"cpf")." - ";?></span>
+                                <span><?php echo  $codempresa." - ";?></span>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $deusua1 ;?></span>
+                            <span><?php echo  $nomeempresa ;?></span>
                         </li>
-                    </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
                             <span class="m-r-sm text-muted welcome-message">Bem vindo a <strong>GiroMecânicas&copy;</strong></span>

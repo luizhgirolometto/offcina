@@ -37,7 +37,17 @@
     if (isset($_COOKIE['cdtipo'])) {
         $cdtipo = $_COOKIE['cdtipo'];
     }
+    if (isset($_COOKIE['codempresa'])) {
+        $codempresa = $_COOKIE['codempresa'];
+    } Else {
+        header('Location: index.html');
+    }
 
+    if (isset($_COOKIE['nomeempresa'])) {
+        $nomeempresa = $_COOKIE['nomeempresa'];
+    } Else {
+        header('Location: index.html');
+    } 
     //email de usuario
     if (isset($_COOKIE['demail'])) {
         $demail = $_COOKIE['demail'];
@@ -114,11 +124,15 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-left">
                         <br>
-                        <li>
-                            <span><?php echo  $cdusua." - ";?></span>
+                       <li>
+                            <?php if (strlen($cdusua) == 14 ) {;?>
+                                <span><?php echo  $codempresa." - ";?></span>
+                            <?php } Else {?>
+                                <span><?php echo  $codempresa." - ";?></span>
+                            <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $deusua1 ;?></span>
+                            <span><?php echo  $nomeempresa ;?></span>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
