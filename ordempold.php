@@ -121,7 +121,7 @@
 <body class="white-bg">
 	<div class="wrapper wrapper-content p-xl">
         <h1><center>Ordem de Serviço</center></h1>
-        <p><center><img src="img/logoalianca.png" alt="logo" width="250" height="150" ></center></p>
+        <p><center><img src="img/logo.png" alt="logo" width="250" height="150" ></center></p>
         <h2><center><?php echo $aPara[0]["deprop"]; ?></center></h2>
         <h3><center><?php echo 'CNPJ               : '.$aPara[0]["cdprop"]; ?></center></h3>
         <h3><center><?php echo 'CCM                : '.$aPara[0]["nrccm"]; ?></center></h3>

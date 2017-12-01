@@ -148,7 +148,7 @@
 </head>
 
 <body class="white-bg">
-    <center><img src="img/logoalianca.png" alt="aliança logo" width="160px" heigth="160px"></center>
+    <center><img src="img/logo.png" alt="aliança logo" width="160px" heigth="160px"></center>
     <center><strong><?php echo $aPara[0]["deprop"]; ?></strong></center>
     <center><h2 class="text-navy"><?php echo 'Ordem de Serviço No. '.$aOrde[0]["cdorde"]; ?></h2></center>
 

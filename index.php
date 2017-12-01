@@ -236,7 +236,7 @@
                                 <div class="col-md-1"></div>
                                 <div class="m-b-sm">
                                     <center>
-                                        <img alt="image" class="img-square" src="img/logoalianca.png"
+                                        <img alt="image" class="img-square" src="img/logo.png"
                                                                              style="width: 582px">
                                     </center>
                                 </div>

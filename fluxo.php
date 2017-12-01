@@ -509,7 +509,7 @@
 
         $(document).ready(function() {
             $('.chart').easyPieChart({
-                barColor: '#f8ac59',
+                barColor: '#f29739',
 //                scaleColor: false,
                 scaleLength: 5,
                 lineWidth: 4,

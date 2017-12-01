@@ -19,6 +19,22 @@
 
 }
 
+.login-body {
+  min-height: 100vh;
+}
+.login-father {
+  position: relative;
+  min-height: 100vh;
+}
+
+.center-form {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  background-color: #b4b8bb;
+}
+
 h1,
 h2,
 h3,
@@ -624,7 +640,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   color: #23c6c8;
 }
 .btn-warning.btn-outline {
-  color: #f8ac59;
+  color: #f29739;
 }
 .btn-danger.btn-outline {
   color: #ed5565;
@@ -799,8 +815,8 @@ fieldset[disabled] .btn-default.active {
   color: #cacaca;
 }
 .btn-warning {
-  background-color: #f8ac59;
-  border-color: #f8ac59;
+  background-color: #f29739;
+  border-color: #f29739;
   color: #FFFFFF;
 }
 .btn-warning:hover,
@@ -1084,12 +1100,12 @@ button.dim:active:before {
 }
 .label-warning,
 .badge-warning {
-  background-color: #f8ac59;
+  background-color: #f29739;
   color: #FFFFFF;
 }
 .label-warning-light,
 .badge-warning-light {
-  background-color: #f8ac59;
+  background-color: #f29739;
   color: #ffffff;
 }
 .label-danger,
@@ -1867,7 +1883,7 @@ div.dt-button-info {
   border-color: #1ab394;
 }
 .has-warning .form-control {
-  border-color: #f8ac59;
+  border-color: #f29739;
 }
 .has-error .form-control {
   border-color: #ed5565;
@@ -1876,7 +1892,7 @@ div.dt-button-info {
   color: #1ab394;
 }
 .has-warning .control-label {
-  color: #f8ac59;
+  color: #f29739;
 }
 .has-error .control-label {
   color: #ed5565;
@@ -2472,7 +2488,7 @@ label.error {
   background-color: #23c6c8;
 }
 .toast-warning {
-  background-color: #f8ac59;
+  background-color: #f29739;
 }
 .toast-top-full-width {
   margin-top: 20px;
@@ -2492,7 +2508,7 @@ label.error {
   color: inherit;
 }
 .inspinia-notify.alert-warning {
-  border-left: 6px solid #f8ac59;
+  border-left: 6px solid #f29739;
 }
 .inspinia-notify.alert-success {
   border-left: 6px solid #1c84c6;
@@ -3877,7 +3893,7 @@ table.table-mail tr td {
   color: #ffffff;
 }
 .yellow-bg {
-  background-color: #f8ac59;
+  background-color: #f29739;
   color: #ffffff;
 }
 .red-bg {
@@ -3911,11 +3927,11 @@ table.table-mail tr td {
   color: #ffffff;
 }
 .panel-warning {
-  border-color: #f8ac59;
+  border-color: #f29739;
 }
 .panel-warning > .panel-heading {
-  background-color: #f8ac59;
-  border-color: #f8ac59;
+  background-color: #f29739;
+  border-color: #f29739;
   color: #ffffff;
 }
 .panel-danger {
@@ -3952,7 +3968,7 @@ table.table-mail tr td {
   background-color: #23c6c8;
 }
 .progress-bar-warning {
-  background-color: #f8ac59;
+  background-color: #f29739;
 }
 .progress-bar-danger {
   background-color: #ed5565;
@@ -3981,7 +3997,7 @@ table.table-mail tr td {
   color: #23c6c8;
 }
 .text-warning {
-  color: #f8ac59;
+  color: #f29739;
 }
 .text-danger {
   color: #ed5565;
@@ -4905,6 +4921,15 @@ a.compose-mail {
 }
 .mail-body .form-group {
   margin-bottom: 5px;
+
+}
+.text-end{
+  vertical-align:text-bottom;
+}
+.input-margin {
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .mail-text .note-editor .note-toolbar {
   background-color: #F9F8F8;
@@ -5219,7 +5244,7 @@ table.issue-tracker tbody tr td {
   background: #fff;
 }
 .agile-list li.warning-element {
-  border-left: 3px solid #f8ac59;
+  border-left: 3px solid #f29739;
 }
 .agile-list li.danger-element {
   border-left: 3px solid #ed5565;
@@ -5282,7 +5307,7 @@ del {
   color: #d1dade;
 }
 .ecommerce .fa-star.active {
-  color: #f8ac59;
+  color: #f29739;
 }
 .ecommerce .note-editor {
   border: 1px solid #e7eaec;

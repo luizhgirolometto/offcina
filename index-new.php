@@ -50,7 +50,7 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $demails = "ailtonsilva68@hotmail.com";
+    $demails = "marlon.pilonetto@gmail.com";
     $deteles = "11 9-7787-5381";
 
 ?>
@@ -62,7 +62,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nova Aliança Auto Mecânica&copy; | Principal </title>
+    <title>GiroMecanicas&copy; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -194,7 +194,7 @@
                             <div class="ibox-content">
                                 <div class="col-md-1"></div>
                                 <div class="m-b-sm">
-                                    <img alt="image" class="img-square" src="img/logoalianca.png"
+                                    <img alt="image" class="img-square" src="img/logo.png"
                                                                          style="width: 782px">
                                 </div>
                                 <!--h1 class="logo-name">Nova Aliança</h1-->
@@ -252,7 +252,7 @@
     <script>
         $(document).ready(function() {
             $('.chart').easyPieChart({
-                barColor: '#f8ac59',
+                barColor: '#f29739',
 //                scaleColor: false,
                 scaleLength: 5,
                 lineWidth: 4,
