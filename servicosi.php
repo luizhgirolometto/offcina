@@ -176,23 +176,28 @@
                         <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="servicosg.php">
 
                             <div class="row">
+                                <div class="col-lg-4 text-center">
+                                            <!--h2><?php echo $deusua; ?></h2-->
+                                            <div class="m-b-sm">
+                                                <img alt="image" class="img-square" src="img/service.jpg"
+                                                width= "150px" heigth= "150px">
+                                            </div>
+                                </div>
+                                <div class="col-lg-6">    
 
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label" for="textinput">Código</label>
-                                        <div class="col-md-4">
-                                            <input id="cdserv" name="cdserv" value="" type="text" placeholder="" class="form-control" maxlength = "50" autofocus>
-                                        </div>
-                                    </div>
+
+                                <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+                                    
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="textinput">Descrição</label>
                                         <div class="col-md-8">
-                                            <input id="deserv" name="deserv" value="" type="text" placeholder="" class="form-control" maxlength = "100">
+                                            <input id="deserv" name="deserv" value="" type="text" placeholder="Descrição do serviço." class="form-control" maxlength = "100">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" for="textinput">Valor</label>
+                                        <label class="col-md-2 control-label" for="textinput">Valor(R$)</label>
                                         <div class="col-md-2">
                                             <input id="vlserv" name="vlserv" value="" type="text" placeholder="" class="form-control" maxlength = "15">
                                         </div>
@@ -206,11 +211,12 @@
                                     </div>
 
                             </div>
+                            </div>
 
                             <div>
                                 <center>
-                                    <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button>
-                                    <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    <button class="btn btn-primary " type="submit">Salvar</button>
+                                    <button class="btn btn-warning " type="button" onClick="history.go(-1)">Retornar</button>
                                 </center>
                             </div>
 

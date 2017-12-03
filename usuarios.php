@@ -171,7 +171,7 @@
             <div class="wrapper wrapper-content">
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Cadastro de Usuários </h3>   
+                             <h3> Gerenciamento de Usuários </h3>   
                          </div>
                         <div class="panel-body">
                             <div class="ibox-content">
