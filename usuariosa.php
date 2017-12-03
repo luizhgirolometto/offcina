@@ -190,12 +190,11 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Usuários - <small><?php echo $titulo; ?></small>
-                            </button>
-                        </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                                <h3>Cadastro de Usuários - <?php echo $titulo; ?> </h3>   
+                    </div>            
+                    <div class="panel-body">                 
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="usuariosaa.php">
@@ -389,7 +388,7 @@
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>
