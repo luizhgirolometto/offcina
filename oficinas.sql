@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `oficinas` (
   `nomeempresa` varchar(50) DEFAULT NULL,
   `ativo` integer DEFAULT NULL,
   PRIMARY KEY (`codempresa`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=205 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 INSERT INTO `oficinas`(`nomeempresa`, `ativo`) VALUES ('GiroMecanica AutoCenter',1);
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `contas` (
   KEY `icontas1` (`decont`,`dtcont`),
   KEY `icontas2` (`dtcont`,`cdquem`),
   KEY `icontas3` (`dtcont`,`cdorig`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=205 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 
@@ -331,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `servicos` (
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `cdusua` char(14) NOT NULL,
+  `cdusua` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `deusua` varchar(100) DEFAULT NULL,
   `demail` varchar(255) DEFAULT NULL,
   `nrtele` varchar(20) DEFAULT NULL,

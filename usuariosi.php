@@ -136,43 +136,43 @@
         </nav>
 
         <div id="page-wrapper" class="gray-bg">
-            <div class="row border-bottom">
-                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-warning " href="#"><i class="fa fa-bars"></i> </a>
-                    </div>
-                    <ul class="nav navbar-top-links navbar-left">
-                        <br>
-                       <li>
-                            <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
-                            <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
-                            <?php }?>
-                        </li>
-                        <li>
-                            <span><?php echo  $nomeempresa ;?></span>
-                        </li>
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo a <strong>GiroMecânicas&copy;</strong></span>
-                        </li>
-                        <li>
-                            <a href="index.html">
-                                <i class="fa fa-sign-out"></i> Sair
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-warning" href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-left">
+                    <br>
+                      <li>
+                        <?php if (strlen($cdusua) == 14 ) {;?>
+                            <h3><?php echo  $codempresa." - ";?></h3>
+                        <?php } Else {?>
+                            <h3><?php echo  $codempresa." - ";?></h3>
+                        <?php }?>
+                    </li>
+                    <li>
+                        <h3><?php echo  $nomeempresa ;?></h3>
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecânicas&copy;</strong></span>
+                    </li>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa fa-sign-out"></i> Sair
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+            
             <div class="wrapper wrapper-content">
-                <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Usuários - Inclusão
-                            </button>
-                        </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                                <h3> Cadastro de Usuários - Inclusão </h3>   
+                    </div>            
+                    <div class="panel-body">
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="usuariosg.php">
@@ -182,6 +182,8 @@
                                     <!--form class="form-horizontal" method="POST" enctype="multipart/form-data" action="meusdadosg.php"-->
                                 <div class="row">
                                     <!--div class="col-lg-6"-->
+                                    <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+
                                         <div class="col-lg-4 text-center">
                                             <!--h2><?php echo $deusua; ?></h2-->
                                             <div class="m-b-sm">
@@ -202,31 +204,31 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="form-group">
+                                         <!--   <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">Código</label>
                                                 <div class="col-md-4">
-                                                    <input id="cdusua" name="cdusua" type="text" value="" placeholder="" class="form-control" maxlength = "14" autofocus required="">
+                                                    <input id="cdusua" name="cdusua" type="text" value="" placeholder="Informe um código para o usuário." class="form-control" maxlength = "14" autofocus required="">
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">Nome</label>
                                                 <div class="col-md-8 ">
-                                                    <input id="deusua" name="deusua" value="" type="text" placeholder="" class="form-control" maxlength = "100" required="">
+                                                    <input id="deusua" name="deusua" value="" type="text" placeholder="Informe o nome do usuário." class="form-control" maxlength = "100" required="">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">E-mail</label>
                                                 <div class="col-md-8 ">
-                                                    <input id="demail" name="demail" value="" type="email" placeholder="" class="form-control" maxlength = "255">
+                                                    <input id="demail" name="demail" value="" type="email" placeholder="Informe o e-mail." class="form-control" maxlength = "255">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="textinput">Telefone</label>
+                                                <label class="col-md-2 control-label" for="textinput">Senha</label>
                                                 <div class="col-md-8 ">
-                                                    <input id="nrtele" name="nrtele" value="" type="nrtele" placeholder="" class="form-control" maxlength = "255">
+                                                    <input type="password" id="desenh" name="desenh" value="" placeholder="Senha de acesso." class="form-control" maxlength = "3">
                                                 </div>
                                             </div>
 
@@ -267,7 +269,7 @@
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

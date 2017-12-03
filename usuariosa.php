@@ -200,7 +200,7 @@
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="usuariosaa.php">
 
-                                <div>
+<!--                                <div>
                                     <center>
                                         <?php if($acao == "edita") {?>
                                             <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Salvar</strong></button>
@@ -210,8 +210,8 @@
                                         <?php }?>
                                         <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
                                     </center>
-                                </div>
-                                <br>
+                                </div> 
+                                <br>-->
                                 <?php if($acao == "edita") {?>
                                     <div class="row">
 
@@ -257,12 +257,12 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
+                                       <!--         <div class="form-group">
                                                     <label class="col-md-2 control-label" for="textinput">Telefone</label>
                                                     <div class="col-md-8 ">
                                                         <input id="nrtele" name="nrtele" value="<?php echo $aUsua[0]["nrtele"]; ?>" type="text" placeholder="" class="form-control" maxlength = "20">
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label" for="textinput">Ativo?</label>
@@ -334,12 +334,12 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group">
+                                   <!--             <div class="form-group">
                                                     <label class="col-md-2 control-label" for="textinput">Telefone</label>
                                                     <div class="col-md-8">
                                                         <input id="nrtele" name="nrtele" value="<?php echo $aUsua[0]["nrtele"]; ?>" type="text" placeholder="" class="form-control" maxlength = "255" readonly="">
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label" for="textinput">Ativo?</label>
@@ -377,12 +377,12 @@
                                 <div>
                                     <center>
                                         <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Salvar</strong></button>
+                                            <button class="btn btn-primary" name = "edita" type="submit">Salvar</button>
                                         <?php }?>
                                         <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
+                                            <button class="btn btn-danger" name = "apaga" type="submit">Excluir</button>
                                         <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                        <button class="btn btn-warning " type="button" onClick="history.go(-1)">Retornar</button>
                                     </center>
                                 </div>
 

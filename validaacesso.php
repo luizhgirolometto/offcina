@@ -7,7 +7,7 @@
 	// receber as variaveis usuario (e-mail) e senha
 	$cdusua = $_POST["cdusua"];
 	$desenh = trim(md5($_POST["desenh"]));
-	$sql="select * from usuarios where left(flativ,1) ='S' and codempresa = "."'{$cdusua}'";
+	$sql="select * from usuarios where left(flativ,1) ='S' and codempresa = "."'{$cdusua}' and desenh = "."'{$desenh}'";
 
 	$sqlemp="select * from oficinas where ativo = '1' and codempresa = "."'{$cdusua}'";
 
