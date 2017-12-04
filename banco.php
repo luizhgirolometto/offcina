@@ -364,11 +364,11 @@ Function ValidarUpload($tipo) {
     return $fltipo;
 }
 
-Function ContaOS($qual){
+Function ContaOS($qual, $codempresa){
     include "conexao.php";
 
     $qtde=0;
-    $sql = "select count(cdorde) qtde from ordem where left(cdsitu,1) = '{$qual}'";
+    $sql = "select count(cdorde) qtde from ordem where codempresa = "."'{$codempresa}'"." left(cdsitu,1) = '{$qual}'";
 
     $resultado=mysqli_query($conexao, $sql);
 
@@ -382,14 +382,14 @@ Function ContaOS($qual){
     return ($qtde);
 }
 
-Function SomaContas($mes,$tipo){
+Function SomaContas($mes,$tipo,$codempresa){
     include "conexao.php";
 
     $valor=0;
     if ($tipo == 'P') {
-        $sql = "SELECT sum(vlcont) valor FROM `contas` where cdtipo = 'Pagar' and month(dtcont)= {$mes} and year(dtcont) = year(CURRENT_DATE) and (vlpago is null or vlpago <= 0)";
+        $sql = "SELECT sum(vlcont) valor FROM `contas` where cdtipo = 'Pagar' and month(dtcont)= {$mes} and year(dtcont) = year(CURRENT_DATE) and (vlpago is null or vlpago <= 0) and codempresa = "."'$codempresa'" ;
     } Else {
-        $sql = "SELECT sum(vlcont) valor FROM `contas` where cdtipo = 'Receber' and month(dtcont)= {$mes} and year(dtcont) = year(CURRENT_DATE) and (vlpago is null or vlpago <= 0)";
+        $sql = "SELECT sum(vlcont) valor FROM `contas` where cdtipo = 'Receber' and month(dtcont)= {$mes} and year(dtcont) = year(CURRENT_DATE) and (vlpago is null or vlpago <= 0) and codempresa = "."'$codempresa'";
     }
 
     $resultado=mysqli_query($conexao, $sql);
