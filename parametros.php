@@ -106,7 +106,7 @@
 
     $titulo="Atualização";
     $aPara = ConsultarDados("", "", "","select * from parametros");  
-    $aEsta = ConsultarDados("", "", "","select * from estados order by cdesta");
+    $aEsta = ConsultarDados("", "", "","select * from estados order by cdesta where codempresa = "."'{$codempresa}'");
 
 ?>
 <!DOCTYPE html>
@@ -166,17 +166,15 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
-                        <li>
-                            <span><?php echo  $deusua1 ;?></span>
-                        </li>
+                        
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
@@ -192,12 +190,11 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-truck"></i> Parâmetros do Sistema - <small><?php echo $titulo; ?></small>
-                            </button>
-                        </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                                <h3> Informações da minha oficina </h3>   
+                    </div>            
+                    <div class="panel-body">
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="parametrosg.php">
@@ -206,14 +203,20 @@
                                     <!--div id="tab-1" class="tab-pane active"-->
                                     <!--form class="form-horizontal" method="POST" enctype="multipart/form-data" action="meusdadosg.php"-->
                                 <div class="row">
-                                        <center><h2><span class="text-warning"><strong>DADOS DA OFICINA</strong></span></h2></center>
+                                    <div class="col-lg-2 text-center">
+                                                <div class="m-b-sm">
+                                                    <img alt="image" class="img-square" src="img/service.jpg"
+                                                    width= "150px" heigth= "150px">
+                                                </div>
+                                    </div>
+                                    <div class="col-lg-10">         
 
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label" for="textinput">Cnpj</label>
+                                            <label class="col-md-2 control-label" for="textinput">CNPJ</label>
                                             <div class="col-md-3">
                                                 <input id="cdprop" name="cdprop" value="<?php echo $aPara[0]["cdprop"]; ?>" type="text" placeholder="" class="form-control" maxlength = "14" autofocus>
                                             </div>
-                                            <span><small>sem formatação</small></span>
+                                            <span><small>Sem formatação</small></span>
                                         </div>
 
                                         <div class="form-group">
@@ -317,28 +320,28 @@
                                             </div>
                                         </div>
 
-                                    <!--/div-->
+                                    </div>
                                 </div>
                                     <!--/form-->
                                     <!--/div-->
                                 <!--/div-->
 
                                 <div>
-                                    <center>
+                                    
                                         <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Salvar</strong></button>
+                                            <button class="btn btn-primary" name = "edita" type="submit"><strong>Salvar</strong></button>
                                         <?php }?>
                                         <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
+                                            <button class="btn  btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
                                         <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                        <button class="btn  btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

@@ -11,34 +11,41 @@
 
 	$vlserv= str_replace(".","",$vlserv);
 	$vlserv= str_replace(",",".",$vlserv);
+	$dtcada = date('Y-m-d');
 
 	$Flag = true;
 
-	$aserv = ConsultarDados("", "", "","select * from servicos where cdserv = "."'{$cdserv}'");
+	// $aserv = ConsultarDados("", "", "","select * from servicos where cdserv = "."'{$cdserv}'");
 
-	if (count($aserv) > 0) {
-		$demens = "Código do serviço já cadastrado!";
-		$detitu = "GiroMecânicas&copy; | Cadastro de Serviços";
-		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
-		$Flag=false;
-	}
+	// if (count($aserv) > 0) {
+	// 	$demens = "Código do serviço já cadastrado!";
+	// 	$detitu = "GiroMecânicas&copy; | Cadastro de Serviços";
+	// 	header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
+	// 	$Flag=false;
+	// }
 
 	if ($Flag == true) {
 
 		//campos da tabela
 		$aNomes=array();
 
-		$aNomes[]= "cdserv";
+		// $aNomes[]= "cdserv";
 		$aNomes[]= "deserv";
 		$aNomes[]= "qtserv";
 		$aNomes[]= "vlserv";
+		$aNomes[]= "codempresa";
+		$aNomes[]= "dtcada";
+		$aNomes[]= "flativ";
 
 		//dados da tabela
 		$aDados=array();
-		$aDados[]= $cdserv;
+		// $aDados[]= $cdserv;
 		$aDados[]= $deserv;
 		$aDados[]= $qtserv;
 		$aDados[]= $vlserv;
+		$aDados[]= $_POST["codempresa"];
+		$aDados[]= $dtcada;
+		$aDados[]= $flativ;		
 
 		IncluirDados("servicos", $aDados, $aNomes);
 

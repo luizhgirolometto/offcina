@@ -259,7 +259,7 @@ INSERT INTO `parametros` (`cdprop`, `deprop`, `nrinsc`, `nrccm`, `deende`, `nren
 --
 
 CREATE TABLE IF NOT EXISTS `pecas` (
-  `cdpeca` varchar(30) NOT NULL,
+  `cdpeca` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `depeca` varchar(100) DEFAULT NULL,
   `vlpeca` decimal(15,2) DEFAULT NULL,
   `qtpeca` int(11) DEFAULT NULL,
@@ -315,7 +315,7 @@ CREATE TABLE IF NOT EXISTS `pedidosi` (
 --
 
 CREATE TABLE IF NOT EXISTS `servicos` (
-  `cdserv` varchar(30) NOT NULL,
+  `cdserv` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `deserv` varchar(100) DEFAULT NULL,
   `vlserv` decimal(15,2) DEFAULT NULL,
   `qtserv` int(11) DEFAULT NULL,

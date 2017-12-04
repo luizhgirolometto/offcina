@@ -184,7 +184,7 @@
                                     <!--div class="col-lg-6"-->
                                     <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
 
-                                        <div class="col-lg-4 text-center">
+                                        <div class="col-lg-2 text-center">
                                             <!--h2><?php echo $deusua; ?></h2-->
                                             <div class="m-b-sm">
                                                 <img alt="image" class="img-square" src="<?php echo $defotom; ?>"
@@ -203,7 +203,7 @@
                                                 <span><small>A foto será atualizada após a gravação</small></span>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-8">
                                          <!--   <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">Código</label>
                                                 <div class="col-md-4">
