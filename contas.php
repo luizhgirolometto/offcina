@@ -85,7 +85,7 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $aCont= ConsultarDados("", "", "","select * from contas order by cdcont");
+    $aCont= ConsultarDados("", "", "","select * from contas where codempresa = "."'{$codempresa}'"." order by cdcont");
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,7 +95,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Demonstração&copy; | Principal </title>
+    <title>GiroMecânicas; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -144,13 +144,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -167,16 +167,15 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Contas a Pagar/Receber
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Gerenciamento de contas a pagar/receber </h3>   
+                         </div>
+                        <div class="panel-body">
 
                         <div class="ibox-content">
                             <div class="pull-left">
-                                <a onclick="#" href="contasi.php" class="btn btn-warning ">Incluir</a>
+                                <a onclick="#" href="contasi.php" class="btn btn-warning ">Incluir Conta</a>
                             </div>
                             <br>
                             <br>
@@ -254,74 +253,13 @@
                                             </tr>
                                         <?php }; ?>    
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Número de Controle</th>
-                                            <th>Cliente/Fornecedor</th>
-                                            <th>Tipo</th>
-                                            <th>OS/Pedido</th>
-                                            <th>Valor</th>
-                                            <th>Vencimento</th>
-                                            <th>Pagamento</th>
-                                            <th>Situação</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
-                                        </tr>
-                                    </tfoot>
+                                    
                                 </table>
                             </div>
-                            <br>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <caption><strong>* AJUDA</strong></caption>
-                                    <thead>
-                                        <tr>
-                                            <th width=5>Comando</th>
-                                            <th width=100>Descrição</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td >Show</td>
-                                            <td >Controla a quantidade de linhas a serem apresentadas na tabela.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >entriesSearch</td>
-                                            <td >É a pesquisa. Apresenta os dados filtrados conforme o conteúdo digitado.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Copy</td>
-                                            <td >Copia o conteúdo da tabela para a memória (clipboard).</td>
-                                        </tr>
-                                        <tr>
-                                            <td >CSV</td>
-                                            <td >Exporta os dados da tabela para um arquivo no formato CSV (arquivo texto com as informações separadas por vírgula).</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Excel</td>
-                                            <td >Exporta os dados da tabela para um arquivo no formato EXCEL.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >PDF</td>
-                                            <td >Exporta os dados da tabela para um arquivo no formato PDF.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Print</td>
-                                            <td >Imprime os dados da tabela.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Previous</td>
-                                            <td >Retorna uma página da tabela.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Next</td>
-                                            <td >Avança uma página da tabela.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>
@@ -373,10 +311,10 @@
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
-                    { extend: 'copy'},
+                    
                     {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'excel', title: 'Contas a pagar/receber'},
+                    {extend: 'pdf', title: 'Contas a pagar/receber'},
 
                     {extend: 'print',
                      customize: function (win){

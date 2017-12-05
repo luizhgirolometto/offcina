@@ -86,7 +86,7 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $aForn= ConsultarDados("", "", "","select * from fornecedores order by cdforn");
+    $aForn= ConsultarDados("", "", "","select * from fornecedores where codempresa = "."'{$codempresa}'"." order by cdforn");
     $aEsta = ConsultarDados("", "", "","select * from estados order by cdesta");
 
 ?>
@@ -98,7 +98,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>H2O Hybrid&copy; | Principal </title>
+    <title>GiroMecânicas | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -147,13 +147,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -170,12 +170,11 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Fornecedores - Inclusão
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Cadastro de Fornecedores - Inclusão</h3>   
+                         </div>
+                        <div class="panel-body">
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="fornecedoresg.php">
@@ -186,6 +185,7 @@
                                 <div class="row">
                                     <!--div class="col-lg-6"-->
                                         <br>
+                                        <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                         <div class="form-group">
                                             <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                             <div class="col-md-3">
@@ -315,16 +315,16 @@
                                 <!--/div-->
 
                                 <div>
-                                    <center>
-                                        <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+        
+                                        <button class="btn  btn-primary " type="submit"><strong>Salvar</strong></button>
+                                        <button class="btn  btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                               
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

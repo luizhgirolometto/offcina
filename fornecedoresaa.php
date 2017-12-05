@@ -5,6 +5,7 @@
 
 	$data = date('Y-m-d');
 	$cdforn = $_POST["cdforn"];
+	$codempresa = $_POST["codempresa"];
 
 	$Flag = true;
 	$flag2=false;
@@ -46,6 +47,7 @@
 				$aNomes[]= "deobse";
 				$aNomes[]= "flativ";
 				$aNomes[]= "dtcada";
+				$aNomes[]= "codempresa";
 
 				//dados da tabela
 				$aDados=array();
@@ -68,6 +70,7 @@
 				$aDados[]= $_POST["deobse"];
 				$aDados[]= "S";
 				$aDados[]= $data;
+				$aDados[]= $codempresa;
 	
 				AlterarDados("fornecedores", $aDados, $aNomes,"cdforn", $cdforn);
 			}

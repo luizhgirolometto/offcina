@@ -14,6 +14,7 @@
 	$dtpedi = $_POST["dtpedi"];
 	$vlpedi = $_POST["vlpedi"];
 	$vlpago = $_POST["vlpago"];
+	$codempresa = $_POST["codempresa"];
 
 	$vlpedi = str_replace(".","",$vlpedi);
 	$vlpedi = str_replace(",",".",$vlpedi);
@@ -68,6 +69,7 @@
 		$aNomes[]= "dtcada";
 		$aNomes[]= "cdform";
 		$aNomes[]= "qtform";
+		$aNomes[]= "codempresa";
 
 
 		//dados da tabela
@@ -84,10 +86,11 @@
 		$aDados[]= $dtcada;
 		$aDados[]= $_POST["cdform"];
 		$aDados[]= $_POST["qtform"];
+		$aDados[]= $codempresa;
 
 		IncluirDados("pedidos", $aDados, $aNomes);
 
-		$aTrab= ConsultarDados("", "", "","select max(cdpedi) cdpedi from pedidos where cdforn = '{$cdforn}' and dtpedi = '{$dtpedi}'");
+		$aTrab= ConsultarDados("", "", "","select max(cdpedi) cdpedi from pedidos where codempresa ='{$codempresa}' and cdforn = '{$cdforn}' and dtpedi = '{$dtpedi}'");
 		$cdpedi = $aTrab[0]["cdpedi"];
 		$nritem=1;
 		for ($f =1; $f <= 10; $f++) {
@@ -110,6 +113,7 @@
 				$aNomes[]= "qtpeca";
 				$aNomes[]= "vlpeca";
 				$aNomes[]= "vltota";
+				$aNomes[]= "codempresa";
 
 				$aDados=array();
 				$aDados[]= $cdpedi;
@@ -118,13 +122,14 @@
 				$aDados[]= $qtpeca;
 				$aDados[]= $vlpeca;
 				$aDados[]= $vltota;
+				$aDados[]= $codempresa;
 
 				IncluirDados("pedidosi", $aDados, $aNomes);
 
 			}
 		}
 
-		$aTrab= ConsultarDados("", "", "","select * from pedidos where cdpedi = '{$cdpedi}'");
+		$aTrab= ConsultarDados("", "", "","select * from pedidos where codempresa ='{$codempresa}' and cdpedi = '{$cdpedi}'");
 		$dtpedi = $aTrab[0]["dtpedi"];
 		$qtform = $aTrab[0]["qtform"];
 
@@ -144,6 +149,7 @@
 			$aNomes[]= "cdorig";
 			$aNomes[]= "flativ";
 			$aNomes[]= "dtcada";
+			$aNomes[]= "codempresa";
 
 			$aDados=array();
 			$aDados[]= 'Pedido a Pagar';
@@ -154,6 +160,7 @@
 			$aDados[]= $aTrab[0]["cdpedi"];
 			$aDados[]= 'Sim';
 			$aDados[]= $dtcada;
+			$aDados[]= $codempresa;
 
 			IncluirDados("contas", $aDados, $aNomes);
 

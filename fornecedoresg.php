@@ -6,6 +6,7 @@
 	$data = date('Y-m-d');
 	$cdforn = $_POST["cdforn"];
 	$demail = $_POST["demail"];
+	$codempresa = $_POST["codempresa"];
 	$Flag = true;
 
 	if (strlen($cdforn) < 12 ) {
@@ -57,6 +58,7 @@
 		$aNomes[]= "deobse";
 		$aNomes[]= "flativ";
 		$aNomes[]= "dtcada";
+		$aNomes[]= "codempresa";
 
 		//dados da tabela
 		$aDados=array();
@@ -79,6 +81,7 @@
 		$aDados[]= $_POST["deobse"];
 		$aDados[]= "S";
 		$aDados[]= $data;
+		$aDados[]= $codempresa;
 
 		IncluirDados("fornecedores", $aDados, $aNomes);
 

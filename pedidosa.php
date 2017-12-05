@@ -104,9 +104,9 @@
 
     $aPedi = ConsultarDados("pedidos", "cdpedi", $chave);
     $aItem = ConsultarDados("pedidosi", "cdpedi", $chave);
-    $aForn = ConsultarDados("", "", "","select * from fornecedores order by deforn");
-    $aPeca= ConsultarDados("", "", "","select * from pecas order by depeca");
-    $aServ= ConsultarDados("", "", "","select * from servicos order by deserv");
+    $aForn = ConsultarDados("", "", "","select * from fornecedores where codempresa = "."'{$codempresa}'"." order by deforn");
+    $aPeca= ConsultarDados("", "", "","select * from pecas where codempresa = "."'{$codempresa}'"." order by depeca");
+    $aServ= ConsultarDados("", "", "","select * from servicos where codempresa = "."'{$codempresa}'"." order by deserv");
 
 ?>
 <!DOCTYPE html>
@@ -166,13 +166,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -189,31 +189,21 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Pedidos - <small><?php echo $titulo; ?></small>
-                            </button>
-                        </div>
+                <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Gerenciamento de Pedidos - <?php echo $titulo; ?> </h3>   
+                         </div>
+                        <div class="panel-body">
+                    
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="pedidosaa.php">
 
-                                <div>
-                                    <center>
-                                        <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
-                                        <?php }?>
-                                        <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
-                                        <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
-                                </div>
-                                <br>
+                                
                                 <?php if($acao == "edita") {?>
                                     <div class="row">
                                         <div class="col-lg-8">
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <!--center><h3><span class="text-warning"><strong>DADOS DO PEDIDO</strong></span></h3></center-->
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Código do Pedido</label>
@@ -398,6 +388,7 @@
                                 <?php } Else {?>
                                     <div class="row">
                                         <div class="col-lg-8">
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <!--center><h3><span class="text-warning"><strong>DADOS DO PEDIDO</strong></span></h3></center-->
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Código do Pedido</label>
@@ -582,21 +573,21 @@
                                 <?php }?>
 
                                 <div>
-                                    <center>
+                                    
                                         <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
+                                            <button class="btn btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
                                         <?php }?>
                                         <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
+                                            <button class="btn  btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
                                         <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                        <button class="btn  btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

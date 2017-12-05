@@ -104,10 +104,10 @@
     $deusua = substr($deusua, 0,15);
 
     $aCont = ConsultarDados("contas", "cdcont", $chave);
-    $aClie= ConsultarDados("", "", "","select * from clientes order by cdclie");
-    $aForn= ConsultarDados("", "", "","select * from fornecedores order by cdforn");
-    $aPedi= ConsultarDados("", "", "","select * from pedidos order by cdpedi");
-    $aOrde= ConsultarDados("", "", "","select * from ordem order by cdorde");
+    $aClie= ConsultarDados("", "", "","select * from clientes where codempresa = "."'{$codempresa}'"." order by cdclie");
+    $aForn= ConsultarDados("", "", "","select * from fornecedores where codempresa = "."'{$codempresa}'"." order by cdforn");
+    $aPedi= ConsultarDados("", "", "","select * from pedidos where codempresa = "."'{$codempresa}'"." order by cdpedi");
+    $aOrde= ConsultarDados("", "", "","select * from ordem where codempresa = "."'{$codempresa}'"." order by cdorde");
 
 ?>
 <!DOCTYPE html>
@@ -170,13 +170,13 @@
                         <br>
                          <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -192,32 +192,19 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content">
-
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Contas a Pagar/Receber - <small><?php echo $titulo; ?></small>
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Contas a Pagar/Receber - <?php echo $titulo; ?> </h3>   
+                         </div>
+                        <div class="panel-body">
+                    
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="contasaa.php">
 
-                                <div>
-                                    <center>
-                                        <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
-                                        <?php }?>
-                                        <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
-                                        <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
-                                </div>
-
                                 <?php if($acao == "edita") {?>
                                     <div class="row">
-
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">Número de Controle</label>
                                                 <div class="col-md-2">
@@ -331,7 +318,7 @@
                                     </div>
                                 <?php } Else {?>
                                     <div class="row">
-
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">Número de Controle</label>
                                                 <div class="col-md-2">
@@ -446,21 +433,21 @@
                                 <?php }?>
                                 <br>
                                 <div>
-                                    <center>
+                                    
                                         <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
+                                            <button class="btn btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
                                         <?php }?>
                                         <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
+                                            <button class="btn  btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
                                         <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                        <button class="btn btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

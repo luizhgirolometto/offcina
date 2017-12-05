@@ -4,6 +4,7 @@
 	include "util.php";
 
 	$cdpedi = $_POST["cdpedi"];
+	$codempresa = $_POST["codempresa"];
 
 	switch (get_post_action('edita','apaga')) {
     case 'edita':
@@ -12,7 +13,7 @@
 
 		ExcluirDados("pedidos", "cdpedi", $cdpedi);
 		ExcluirDados("pedidosi", "cdpedi", $cdpedi);
-		ExcluirDados("", "", "","delete from contas where cdtipo ='Pagar' and cdorig = '{$cdpedi}'");
+		ExcluirDados("", "", "","delete from contas where codempresa = '{$codempresa}' and cdtipo ='Pagar' and cdorig = '{$cdpedi}'");
 
 		$dtcada = date('Y-m-d');
 		$Flag = true;
@@ -80,6 +81,7 @@
 			$aNomes[]= "dtcada";
 			$aNomes[]= "cdform";
 			$aNomes[]= "qtform";
+			$aNomes[]= "codempresa";
 
 
 			//dados da tabela
@@ -97,6 +99,7 @@
 			$aDados[]= $dtcada;
 			$aDados[]= $_POST["cdform"];
 			$aDados[]= $_POST["qtform"];
+			$aDados[]= $codempresa;
 
 			IncluirDados("pedidos", $aDados, $aNomes);
 
@@ -123,6 +126,7 @@
 					$aNomes[]= "qtpeca";
 					$aNomes[]= "vlpeca";
 					$aNomes[]= "vltota";
+					$aNomes[]= "codempresa";
 
 					$aDados=array();
 					$aDados[]= $cdpedi;
@@ -131,6 +135,7 @@
 					$aDados[]= $qtpeca;
 					$aDados[]= $vlpeca;
 					$aDados[]= $vltota;
+					$aDados[]= $codempresa;
 
 					IncluirDados("pedidosi", $aDados, $aNomes);
 
@@ -157,6 +162,7 @@
 				$aNomes[]= "cdorig";
 				$aNomes[]= "flativ";
 				$aNomes[]= "dtcada";
+				$aNomes[]= "codempresa";
 
 				$aDados=array();
 				$aDados[]= 'Pedido a Pagar';
@@ -167,6 +173,7 @@
 				$aDados[]= $aTrab[0]["cdpedi"];
 				$aDados[]= 'Sim';
 				$aDados[]= $dtcada;
+				$aDados[]= $codempresa;
 
 				IncluirDados("contas", $aDados, $aNomes);
 			}

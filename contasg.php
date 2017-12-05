@@ -6,6 +6,7 @@
 	$data = date('Y-m-d');
 	$vlcont = $_POST["vlcont"];
 	$vlpago = $_POST["vlpago"];
+	$codempresa = $_POST["codempresa"];
 
 	$vlcont= str_replace(".","",$vlcont);
 	$vlcont= str_replace(",",".",$vlcont);
@@ -29,6 +30,7 @@
 		$aNomes[]= "deobse";
 		$aNomes[]= "flativ";
 		$aNomes[]= "dtcada";
+		$aNomes[]= "codempresa";
 
 		//dados da tabela
 		$aDados=array();
@@ -43,6 +45,7 @@
 		$aDados[]= $_POST["deobse"];
 		$aDados[]= "S";
 		$aDados[]= date("Y-m-d");
+		$aDados[]= $codempresa;
 
 		IncluirDados("contas", $aDados, $aNomes);
 
