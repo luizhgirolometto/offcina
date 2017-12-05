@@ -4,6 +4,7 @@
 	include "util.php";
 
 	$cdorde = $_POST["cdorde"];
+	$codempresa= $_POST["codempresa"]; 
 
 	switch (get_post_action('edita','apaga')) {
     case 'edita':
@@ -84,6 +85,7 @@
 			$aNomes[]= "deobse";
 			$aNomes[]= "flativ";
 			$aNomes[]= "dtcada";
+			$aNomes[]= "codempresa";
 
 
 			//dados da tabela
@@ -106,6 +108,7 @@
 			$aDados[]= $_POST["deobse"];
 			$aDados[]= 'Sim';
 			$aDados[]= $dtcada;
+			$aDados[]= $codempresa;
 
 			IncluirDados("ordem", $aDados, $aNomes);
 
@@ -132,6 +135,7 @@
 					$aNomes[]= "qtpeca";
 					$aNomes[]= "vlpeca";
 					$aNomes[]= "vltota";
+					$aNomes[]= "codempresa";
 
 					$aDados=array();
 					$aDados[]= $cdorde;
@@ -140,6 +144,7 @@
 					$aDados[]= $qtpeca;
 					$aDados[]= $vlpeca;
 					$aDados[]= $vltota;
+					$aDados[]= $codempresa;
 
 					IncluirDados("ordemi", $aDados, $aNomes);
 
@@ -166,6 +171,7 @@
 				$aNomes[]= "cdorig";
 				$aNomes[]= "flativ";
 				$aNomes[]= "dtcada";
+				$aNomes[]= "codempresa";
 
 				$aDados=array();
 				$aDados[]= 'Cliente a Receber';
@@ -176,6 +182,7 @@
 				$aDados[]= $aTrab[0]["cdorde"];
 				$aDados[]= 'Sim';
 				$aDados[]= $dtcada;
+				$aDados[]= $codempresa;
 
 				IncluirDados("contas", $aDados, $aNomes);
 			}

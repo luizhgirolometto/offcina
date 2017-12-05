@@ -86,9 +86,9 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $aClie= ConsultarDados("", "", "","select * from clientes order by cdclie");
-    $aPeca= ConsultarDados("", "", "","select * from pecas order by depeca");
-    $aServ= ConsultarDados("", "", "","select * from servicos order by deserv");
+    $aClie= ConsultarDados("", "", "","select * from clientes where codempresa = "."'{$codempresa}'"." order by cdclie");
+    $aPeca= ConsultarDados("", "", "","select * from pecas where codempresa = "."'{$codempresa}'"." order by depeca");
+    $aServ= ConsultarDados("", "", "","select * from servicos where codempresa = "."'{$codempresa}'"." order by deserv");
 
 ?>
 <!DOCTYPE html>
@@ -148,13 +148,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -170,17 +170,17 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de OS - Inclusão
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Ordens de Serviço - Inclusão </h3>   
+                         </div>
+                        <div class="panel-body">
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="ordemg.php">
 
                                 <div class="row">
+                                    <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                     <div class="col-lg-8">
                                         <!--center><h3><span class="text-warning"><strong>DADOS DO PEDIDO</strong></span></h3></center-->
                                         <div class="form-group">
@@ -344,15 +344,16 @@
                                 </div>
 
                                 <div>
-                                    <center>
-                                        <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                    
+                                        <button class="btn btn-primary " type="submit"><strong>Confirmar</strong></button>
+                                        <button class="btn btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    
                                 </div>
 
                             </form>
                         </div>
                     </div>
+            </div>
             </div>
         </div>
     </div>

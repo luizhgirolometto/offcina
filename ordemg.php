@@ -14,6 +14,7 @@
 	$dtorde = $_POST["dtorde"];
 	$vlorde = $_POST["vlorde"];
 	$vlpago = $_POST["vlpago"];
+	$codempresa= $_POST["codempresa"]; 
 
 	$vlorde = str_replace(".","",$vlorde);
 	$vlorde = str_replace(",",".",$vlorde);
@@ -72,6 +73,7 @@
 		$aNomes[]= "deobse";
 		$aNomes[]= "flativ";
 		$aNomes[]= "dtcada";
+		$aNomes[]= "codempresa";
 
 
 		//dados da tabela
@@ -93,10 +95,12 @@
 		$aDados[]= $_POST["deobse"];
 		$aDados[]= 'Sim';
 		$aDados[]= $dtcada;
+		$aDados[]= $codempresa;
+		
 
 		IncluirDados("ordem", $aDados, $aNomes);
 
-		$aTrab= ConsultarDados("", "", "","select max(cdorde) cdorde from ordem where cdclie = '{$cdclie}' and dtorde = '{$dtorde}'");
+		$aTrab= ConsultarDados("", "", "","select max(cdorde) cdorde from ordem where codempresa = '{$codempresa}' and cdclie = '{$cdclie}' and dtorde = '{$dtorde}'");
 		$cdorde = $aTrab[0]["cdorde"];
 		$nritem=1;
 		for ($f =1; $f <= 20; $f++) {
@@ -119,6 +123,7 @@
 				$aNomes[]= "qtpeca";
 				$aNomes[]= "vlpeca";
 				$aNomes[]= "vltota";
+				$aNomes[]= "codempresa";
 
 				$aDados=array();
 				$aDados[]= $cdorde;
@@ -127,12 +132,13 @@
 				$aDados[]= $qtpeca;
 				$aDados[]= $vlpeca;
 				$aDados[]= $vltota;
+				$aDados[]= $codempresa;
 
 				IncluirDados("ordemi", $aDados, $aNomes);
 			}
 		}
 
-		$aTrab= ConsultarDados("", "", "","select * from ordem where cdorde = '{$cdorde}'");
+		$aTrab= ConsultarDados("", "", "","select * from ordem where codempresa = '{$codempresa}' and cdorde = '{$cdorde}'");
 		$dtorde = $aTrab[0]["dtorde"];
 		$qtform = $aTrab[0]["qtform"];
 
@@ -152,6 +158,7 @@
 			$aNomes[]= "cdorig";
 			$aNomes[]= "flativ";
 			$aNomes[]= "dtcada";
+			$aNomes[]= "codempresa";
 
 			$aDados=array();
 			$aDados[]= 'Cliente a Receber';
@@ -162,6 +169,7 @@
 			$aDados[]= $aTrab[0]["cdorde"];
 			$aDados[]= 'Sim';
 			$aDados[]= $dtcada;
+			$aDados[]= $codempresa;
 
 			IncluirDados("contas", $aDados, $aNomes);
 

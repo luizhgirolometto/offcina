@@ -85,7 +85,7 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $aClie= ConsultarDados("", "", "","select * from clientes order by cdclie");
+    $aClie= ConsultarDados("", "", "","select * from clientes where codempresa = "."'{$codempresa}'"." order by cdclie");
     $aEsta = ConsultarDados("", "", "","select * from estados order by cdesta");
 
    
@@ -225,13 +225,13 @@
                         <br>
                         <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -248,12 +248,11 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Clientes - Inclusão
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Cadastro de Clientes - Inclusão </h3>   
+                         </div>
+                        <div class="panel-body">
 
                         <div class="ibox-content">
                             <form id="meuform" name="meuform" class="form-horizontal" method="POST" enctype="multipart/form-data" action="clienteg.php">
@@ -264,6 +263,8 @@
                                 <div class="row">
                                     <!--div class="col-lg-6"-->
                                         <br>
+                                        <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+                                        
                                         <div class="form-group">
                                             <label class="col-md-2 control-label" for="textinput">CPF/CNPJ</label>
                                             <div class="col-md-3">
@@ -407,17 +408,17 @@
                                 <!--/div-->
 
                                 <div>
-                                    <center>
-                                      <!--  <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button> -->
-                                        <input class="btn btn-sm btn-primary " type="button" name="entrar" id="entrar" value="entrar">
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                    
+                                        <button class="btn btn-primary " type="submit"><strong>Salvar</strong></button>
+                                      <!--  <input class="btn btn-primary " type="button" name="entrar" id="entrar" value="Salvar">  -->
+                                        <button class="btn btn-warning " type="button" onClick="history.go(-1)">Retornar</button>
+                                    
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

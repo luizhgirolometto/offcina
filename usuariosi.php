@@ -260,10 +260,10 @@
                                 <!--/div-->
 
                                 <div>
-                                    <center>
+                                  
                                         <button class="btn btn-sm btn-primary " type="submit"><strong>Salvar</strong></button>
                                         <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                    
                                 </div>
 
                             </form>

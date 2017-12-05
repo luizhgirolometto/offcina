@@ -57,6 +57,7 @@
 		$aNomes[]= "deobse";
 		$aNomes[]= "flativ";
 		$aNomes[]= "dtcada";
+		$aNomes[]= "codempresa";
 
 		//dados da tabela
 		$aDados=array();
@@ -79,6 +80,7 @@
 		$aDados[]= $_POST["deobse"];
 		$aDados[]= "S";
 		$aDados[]= $data;
+		$aDados[]= $_POST["codempresa"];;
 
 		IncluirDados("clientes", $aDados, $aNomes);
 
