@@ -169,139 +169,87 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content">
-                <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Usuários
-                            </button>
-                        </div>
-
-                        <div class="ibox-content">
-                            <div class="pull-left">
-                                <a onclick="#" href="usuariosi.php" class="btn btn-warning ">Incluir</a>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover dataTables-example" >
-                                    <thead>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>E-mail</th>
-                                            <th>Telefone</th>
-                                            <th>Tipo</th>
-                                            <th>Foto</th>
-                                            <th>Situação</th>
-                                            <th>Data de Cadastro</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php for ($f =0; $f <= (count($aUsua)-1); $f++) { ?>
-                                            <tr class="gradeX">
-                                                <?php $data = strtotime($aUsua[$f]["dtcada"]) ;?>
-
-                                                <?php $coluna1 = trim($aUsua[$f]["cdusua"]); ?>
-                                                <?php $coluna2 = trim($aUsua[$f]["deusua"]); ?>
-                                                <?php $coluna3 = trim($aUsua[$f]["demail"]); ?>
-                                                <?php $coluna4 = $aUsua[$f]["nrtele"]; ?>
-                                                <?php $coluna5 = $aUsua[$f]["cdtipo"]; ?>
-                                                <?php $coluna6 = $aUsua[$f]["defoto"]; ?>
-                                                <?php $coluna7 = $aUsua[$f]["flativ"]; ?>
-                                                <?php $coluna8 = date("d/m/Y",$data); ?>
-
-                                                <?php $ver = "usuariosa.php?acao=ver&chave=".$coluna1; ?>
-                                                <?php $edita = "usuariosa.php?acao=edita&chave=".$coluna1; ?>
-                                                <?php $apaga = "usuariosa.php?acao=apaga&chave=".$coluna1; ?>
-
-                                                <td><?php print $coluna1; ?></td>
-                                                <td><?php print $coluna2; ?></td>
-                                                <td><?php print $coluna3; ?></td>
-                                                <td><?php print $coluna4; ?></td>
-                                                <td><?php print $coluna5; ?></td>
-                                                <td><img width="80px" height="80px" src="<?php print $coluna6; ?>" alt="<?php print $coluna2; ?>"></td>
-                                                <td><?php print $coluna7; ?></td>
-                                                <td style = "width:10%"><?php print $coluna8; ?></td>
-                                                <td class="text-right">
-                                                    <div class="btn-group">
-                                                        <button class="fa fa-eye btn-white btn btn-xs" name="ver" type="button" onclick="window.open('<?php echo $ver;?>','_parent')"></button>
-                                                        <button class="fa fa-edit btn-white btn btn-xs" name="edita" type="button" onclick="window.open('<?php echo $edita;?>','_parent')"></button>
-                                                        <button class="fa fa-trash btn-white btn btn-xs" name="apaga" type="button" onclick="window.open('<?php echo $apaga;?>','_parent')"></button>
-                                                    </div>
-                                                </td>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Gerenciamento de Usuários </h3>   
+                         </div>
+                        <div class="panel-body">
+                            <div class="ibox-content">
+                                <div class="pull-left">                        
+                                    <a onclick="#" href="usuariosi.php" class="btn btn-warning ">Criar novo usuário</a> 
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                                        <thead>
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Nome</th>
+                                                <th>E-mail</th>
+                                                <th>Telefone</th>
+                                                <th>Tipo</th>
+                                            <!-- <th>Foto</th> -->
+                                                <th>Ativo</th>
+                                                <th>Data de Cadastro</th>
+                                                <th class="text-right" data-sort-ignore="true">Ação</th>
                                             </tr>
-                                        <?php }; ?>    
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>E-mail</th>
-                                            <th>Telefone</th>
-                                            <th>Tipo</th>
-                                            <th>Foto</th>
-                                            <th>Situação</th>
-                                            <th>Data de Cadastro</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <br>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <caption><strong>* AJUDA</strong></caption>
-                                    <thead>
-                                        <tr>
-                                            <th width=5>Comando</th>
-                                            <th width=100>Descrição</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td >Show</td>
-                                            <td >Controla a quantidade de linhas a serem apresentadas na tabela.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >entriesSearch</td>
-                                            <td >É a pesquisa. Apresenta os dados filtrados conforme o conteúdo digitado.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Copy</td>
-                                            <td >Copia o conteúdo da tabela para a memória (clipboard).</td>
-                                        </tr>
-                                        <tr>
-                                            <td >CSV</td>
-                                            <td >Exporta os dados da tabela para um arquivo no formato CSV (arquivo texto com as informações separadas por vírgula).</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Excel</td>
-                                            <td >Exporta os dados da tabela para um arquivo no formato EXCEL.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >PDF</td>
-                                            <td >Exporta os dados da tabela para um arquivo no formato PDF.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Print</td>
-                                            <td >Imprime os dados da tabela.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Previous</td>
-                                            <td >Retorna uma página da tabela.</td>
-                                        </tr>
-                                        <tr>
-                                            <td >Next</td>
-                                            <td >Avança uma página da tabela.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                        </thead>
+                                        <tbody>
+                                            <?php for ($f =0; $f <= (count($aUsua)-1); $f++) { ?>
+                                                <tr class="gradeX">
+                                                    <?php $data = strtotime($aUsua[$f]["dtcada"]) ;?>
+
+                                                    <?php $coluna1 = trim($aUsua[$f]["cdusua"]); ?>
+                                                    <?php $coluna2 = trim($aUsua[$f]["deusua"]); ?>
+                                                    <?php $coluna3 = trim($aUsua[$f]["demail"]); ?>
+                                                    <?php $coluna4 = $aUsua[$f]["nrtele"]; ?>
+                                                    <?php $coluna5 = $aUsua[$f]["cdtipo"]; ?>
+                                                
+                                                    <?php $coluna7 = $aUsua[$f]["flativ"]; ?>
+                                                    <?php $coluna8 = date("d/m/Y",$data); ?>
+
+                                                    <?php $ver = "usuariosa.php?acao=ver&chave=".$coluna1; ?>
+                                                    <?php $edita = "usuariosa.php?acao=edita&chave=".$coluna1; ?>
+                                                    <?php $apaga = "usuariosa.php?acao=apaga&chave=".$coluna1; ?>
+
+                                                    <td><?php print $coluna1; ?></td>
+                                                    <td><?php print $coluna2; ?></td>
+                                                    <td><?php print $coluna3; ?></td>
+                                                    <td><?php print $coluna4; ?></td>
+                                                    <td><?php print $coluna5; ?></td>
+                                                
+                                                    <td><?php print $coluna7; ?></td>
+                                                    <td style = "width:10%"><?php print $coluna8; ?></td>
+                                                    <td class="text-right">
+                                                        <div class="btn-group">
+                                                            <button class="fa fa-eye btn-white btn btn-xs" name="ver" type="button" onclick="window.open('<?php echo $ver;?>','_parent')"></button>
+                                                            <button class="fa fa-edit btn-white btn btn-xs" name="edita" type="button" onclick="window.open('<?php echo $edita;?>','_parent')"></button>
+                                                            <button class="fa fa-trash btn-white btn btn-xs" name="apaga" type="button" onclick="window.open('<?php echo $apaga;?>','_parent')"></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php }; ?>    
+                                        </tbody>
+                                        
+                                    </table>
+                                </div>
+                                <br>
+
+
+
+
+
+                            </div>                  
                         </div>
                     </div>
+                </div>
+                    </div>                    
+                                              
+
+
+                        
                 <!--/div-->
             </div>
         </div>
@@ -354,10 +302,10 @@
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [
-                    { extend: 'copy'},
+                   // { extend: 'copy'},
                     {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
+                    {extend: 'excel', title: 'Relatório de Usuários'},
+                    {extend: 'pdf', title: 'Relatório de Usuários'},
 
                     {extend: 'print',
                      customize: function (win){

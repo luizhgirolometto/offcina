@@ -27,13 +27,13 @@
 		}
 	}
 
-	$aTrab = ConsultarDados("usuarios", "cdusua", $cdusua);
-	if ( count($aTrab) > 0) {
-		$demens = "Código já cadastrado!";
-		$detitu = "GiroMecânicas&copy; | Cadastro de Usuários";
-		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
-		$Flag=false;
-	}
+	// $aTrab = ConsultarDados("usuarios", "cdusua", $cdusua);
+	// if ( count($aTrab) > 0) {
+	// 	$demens = "Código já cadastrado!";
+	// 	$detitu = "GiroMecânicas&copy; | Cadastro de Usuários";
+	// 	header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
+	// 	$Flag=false;
+	// }
 
 	if ($Flag == true) {
 
@@ -45,16 +45,20 @@
 	    move_uploaded_file( $_FILES["defotom"]["tmp_name"], $uploadfile1 );
 
 		$defoto1=basename($_FILES['defotom']['name']);
-		$desenh=md5(strtolower(substr($_POST["deusua"], 0,3)));
+		$desenh=md5(($_POST["desenh"]));
 		if (empty($defoto1) == true){
 		  $defoto="img/semfoto.jpg";
 		} Else {
 		  $defoto = $uploadfile1;
 		}
-
+		if ($flativ = 'S'){
+			$flativ = 'Sim';
+		} else {
+			$flativ = 'Não';
+		}	
 		//campos da tabela
 		$aNomes=array();
-		$aNomes[]= "cdusua";
+//		$aNomes[]= "cdusua";
 		$aNomes[]= "deusua";
 		$aNomes[]= "desenh";
 		$aNomes[]= "demail";
@@ -63,10 +67,11 @@
 		$aNomes[]= "flativ";
 		$aNomes[]= "dtcada";
 		$aNomes[]= "nrtele";
+		$aNomes[]= "codempresa";
 
 		//dados da tabela
 		$aDados=array();
-		$aDados[]= $cdusua;
+//		$aDados[]= $cdusua;
 		$aDados[]= $_POST["deusua"];
 		$aDados[]= $desenh;
 		$aDados[]= $_POST["demail"];
@@ -74,7 +79,8 @@
 		$aDados[]= $_POST["cdtipo"];
 		$aDados[]= $flativ;
 		$aDados[]= $dtcada;
-		$aDados[]= $_POST["nrtele"];
+		$aDados[]= "";
+		$aDados[]= $_POST["codempresa"];
 
 		IncluirDados("usuarios", $aDados, $aNomes);
 

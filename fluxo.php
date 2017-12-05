@@ -143,13 +143,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -165,18 +165,13 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                    class="fa fa-user"></i> Fluxo de Caixa - Resumo
-                        </button>
-                    </div>
-                    <br>
-                    <div>
-                        <center>
-                            <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                        </center>
-                    </div>
+                <!--div class="col-lg-12"-->
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                            <h3> Fluxo de Caixa - Resumo </h3>   
+                    </div>            
+                    <div class="panel-body">
+             
 
                     <div class="row">
                         <br>
@@ -188,7 +183,7 @@
                                     </div>
                                     <div class="col-xs-8 text-right">
                                         <span>Ordem de Serviços </br> <strong>Pendentes</strong> </span>
-                                        <h2 class="font-bold"><?php echo ContaOS('P');?></h2>
+                                        <h2 class="font-bold"><?php echo ContaOS('P',$codempresa);?></h2>
                                     </div>
                                 </div>
                             </div>                              
@@ -201,7 +196,7 @@
                                     </div>
                                     <div class="col-xs-8 text-right">
                                         <span>Ordem de Serviços </br><strong>Em Andamento</strong></span>
-                                        <h2 class="font-bold"><?php echo ContaOS('A');?></h2>
+                                        <h2 class="font-bold"><?php echo ContaOS('A',$codempresa);?></h2>
                                     </div>
                                 </div>
                             </div>
@@ -215,15 +210,15 @@
                                     </div>
                                     <div class="col-xs-8 text-right">
                                         <span>Ordem de Serviços </br><strong>Concluídas</strong></span>
-                                        <h2 class="font-bold"><?php echo ContaOS('C');?></h2>
+                                        <h2 class="font-bold"><?php echo ContaOS('C',$codempresa);?></h2>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="ibox-content">
-                                <?php $vlp = SomaContas(1,'P'); ?>
-                                <?php $vlr = SomaContas(1,'R'); ?>
+                                <?php $vlp = SomaContas(1,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(1,'R',$codempresa); ?>
                                 <span class="label label-danger">Pagar</span>
                                 <span class="label label-success">Receber</span>
                                 <br>
@@ -240,8 +235,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(2,'P'); ?>
-                                <?php $vlr = SomaContas(2,'R'); ?>
+                                <?php $vlp = SomaContas(2,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(2,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Fevereiro/'.date("Y");?></strong></span>
@@ -254,8 +249,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(3,'P'); ?>
-                                <?php $vlr = SomaContas(3,'R'); ?>
+                                <?php $vlp = SomaContas(3,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(3,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Março/'.date("Y");?></strong></span>
@@ -268,8 +263,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(4,'P'); ?>
-                                <?php $vlr = SomaContas(4,'R'); ?>
+                                <?php $vlp = SomaContas(4,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(4,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Abril/'.date("Y");?></strong></span>
@@ -287,8 +282,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="ibox-content">
-                                <?php $vlp = SomaContas(5,'P'); ?>
-                                <?php $vlr = SomaContas(5,'R'); ?>
+                                <?php $vlp = SomaContas(5,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(5,'R',$codempresa); ?>
                                 <span class="label label-danger">Pagar</span>
                                 <span class="label label-success">Receber</span>
                                 <br>
@@ -305,8 +300,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(6,'P'); ?>
-                                <?php $vlr = SomaContas(6,'R'); ?>
+                                <?php $vlp = SomaContas(6,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(6,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Junho/'.date("Y");?></strong></span>
@@ -319,8 +314,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(7,'P'); ?>
-                                <?php $vlr = SomaContas(7,'R'); ?>
+                                <?php $vlp = SomaContas(7,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(7,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Julho/'.date("Y");?></strong></span>
@@ -333,8 +328,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(8,'P'); ?>
-                                <?php $vlr = SomaContas(8,'R'); ?>
+                                <?php $vlp = SomaContas(8,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(8,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Agosto/'.date("Y");?></strong></span>
@@ -352,8 +347,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="ibox-content">
-                                <?php $vlp = SomaContas(9,'P'); ?>
-                                <?php $vlr = SomaContas(9,'R'); ?>
+                                <?php $vlp = SomaContas(9,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(9,'R',$codempresa); ?>
                                 <span class="label label-danger">Pagar</span>
                                 <span class="label label-success">Receber</span>
                                 <br>
@@ -370,8 +365,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(10,'P'); ?>
-                                <?php $vlr = SomaContas(10,'R'); ?>
+                                <?php $vlp = SomaContas(10,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(10,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Outubro/'.date("Y");?></strong></span>
@@ -384,8 +379,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(11,'P'); ?>
-                                <?php $vlr = SomaContas(11,'R'); ?>
+                                <?php $vlp = SomaContas(11,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(11,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Novembro/'.date("Y");?></strong></span>
@@ -398,8 +393,8 @@
                                         <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(12,'P'); ?>
-                                <?php $vlr = SomaContas(12,'R'); ?>
+                                <?php $vlp = SomaContas(12,'P',$codempresa); ?>
+                                <?php $vlr = SomaContas(12,'R',$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Dezembro/'.date("Y");?></strong></span>
@@ -419,10 +414,11 @@
                     </div>
                     <br>
                     <div>
-                        <center>
-                            <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                        </center>
+                        
+                            <button class="btn btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                        
                     </div>
+                    </div>    
                 </div>
             </div>
         </div>

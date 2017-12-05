@@ -185,14 +185,14 @@
                     <?php if ($cdtipo == 'A'){?>
                           <!-- <li class="special_link"> -->
                         <li>
-                            <a href="parametros.php"><i class="fa fa-key"></i> <span class="nav-label">Parâmetros</span></a>
+                            <a href="parametros.php"><i class="fa fa-key"></i> <span class="nav-label">Minha Oficina</span></a>
                         </li>
                     <?php }?>
 
                     <?php if ($cdtipo == 'A'){?>
-                        <li>
+                      <!--  <li>
                             <a href="historico.php"><i class="fa fa-eye"></i> <span class="nav-label">Histórico</span></a>
-                        </li>
+                        </li> -->
                     <?php }?>
 
                    <?php if ($cdtipo == 'A'){?>

@@ -11,17 +11,17 @@
 
 	$vlpeca= str_replace(".","",$vlpeca);
 	$vlpeca= str_replace(",",".",$vlpeca);
-
+	$dtcada = date('Y-m-d');
 	$Flag = true;
 
-	$aPeca = ConsultarDados("", "", "","select * from pecas where cdpeca = "."'{$cdpeca}'");
+	// $aPeca = ConsultarDados("", "", "","select * from pecas where cdpeca = "."'{$cdpeca}'");
 
-	if (count($aPeca) > 0) {
-		$demens = "Código da peça já cadastrado!";
-		$detitu = "GiroMecânicas&copy; | Cadastro de Peças";
-		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
-		$Flag=false;
-	}
+	// if (count($aPeca) > 0) {
+	// 	$demens = "Código da peça já cadastrado!";
+	// 	$detitu = "GiroMecânicas&copy; | Cadastro de Peças";
+	// 	header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
+	// 	$Flag=false;
+	// }
 
 	if ($Flag == true) {
 
@@ -32,6 +32,10 @@
 		$aNomes[]= "depeca";
 		$aNomes[]= "qtpeca";
 		$aNomes[]= "vlpeca";
+		$aNomes[]= "codempresa";
+		$aNomes[]= "dtcada";
+		$aNomes[]= "flativ";
+		
 
 		//dados da tabela
 		$aDados=array();
@@ -39,6 +43,10 @@
 		$aDados[]= $depeca;
 		$aDados[]= $qtpeca;
 		$aDados[]= $vlpeca;
+		$aDados[]= $_POST["codempresa"];
+		$aDados[]= $dtcada;
+		$aDados[]= $flativ;		
+		
 
 		IncluirDados("pecas", $aDados, $aNomes);
 

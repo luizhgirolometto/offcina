@@ -143,13 +143,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -165,34 +165,37 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                    class="fa fa-user"></i> Cadastro de Serviços - Inclusão
-                        </button>
-                    </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                                <h3> Cadastro de Serviços - Inclusão </h3>   
+                    </div>            
+                    <div class="panel-body">
 
                     <div class="ibox-content">
                         <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="servicosg.php">
 
                             <div class="row">
+                                <div class="col-lg-2 text-center">
+                                            <div class="m-b-sm">
+                                                <img alt="image" class="img-square" src="img/service.jpg"
+                                                width= "150px" heigth= "150px">
+                                            </div>
+                                </div>
+                                <div class="col-lg-8">    
 
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label" for="textinput">Código</label>
-                                        <div class="col-md-4">
-                                            <input id="cdserv" name="cdserv" value="" type="text" placeholder="" class="form-control" maxlength = "50" autofocus>
-                                        </div>
-                                    </div>
+
+                                <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+                                    
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label" for="textinput">Descrição</label>
                                         <div class="col-md-8">
-                                            <input id="deserv" name="deserv" value="" type="text" placeholder="" class="form-control" maxlength = "100">
+                                            <input id="deserv" name="deserv" value="" type="text" placeholder="Descrição do serviço." class="form-control" maxlength = "100">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label" for="textinput">Valor</label>
+                                        <label class="col-md-2 control-label" for="textinput">Valor(R$)</label>
                                         <div class="col-md-2">
                                             <input id="vlserv" name="vlserv" value="" type="text" placeholder="" class="form-control" maxlength = "15">
                                         </div>
@@ -206,16 +209,18 @@
                                     </div>
 
                             </div>
+                            </div>
 
                             <div>
                                 <center>
-                                    <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button>
-                                    <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    <button class="btn btn-primary " type="submit">Salvar</button>
+                                    <button class="btn btn-warning " type="button" onClick="history.go(-1)">Retornar</button>
                                 </center>
                             </div>
 
                         </form>
                     </div>
+                    </div> 
                 </div>
             </div>
         </div>
