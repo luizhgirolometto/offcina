@@ -108,7 +108,7 @@
     $pos = strpos($cdclie,"-");
     $cdclie = trim(substr($cdclie, 0, $pos));
 
-    $aClie = ConsultarDados("m_clientes", "cdclie", $cdclie);
+    $aClie = ConsultarDados("clientes", "cdclie", $cdclie);
     $declie = $aClie[0]["declie"];
 
 ?>
@@ -172,13 +172,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -194,29 +194,19 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Veículos - <small><?php echo $titulo; ?></small>
-                            </button>
-                        </div>
-                        <br>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Cadastro de Veículos - <?php echo $titulo; ?> </h3>   
+                         </div>
+                        <div class="panel-body">
+
+                    
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="veiculosaa.php">
-                                <div>
-                                    <center>
-                                        <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
-                                        <?php }?>
-                                        <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
-                                        <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
-                                </div>
+                                
                                 <?php if($acao == "edita") {?>
                                     <div class="row">
-                                            <center><h2><span class="text-warning"><strong>DADOS DO CLIENTE</strong></span></h2></center>
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <div class="form-group">
                                                 <?php if (strlen($cdclie) < 12) {?>
                                                     <?php $cdclie = formatar($cdclie, "cpf");?>
@@ -235,7 +225,7 @@
                                                     <input id="declie" name="declie" value="<?php echo $declie; ?>" type="text" placeholder="" class="form-control" maxlength = "100" readonly = "" required="">
                                                 </div>
                                             </div>
-                                            <center><h2><span class="text-warning"><strong>DADOS DO VEÍCULO</strong></span></h2></center>
+                                            
                                             <input name = "deplaca" id= "deplaca" type="hidden" value = "<?php echo $aVeic[0]["deplac"]; ?>">
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">Código</label>
@@ -288,7 +278,7 @@
                                     </div>
                                 <?php } Else {?>
                                     <div class="row">
-                                            <center><h2><span class="text-warning"><strong>DADOS DO CLIENTE</strong></span></h2></center>
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <div class="form-group">
                                                 <?php if (strlen($cdclie) < 12) {?>
                                                     <?php $cdclie = formatar($cdclie, "cpf");?>
@@ -307,7 +297,7 @@
                                                     <input id="declie" name="declie" value="<?php echo $declie; ?>" type="text" placeholder="" class="form-control" maxlength = "100" readonly = "" required="">
                                                 </div>
                                             </div>
-                                            <center><h2><span class="text-warning"><strong>DADOS DO VEÍCULO</strong></span></h2></center>
+                                            
                                             <input name = "deplaca" id= "deplaca" type="hidden" value = "<?php echo $aVeic[0]["deplac"]; ?>">
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" for="textinput">Código</label>
@@ -363,19 +353,19 @@
                                 <div>
                                     <center>
                                         <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
+                                            <button class="btn  btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
                                         <?php }?>
                                         <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
+                                            <button class="btn  btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
                                         <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                        <button class="btn  btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
                                     </center>
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

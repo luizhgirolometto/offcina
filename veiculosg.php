@@ -5,7 +5,7 @@
 
 	$data = date('Y-m-d');
 	$deplac = trim($_POST["deplac"]);
-
+	
 	$pos = strpos($_POST["cdclie"], "-");
 	$cdclie = trim(substr($_POST["cdclie"],0,$pos));
 
@@ -35,6 +35,7 @@
 		$aNomes[]= "cdclie";
 		$aNomes[]= "flativ";
 		$aNomes[]= "dtcada";
+		$aNomes[]= "codempresa";
 
 		//dados da tabela
 		$aDados=array();
@@ -48,6 +49,10 @@
 		$aDados[]= $cdclie;
 		$aDados[]= "S";
 		$aDados[]= $data;
+		$aDados[]= $_POST["codempresa"];
+   	  
+		 
+
 
 		IncluirDados("m_veiculos", $aDados, $aNomes);
 

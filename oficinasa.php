@@ -18,12 +18,40 @@
     include "banco.php";
     include "util.php";
 
+    $acao = $_GET["acao"];
+    $chave = trim($_GET["chave"]);
+
+    switch ($acao) {
+    case 'ver':
+        $titulo = "Consulta";
+        break;
+    case 'edita':
+        $titulo = "Alteração";
+        break;
+    case 'apaga':
+        $titulo = "Exclusão";
+        break;
+    default:
+        header('Location: fichacadastral.php');
+    }
+
     //codigo do usuario
     if (isset($_COOKIE['cdusua'])) {
         $cdusua = $_COOKIE['cdusua'];
     } Else {
         header('Location: index.html');
     }
+    if (isset($_COOKIE['codempresa'])) {
+        $codempresa = $_COOKIE['codempresa'];
+    } Else {
+        header('Location: index.html');
+    }
+
+    if (isset($_COOKIE['nomeempresa'])) {
+        $nomeempresa = $_COOKIE['nomeempresa'];
+    } Else {
+        header('Location: index.html');
+    }     
 
     // nome do usuario
     if (isset($_COOKIE['deusua'])) {
@@ -38,18 +66,6 @@
     } Else {
         header('Location: index.html');
     }
-
-    if (isset($_COOKIE['codempresa'])) {
-        $codempresa = $_COOKIE['codempresa'];
-    } Else {
-        header('Location: index.html');
-    }
-
-    if (isset($_COOKIE['nomeempresa'])) {
-        $nomeempresa = $_COOKIE['nomeempresa'];
-    } Else {
-        header('Location: index.html');
-    } 
 
     //localização da foto
     if (isset($_COOKIE['defoto'])) {
@@ -70,8 +86,8 @@
     if ($cdtipo == "A") {
         $detipo="Administrador";
     }
-    if ($cdtipo == "R") {
-        $detipo="Representante";
+    if ($cdtipo == "F") {
+        $detipo="Funcionário";
     }
     if ($cdtipo == "O") {
         $detipo="Oficina";
@@ -87,8 +103,9 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    // usuarios
-    $aVeic= ConsultarDados("", "", "","SELECT v.cdveic, v.deplac, v.deanof, v.deanom, v.demarc, v.demode, v.decor, c.cdclie, v.flativ, v.dtcada, v.dtulti, c.declie FROM m_veiculos v, clientes c WHERE v.codempresa = "."'{$codempresa}'"." and left(v.cdclie,11) = left(c.cdclie,11)");
+    $aEmp = ConsultarDados("oficinas", "codempresa", $chave);
+
+    $flativ= ($aEmp[0]["flativ"]);
 
 ?>
 <!DOCTYPE html>
@@ -146,7 +163,7 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-left">
                         <br>
-                        <li>
+                       <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
                                 <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
@@ -171,71 +188,84 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">
-                             <h3> Cadastro de veiculos</h3>   
-                         </div>
-                        <div class="panel-body">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                                <h3>Cadastro de Empresas - <?php echo $titulo; ?> </h3>   
+                    </div>            
+                    <div class="panel-body">                 
 
                         <div class="ibox-content">
-                            <div class="pull-left">
-                                <a onclick="#" href="veiculosi.php" class="btn btn-warning ">Incluir novo veiculo</a>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover dataTables-example" >
-                                    <thead>
-                                        <tr>
-                                            <th>Cliente</th>
-                                            <th>Código</th>
-                                            <th>Placa</th>
-                                            <th>Marca</th>
-                                            <th>Modelo</th>
-                                            <th>Cor</th>
-                                            <th>Último Serviço em</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php for ($f =0; $f <= (count($aVeic)-1); $f++) { ?>
-                                            <tr class="gradeX">
+                            <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="oficinasaa.php">
 
-                                                <?php $coluna1 = $aVeic[$f]["cdclie"]." - ".$aVeic[$f]["declie"]; ?>
-                                                <?php $coluna2 = $aVeic[$f]["cdveic"]; ?>
-                                                <?php $coluna3 = $aVeic[$f]["deplac"]; ?>
-                                                <?php $coluna4 = $aVeic[$f]["demarc"]; ?>
-                                                <?php $coluna5 = $aVeic[$f]["demode"]; ?>
-                                                <?php $coluna6 = $aVeic[$f]["decor"]; ?>
-                                                <?php $coluna7 = traduz_data_para_exibir($aVeic[$f]["dtulti"]); ?>
 
-                                                <?php $ver = "veiculosa.php?acao=ver&chave=".$coluna2; ?>
-                                                <?php $edita = "veiculosa.php?acao=edita&chave=".$coluna2; ?>
-                                                <?php $apaga = "veiculosa.php?acao=apaga&chave=".$coluna2; ?>
-
-                                                <td><?php print $coluna1; ?></td>
-                                                <td><?php print $coluna2; ?></td>
-                                                <td><?php print $coluna3; ?></td>
-                                                <td><?php print $coluna4; ?></td>
-                                                <td><?php print $coluna5; ?></td>
-                                                <td><?php print $coluna6; ?></td>
-                                                <td><?php print $coluna7; ?></td>
-                                                <td class="text-right">
-                                                    <div class="btn-group">
-                                                        <button class="fa fa-eye btn-white btn btn-xs" name="ver" type="button" onclick="window.open('<?php echo $ver;?>','_parent')"></button>
-                                                        <button class="fa fa-edit btn-white btn btn-xs" name="edita" type="button" onclick="window.open('<?php echo $edita;?>','_parent')"></button>
-                                                        <?php if ($cdtipo !== 'R') {?>
-                                                            <button class="fa fa-trash btn-white btn btn-xs" name="apaga" type="button" onclick="window.open('<?php echo $apaga;?>','_parent')"></button>
-                                                        <?php }?>
+                                <?php if($acao == "edita") {?>
+                                    <div class="row">
+                                       <input type="hidden" name="codempresa" value="<?php echo $chave; ?>">
+                                                                                
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label" for="textinput">Nome/Razão Social</label>
+                                            <div class="col-md-8 ">
+                                                <input id="nomeempresa" name="nomeempresa" value="<?php echo $aEmp[0]["nomeempresa"]; ?>" type="text" placeholder="Informe o Nome/Razão Social" class="form-control" maxlength = "100" required="required">
+                                                <div id="mensagem2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                    <label class="col-md-2 control-label" for="textinput">Ativo?</label>
+                                                    <div class="col-md-4">
+                                                        <select name="ativo" id="ativo">
+                                                            <?php if ($flativ == "1") {?>
+                                                                <option selected= "selected">Sim</option>
+                                                                <option>Não</option>
+                                                            <?php } Else {?>
+                                                                <option>Sim</option>
+                                                                <option selected= "selected">Não</option>
+                                                            <?php }?>
+                                                        </select>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        <?php }; ?>    
-                                    </tbody>                                   
-                                </table>
-                            </div>
-                            
+                                                </div>
+                                    </div>
+                                <?php } Else {?>
+                                    <div class="row">
+                                            <input type="hidden" name="codempresa" value="<?php echo $chave; ?>">
+                                                                                
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label" for="textinput">Nome/Razão Social</label>
+                                            <div class="col-md-8 ">
+                                                <input id="nomeempresa" name="nomeempresa" value="<?php echo $aEmp[0]["nomeempresa"]; ?>" type="text" placeholder="Informe o Nome/Razão Social" class="form-control" maxlength = "100" required="required" readonly="">
+                                                <div id="mensagem2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                    <label class="col-md-2 control-label" for="textinput">Ativo?</label>
+                                                    <div class="col-md-4">
+                                                        <select name="ativo" id="ativo" disabled ="">
+                                                            <?php if ($flativ == "1") {?>
+                                                                <option selected= "selected">Sim</option>
+                                                                <option>Não</option>
+                                                            <?php } Else {?>
+                                                                <option>Sim</option>
+                                                                <option selected= "selected">Não</option>
+                                                            <?php }?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                <?php }?>
+
+                                <div>
+                                    <center>
+                                        <?php if($acao == "edita") {?>
+                                            <button class="btn btn-primary" name = "edita" type="submit">Salvar</button>
+                                        <?php }?>
+                                        <?php if($acao == "apaga") {?>
+                                            <button class="btn btn-danger" name = "apaga" type="submit">Excluir</button>
+                                        <?php }?>
+                                        <button class="btn btn-warning " type="button" onClick="history.go(-1)">Retornar</button>
+                                    </center>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -289,10 +319,11 @@
         $(document).ready(function(){
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
-                buttons: [                    
+                buttons: [
+                    { extend: 'copy'},
                     {extend: 'csv'},
-                    {extend: 'excel', title: 'Relatório de veiculos'},
-                    {extend: 'pdf', title: 'Relatório de veiculos'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
 
                     {extend: 'print',
                      customize: function (win){

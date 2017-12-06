@@ -131,9 +131,10 @@ function AlterarDados($tabela, $dados, $nomes=null, $campo=null, $chave=null, $s
 }
 
 
+
 function IncluirDados($tabela, $dados=null, $nomes=null, $sql="") {
     include "conexao.php";
-
+    
     if (empty($sql) == true) {
 
         $sql="insert into "."{$tabela}"." (";
@@ -167,7 +168,7 @@ function IncluirDados($tabela, $dados=null, $nomes=null, $sql="") {
     }
 
     $sql=$sql.$campos;
-
+    
     mysqli_query($conexao, $sql);
     mysqli_close($conexao);
 
@@ -177,10 +178,10 @@ function IncluirDados($tabela, $dados=null, $nomes=null, $sql="") {
     if (isset($_COOKIE['cdusua'])) {
         $cdusua = $_COOKIE['cdusua'];
     }
-
-    if ($tabela !== "log") {
-        GravarLog($cdusua, $delog);       
-    }
+  //  GravarLog($cdusua, $sql);
+  //  if ($tabela !== "log") {
+   //     GravarLog($cdusua, $delog);       
+  //  }
 
     return;
 }

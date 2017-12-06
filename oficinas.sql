@@ -34,10 +34,42 @@ CREATE TABLE IF NOT EXISTS `oficinas` (
   PRIMARY KEY (`codempresa`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-INSERT INTO `oficinas`(`nomeempresa`, `ativo`) VALUES ('GiroMecanica AutoCenter',1);
+INSERT INTO `oficinas`(`nomeempresa`, `ativo`) VALUES ('Administadores GiroDesenvolvimento',1),
+                                                      ('GiroMecanica AutoCenter',1);
 
 -- --------------------------------------------------------
 
+--
+-- Estrutura da tabela `m_veiculos`
+--
+
+CREATE TABLE IF NOT EXISTS `m_veiculos` (
+   `cdveic` bigint(20) NOT NULL AUTO_INCREMENT,
+   `deplac` varchar(10) DEFAULT NULL,
+   `deanof` varchar(4) DEFAULT NULL,
+   `deanom` varchar(4) DEFAULT NULL,
+   `demarc` varchar(50) DEFAULT NULL,
+   `demode` varchar(50) DEFAULT NULL,  
+   `decor`  varchar(10) DEFAULT NULL,
+   `cdclie` varchar(14) DEFAULT NULL,
+   `flativ` varchar(10) DEFAULT NULL,
+   `dtcada` date DEFAULT NULL,
+   `dtulti` date DEFAULT NULL, 
+   `codempresa` bigint(20) DEFAULT NULL, 
+   PRIMARY KEY (`cdveic`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Estrutura da tabela `log`
+--
+
+CREATE TABLE IF NOT EXISTS `log` (
+  `cdusua` bigint(20) DEFAULT NULL, 
+  `dtlog` varchar(50) DEFAULT NULL,
+  `delog` varchar(50) DEFAULT NULL,
+  `iplog` varchar(50) DEFAULT NULL,
+  `flativ` varchar(50) DEFAULT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 --
 -- Estrutura da tabela `clientes`
 --
@@ -199,7 +231,7 @@ CREATE TABLE IF NOT EXISTS `ordem` (
   KEY `iordem2` (`cdform`,`dtorde`),
   KEY `iordem3` (`cdclie`,`dtpago`),
   KEY `iordem4` (`cdform`,`dtpago`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `ordem`
@@ -250,7 +282,8 @@ CREATE TABLE IF NOT EXISTS `parametros` (
 --
 
 INSERT INTO `parametros` (`cdprop`, `deprop`, `nrinsc`, `nrccm`, `deende`, `nrende`, `decomp`, `debair`, `decida`, `cdesta`, `nrcepi`, `nrtele`, `nrcelu`, `demail`,`codempresa`) VALUES
-('61843256000155', 'Oficina Mecânica Nova Aliança', 'Isento', '2345', 'Rua Anecy Rocha', 1520, '', 'Jardim Nova Vitória', 'São Paulo', 'SP - São Paulo', '08372-20', '11 2734-3353', '11 9-8448-3928', 'of.mecanicanovaalianca@hotmail.com','1');
+('99999999999999', 'Oficina Mecânica Nova Aliança', 'Isento', '2345', 'Rua Anecy Rocha', 1520, '', 'Jardim Nova Vitória', 'São Paulo', 'SP - São Paulo', '08372-20', '11 2734-3353', '11 9-8448-3928', 'of.mecanicanovaalianca@hotmail.com','1'),
+('61843256000155', 'Oficina Mecânica Nova Aliança', 'Isento', '2345', 'Rua Anecy Rocha', 1520, '', 'Jardim Nova Vitória', 'São Paulo', 'SP - São Paulo', '08372-20', '11 2734-3353', '11 9-8448-3928', 'of.mecanicanovaalianca@hotmail.com','2');
 
 -- --------------------------------------------------------
 
@@ -291,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `codempresa` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`cdpedi`),
   KEY `ipedidos1` (`cdforn`,`cdpedi`,`dtpedi`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 --
@@ -348,8 +381,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`cdusua`, `deusua`, `demail`, `nrtele`, `cdtipo`, `defoto`, `desenh`, `flativ`, `dtcada`,`codempresa`) VALUES
-('1', 'Usuário Demonstração', 'adm@adm.com', '11 1234-1234', 'Administrador', 'img/1rato.png', '202cb962ac59075b964b07152d234b70', 'Sim', '2016-10-28','1');
+INSERT INTO `usuarios` (`deusua`, `demail`, `nrtele`, `cdtipo`, `defoto`, `desenh`, `flativ`, `dtcada`,`codempresa`) VALUES
+('Marlon Pilonetto', 'adm@adm.com', '11 1234-1234', 'Suporte', 'img/1rato.png', '18bcc99ed4c9f9a80f7b91e8ede5acc1', 'Sim', '2016-10-28','1'),
+('Luiz Girolometo', 'adm@adm.com', '11 1234-1234', 'Suporte', 'img/1rato.png', '77949c9f02621a4c85964be115a9dcc9', 'Sim', '2016-10-28','1'),
+('Usuário teste', 'adm@adm.com', '11 1234-1234', 'Suporte', 'img/1rato.png', '202cb962ac59075b964b07152d234b70', 'Sim', '2016-10-28','2');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

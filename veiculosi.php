@@ -85,7 +85,7 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $aClie= ConsultarDados("", "", "","select * from m_clientes order by cdclie");
+    $aClie= ConsultarDados("", "", "","select * from clientes where codempresa = "."'{$codempresa}'". " order by cdclie");
 
 ?>
 <!DOCTYPE html>
@@ -148,13 +148,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -171,19 +171,18 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Cadastro de Veículos - Inclusão
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Cadastro de veiculos - Inclusão</h3>   
+                         </div>
+                        <div class="panel-body">
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="veiculosg.php">
 
                                         <div class="row">
-                                    <!--div class="col-lg-6"-->
-                                        <center><h2><span class="text-warning"><strong>DADOS DO CLIENTE</strong></span></h2></center>
+                                        <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+                                    <!--div class="col-lg-6"-->                                        
                                         <div class="form-group">
                                             <label class="col-md-2 control-label" for="textinput">Cliente</label>  
                                             <div class="col-md-6">
@@ -196,7 +195,7 @@
                                             </div>
                                         </div>
 
-                                        <center><h2><span class="text-warning"><strong>DADOS DO VEÍCULO</strong></span></h2></center>
+                                        
 
                                         <div class="form-group">
                                             <label class="col-md-2 control-label" for="textinput">Placa</label>
@@ -244,16 +243,16 @@
                                 </div>
 
                                 <div>
-                                    <center>
-                                        <button class="btn btn-sm btn-primary " type="submit"><strong>Confirmar</strong></button>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                    
+                                        <button class="btn  btn-primary " type="submit"><strong>Salvar</strong></button>
+                                        <button class="btn  btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

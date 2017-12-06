@@ -5,6 +5,7 @@
 
 	$cdusua = $_POST["cdusua"];
 	$defoto1 = $_POST["defoto1"];
+	$codempresa = $_POST["codempresa"];
 
 	switch (get_post_action('edita','apaga')) {
     case 'edita':
@@ -34,6 +35,7 @@
 		$aNomes[]= "cdtipo";
 		$aNomes[]= "flativ";
 		$aNomes[]= "nrtele";
+		$aNomes[]= "codempresa";
 
 		//dados da tabela
 		$aDados=array();
@@ -43,6 +45,7 @@
 		$aDados[]= $_POST["cdtipo"];
 		$aDados[]= $_POST["flativ"];
 		$aDados[]= $_POST["nrtele"];
+		$aDados[]= $codempresa;
 
 		AlterarDados("usuarios", $aDados, $aNomes,"cdusua", $cdusua);
 

@@ -167,13 +167,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -213,7 +213,7 @@
                                 <br>-->
                                 <?php if($acao == "edita") {?>
                                     <div class="row">
-
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <div class="col-lg-4 text-center">
                                                 <!--h2><?php echo $deusua; ?></h2-->
                                                 <div class="m-b-sm">
@@ -301,7 +301,7 @@
                                     </div>
                                 <?php } Else {?>
                                     <div class="row">
-
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
                                             <div class="col-lg-4 text-center">
                                                 <!--h2><?php echo $deusua; ?></h2-->
                                                 <div class="m-b-sm">
