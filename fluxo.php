@@ -394,17 +394,20 @@
                                     </div>
                                 </div>
                                 <?php $vlp = SomaContas(12,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(12,'R',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(12,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(12,$codempresa); ?>
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Dezembro/'.date("Y");?></strong></span>
                                         <small class="pull-right">R$</small>
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 50%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 50%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style="width: 50%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style="width: 50%;" class="progress-bar progress-bar-primary"><strong><?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
 

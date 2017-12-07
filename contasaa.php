@@ -7,7 +7,10 @@
 	$cdcont = $_POST["cdcont"];
 	$vlcont = $_POST["vlcont"];
 	$vlpago = $_POST["vlpago"];
+	$dtpago = $_POST["dtpago"];
 	$codempresa = $_POST["codempresa"];
+
+
 
 	$vlcont= str_replace(".","",$vlcont);
 	$vlcont= str_replace(",",".",$vlcont);
@@ -50,7 +53,7 @@
 			$aDados[]= $_POST["cdquem"];
 			$aDados[]= $_POST["cdorig"];
 			$aDados[]= $_POST["deobse"];
-			$aDados[]= "S";
+			$aDados[]= "Sim";
 			$aDados[]= date("Y-m-d");
 			$aDados[]= $codempresa;
 

@@ -365,11 +365,11 @@ Function ValidarUpload($tipo) {
     return $fltipo;
 }
 
-Function ContaOS($qual, $codempresa){
+Function ContaOS($qual, $codempresa){ 
     include "conexao.php";
 
     $qtde=0;
-    $sql = "select count(cdorde) qtde from ordem where codempresa = "."'{$codempresa}'"." left(cdsitu,1) = '{$qual}'";
+    $sql = "select count(cdorde) qtde from ordem where codempresa = "."'{$codempresa}'"." and left(cdsitu,1) = '{$qual}'";
 
     $resultado=mysqli_query($conexao, $sql);
 
@@ -381,6 +381,45 @@ Function ContaOS($qual, $codempresa){
 
     mysqli_close($conexao);
     return ($qtde);
+}
+Function GetvalorRecebido($mes,$codempresa){
+    include "conexao.php";
+
+    $valor=0;
+
+    $sql = "SELECT sum(vlpago) valor FROM `contas` where cdtipo = 'Receber' and month(dtcada)= {$mes} and year(dtcada) = year(CURRENT_DATE) and  codempresa = "."'$codempresa'";
+
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $valor=$linha["valor"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($valor);
+}
+
+Function GetvalorReceber($mes,$codempresa){
+    include "conexao.php";
+
+    $valor=0;
+
+    $sql = "SELECT (sum(vlcont) - sum(vlpago)) valor FROM `contas` where cdtipo = 'Receber' and month(dtcada)= {$mes} and year(dtcada) = year(CURRENT_DATE) and  codempresa = "."'$codempresa'";
+
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $valor=$linha["valor"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($valor);
 }
 
 Function SomaContas($mes,$tipo,$codempresa){

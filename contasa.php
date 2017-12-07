@@ -212,7 +212,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="textinput">Descrição</label>
+                                                <label class="col-md-2 control-label" for="textinput">Histórico da conta</label>
                                                 <div class="col-md-6">
                                                     <input id="decont" name="decont" value="<?php echo $aCont[0]["decont"];?>" type="text" placeholder="" class="form-control" maxlength = "50">
                                                 </div>
@@ -225,9 +225,9 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="textinput">Valor</label>
+                                                <label class="col-md-2 control-label" for="textinput">Valor da conta(R$)</label>
                                                 <div class="col-md-2">
-                                                    <input id="vlcont" name="vlcont" value="<?php echo number_format($aCont[0]["cdcont"],2,",",".");?>" type="text" placeholder="" class="form-control" maxlength = "15">
+                                                    <input id="vlcont" name="vlcont" value="<?php echo number_format($aCont[0]["vlcont"],2,",",".");?>" type="text" placeholder="" class="form-control" maxlength = "15" readonly="">
                                                 </div>
                                             </div>
 
@@ -303,7 +303,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="textinput">Valor Pago</label>
+                                                <label class="col-md-2 control-label" for="textinput">Valor Pago(R$)</label>
                                                 <div class="col-md-4">
                                                     <input id="vlpago" name="vlpago" value="<?php echo number_format($aCont[0]["vlpago"],2,",",".");?>" type="text" placeholder="" class="form-control" maxlength = "10">
                                                 </div>
