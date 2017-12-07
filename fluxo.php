@@ -218,63 +218,140 @@
                         <div class="col-md-4">
                             <div class="ibox-content">
                                 <?php $vlp = SomaContas(1,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(1,'R',$codempresa); ?>
+                                
                                 <span class="label label-danger">Pagar</span>
                                 <span class="label label-success">Receber</span>
+                                <span class="label label-primary">Recebido</span>
                                 <br>
                                 <br>
+                                <?php $vlp = SomaContas(1,'P',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(1,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(1,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Janeiro/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
                                 <?php $vlp = SomaContas(2,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(2,'R',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(2,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(2,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Fevereiro/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
+                                
                                 <?php $vlp = SomaContas(3,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(3,'R',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(3,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(3,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Março/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
                                 <?php $vlp = SomaContas(4,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(4,'R',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(4,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(4,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
+
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Abril/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
 
@@ -282,132 +359,284 @@
                         </div>
                         <div class="col-md-4">
                             <div class="ibox-content">
-                                <?php $vlp = SomaContas(5,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(5,'R',$codempresa); ?>
+                                
+                                
                                 <span class="label label-danger">Pagar</span>
                                 <span class="label label-success">Receber</span>
+                                <span class="label label-primary">Recebido</span>
                                 <br>
                                 <br>
+                                <?php $vlp = SomaContas(5,'P',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(5,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(5,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Maio/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
-                                </div>
-                                <?php $vlp = SomaContas(6,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(6,'R',$codempresa); ?>
+                                </div>                                <?php $vlp = SomaContas(6,'P',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(6,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(6,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Junho/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
-                                </div>
-                                <?php $vlp = SomaContas(7,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(7,'R',$codempresa); ?>
+                                </div>                                <?php $vlp = SomaContas(7,'P',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(7,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(7,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Julho/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
-                                    </div>
-                                </div>
-                                <?php $vlp = SomaContas(8,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(8,'R',$codempresa); ?>
-                                <div>
-                                    <div>
-                                        <span><strong><?php echo 'Agosto/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
-                                    </div>
-                                    <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
-                                    </div>
-                                    <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
 
+                                <?php $vlp = SomaContas(8,'P',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(8,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(8,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
+                                <div>
+                                    <div>
+                                        <span><strong><?php echo 'Agosto/'.date("Y");?></strong></span>
+                                         
+                                    </div>
+                                    <div class="progress progress-medium">
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
+                                    </div>
+                                    <div class="progress progress-medium">
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="ibox-content">
-                                <?php $vlp = SomaContas(9,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(9,'R',$codempresa); ?>
                                 <span class="label label-danger">Pagar</span>
                                 <span class="label label-success">Receber</span>
+                                <span class="label label-primary">Recebido</span>
+                                
                                 <br>
                                 <br>
+                                <?php $vlp = SomaContas(9,'P',$codempresa); ?>
+                                <?php $vlr = GetvalorReceber(9,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(9,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Setembro/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(10,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(10,'R',$codempresa); ?>
+
+                                <?php $vlr = GetvalorReceber(10,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(10,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
+
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Outubro/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
-                                <?php $vlp = SomaContas(11,'P',$codempresa); ?>
-                                <?php $vlr = SomaContas(11,'R',$codempresa); ?>
+
+                                <?php $vlr = GetvalorReceber(11,$codempresa); ?>
+                                <?php $vlrr = GetvalorRecebido(11,$codempresa); ?>
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
+
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Novembro/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 100%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
+    
                                 <?php $vlp = SomaContas(12,'P',$codempresa); ?>
                                 <?php $vlr = GetvalorReceber(12,$codempresa); ?>
                                 <?php $vlrr = GetvalorRecebido(12,$codempresa); ?>
+
+                                
+                                <?php  $pctg = ($vlr + $vlrr); ?> 
+                                <?php  $pctgg = ($vlr * 100); ?> 
+                                <?php if ( $pctg > 0) { 
+                                            $pctgg = ($pctgg / $pctg); 
+                                            $pctggg = (100 - $pctgg); 
+                                    } else { 
+                                        $pctggg = 50; 
+                                        $pctgg = 50; 
+                                    }  ?> 
+                                <?php if (( $pctgg < 20) && ( $pctgg > 0)) { 
+                                        $pctggg = 80; 
+                                        $pctgg = 20; 
+                                    } if (( $pctggg < 20) && ( $pctggg > 0)) { 
+                                        $pctggg = 20; 
+                                        $pctgg = 80; 
+                                    }  ?> 
+                                
+
+
                                 <div>
                                     <div>
                                         <span><strong><?php echo 'Dezembro/'.date("Y");?></strong></span>
-                                        <small class="pull-right">R$</small>
+                                         
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 50%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
-                                        <div style="width: 50%;" class="progress-bar progress-bar-danger"><strong><?php echo number_format($vlp,2,',','.'); ?></strong></div>
+                                        <div style="width: 100%;" class="progress-bar progress-bar-danger"><strong>R$ <?php echo number_format($vlp,2,',','.'); ?></strong></div>                                        
                                     </div>
                                     <div class="progress progress-medium">
-                                        <div style="width: 50%;" class="progress-bar progress-bar-success"><strong><?php echo number_format($vlr,2,',','.'); ?></strong></div>
-                                        <div style="width: 50%;" class="progress-bar progress-bar-primary"><strong><?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
+                                        <div style='width:  <?php echo $pctgg ?>%;'   class="progress-bar progress-bar-success"><strong>R$ <?php echo number_format($vlr,2,',','.'); ?></strong></div>
+                                        <div style='width:  <?php echo $pctggg ?>%;'  class="progress-bar progress-bar-primary"><strong>R$ <?php echo number_format($vlrr,2,',','.'); ?></strong></div>    
                                     </div>
                                 </div>
 
