@@ -258,32 +258,29 @@
                     </ul>
                 </nav>
             </div>
+
             <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                             class="fa fa-home"></i> Menu Principal 
-                                </button>
-                            </div>
+                       <!-- <div class="ibox float-e-margins">
+                            
                             <br>
                             <div class="ibox-content">
-                                <div class="col-md-1"></div>
+                                <div class="col-lg-12"></div>
                                 <div class="m-b-sm">
                                     <center>
                                         <img alt="image" class="img-square" src="img/logo.png"
                                                                              style="width: 582px">
                                     </center>
                                 </div>
-                                <!--h1 class="logo-name">Nova Demonstração</h1-->
+                           
                                 <br>
                                 <br>
                                 <strong>Suporte</strong><br>
                                 <small><?php echo $demails; ?></small><br>
                                 <small><?php echo $deteles; ?></small>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

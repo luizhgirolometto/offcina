@@ -14,6 +14,11 @@
 	$dtorde = $_POST["dtorde"];
 	$vlorde = $_POST["vlorde"];
 	$vlpago = $_POST["vlpago"];
+	$dtpago = $_POST["dtpago"];
+
+	if ($dtpago == ""){
+		$dtpago = "1969-12-31"; //aberta
+	}
 	$codempresa= $_POST["codempresa"]; 
 
 	$vlorde = str_replace(".","",$vlorde);
@@ -91,7 +96,7 @@
 		$aDados[]= $_POST["cdform"];
 		$aDados[]= $_POST["qtform"];
 		$aDados[]= $vlpago;
-		$aDados[]= $_POST["dtpago"];
+		$aDados[]= $dtpago;
 		$aDados[]= $_POST["deobse"];
 		$aDados[]= 'Sim';
 		$aDados[]= $dtcada;
