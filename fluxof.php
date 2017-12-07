@@ -84,7 +84,7 @@
     // reduzir o tamanho do nome do usuario
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
-    $sql="select * from contas c, ordem o where c.cdorig = o.cdorde and (c.vlpago is null or c.vlpago < 1) and c.cdtipo = 'Receber' order by c.dtcont";
+    $sql="select * from contas c, ordem o where  codempresa = "."'{$codempresa}'"." and c.cdorig = o.cdorde and (c.vlpago is null or c.vlpago < 1) and c.cdtipo = 'Receber'  order by c.dtcont";
     $aOrde= ConsultarDados("", "", "",$sql);
 
 ?>
@@ -145,13 +145,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -167,18 +167,11 @@
                 </nav>
             </div>
             <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                    class="fa fa-user"></i> Contas a Receber por Forma de Pagamento - Detalhado
-                        </button>
-                    </div>
-                    <br>
-                    <div>
-                        <center>
-                            <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                        </center>
-                    </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                            <h3> Receber por forma de pagamento </h3>   
+                </div>            
+                <div class="panel-body">
                     <div class="ibox-content">
                         <br>
                         <div class="table-responsive">
@@ -211,75 +204,19 @@
                                         </tr>
                                     <?php }; ?>    
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Data de Vencimento</th>
-                                        <th>Forma de Pagamento</th>
-                                        <th>Valor a Receber</th>
-                                        <th>Cliente</th>
-                                        <th>Código OS</th>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <br>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
-                                <caption><strong>* AJUDA</strong></caption>
-                                <thead>
-                                    <tr>
-                                        <th width=5>Comando</th>
-                                        <th width=100>Descrição</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td >Show</td>
-                                        <td >Controla a quantidade de linhas a serem apresentadas na tabela.</td>
-                                    </tr>
-                                    <tr>
-                                        <td >entriesSearch</td>
-                                        <td >É a pesquisa. Apresenta os dados filtrados conforme o conteúdo digitado.</td>
-                                    </tr>
-                                    <tr>
-                                        <td >Copy</td>
-                                        <td >Copia o conteúdo da tabela para a memória (clipboard).</td>
-                                    </tr>
-                                    <tr>
-                                        <td >CSV</td>
-                                        <td >Exporta os dados da tabela para um arquivo no formato CSV (arquivo texto com as informações separadas por vírgula).</td>
-                                    </tr>
-                                    <tr>
-                                        <td >Excel</td>
-                                        <td >Exporta os dados da tabela para um arquivo no formato EXCEL.</td>
-                                    </tr>
-                                    <tr>
-                                        <td >PDF</td>
-                                        <td >Exporta os dados da tabela para um arquivo no formato PDF.</td>
-                                    </tr>
-                                    <tr>
-                                        <td >Print</td>
-                                        <td >Imprime os dados da tabela.</td>
-                                    </tr>
-                                    <tr>
-                                        <td >Previous</td>
-                                        <td >Retorna uma página da tabela.</td>
-                                    </tr>
-                                    <tr>
-                                        <td >Next</td>
-                                        <td >Avança uma página da tabela.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        
                     </div>
                     <br>
                     <div>
-                        <center>
-                            <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                        </center>
+                  
+                            <button class="btn btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                  
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
