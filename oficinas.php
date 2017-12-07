@@ -70,8 +70,8 @@
     if ($cdtipo == "A") {
         $detipo="Administrador";
     }
-    if ($cdtipo == "R") {
-        $detipo="Representante";
+    if ($cdtipo == "F") {
+        $detipo="Funcionário";
     }
     if ($cdtipo == "O") {
         $detipo="Oficina";
@@ -87,8 +87,7 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    // usuarios
-    $aVeic= ConsultarDados("", "", "","SELECT v.cdveic, v.deplac, v.deanof, v.deanom, v.demarc, v.demode, v.decor, c.cdclie, v.flativ, v.dtcada, v.dtulti, c.declie FROM m_veiculos v, clientes c WHERE v.codempresa = "."'{$codempresa}'"." and left(v.cdclie,11) = left(c.cdclie,11)");
+    $aClie= ConsultarDados("", "", "","select * from oficinas order by codempresa");
 
 ?>
 <!DOCTYPE html>
@@ -146,11 +145,11 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-left">
                         <br>
-                        <li>
+                            <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
                                 <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <h3><?php echo  $codempresa." - ";?></h3>
+                                <span><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
@@ -159,7 +158,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo a <strong>GiroMecânicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -173,13 +172,13 @@
                 <!--div class="col-lg-12"-->
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Cadastro de veiculos</h3>   
+                             <h3> Cadastro de Empresas </h3>   
                          </div>
                         <div class="panel-body">
 
                         <div class="ibox-content">
                             <div class="pull-left">
-                                <a onclick="#" href="veiculosi.php" class="btn btn-warning ">Incluir novo veiculo</a>
+                                <a onclick="#" href="oficinasi.php" class="btn btn-warning ">Cadastrar nova empresa</a>
                             </div>
                             <br>
                             <br>
@@ -188,54 +187,41 @@
                                 <table class="table table-striped table-bordered table-hover dataTables-example" >
                                     <thead>
                                         <tr>
-                                            <th>Cliente</th>
-                                            <th>Código</th>
-                                            <th>Placa</th>
-                                            <th>Marca</th>
-                                            <th>Modelo</th>
-                                            <th>Cor</th>
-                                            <th>Último Serviço em</th>
+                                            <th>Cód. Empresa</th>
+                                            <th>Nome/Razão</th>
+                                            <th>Ativa</th>                                            
                                             <th class="text-right" data-sort-ignore="true">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php for ($f =0; $f <= (count($aVeic)-1); $f++) { ?>
+                                        <?php for ($f =0; $f <= (count($aClie)-1); $f++) { ?>
                                             <tr class="gradeX">
 
-                                                <?php $coluna1 = $aVeic[$f]["cdclie"]." - ".$aVeic[$f]["declie"]; ?>
-                                                <?php $coluna2 = $aVeic[$f]["cdveic"]; ?>
-                                                <?php $coluna3 = $aVeic[$f]["deplac"]; ?>
-                                                <?php $coluna4 = $aVeic[$f]["demarc"]; ?>
-                                                <?php $coluna5 = $aVeic[$f]["demode"]; ?>
-                                                <?php $coluna6 = $aVeic[$f]["decor"]; ?>
-                                                <?php $coluna7 = traduz_data_para_exibir($aVeic[$f]["dtulti"]); ?>
+                                                <?php $coluna1 = $aClie[$f]["codempresa"]; ?>
+                                                <?php $coluna2 = $aClie[$f]["nomeempresa"]; ?>
+                                                <?php $coluna3 = $aClie[$f]["ativo"]; ?>
+                                           
 
-                                                <?php $ver = "veiculosa.php?acao=ver&chave=".$coluna2; ?>
-                                                <?php $edita = "veiculosa.php?acao=edita&chave=".$coluna2; ?>
-                                                <?php $apaga = "veiculosa.php?acao=apaga&chave=".$coluna2; ?>
+                                                <?php $ver = "oficinasa.php?acao=ver&chave=".$coluna1; ?>
+                                                <?php $edita = "oficinasa.php?acao=edita&chave=".$coluna1; ?>
+                                                <?php $apaga = "oficinasa.php?acao=apaga&chave=".$coluna1; ?>
 
                                                 <td><?php print $coluna1; ?></td>
                                                 <td><?php print $coluna2; ?></td>
                                                 <td><?php print $coluna3; ?></td>
-                                                <td><?php print $coluna4; ?></td>
-                                                <td><?php print $coluna5; ?></td>
-                                                <td><?php print $coluna6; ?></td>
-                                                <td><?php print $coluna7; ?></td>
+                                  
                                                 <td class="text-right">
                                                     <div class="btn-group">
                                                         <button class="fa fa-eye btn-white btn btn-xs" name="ver" type="button" onclick="window.open('<?php echo $ver;?>','_parent')"></button>
                                                         <button class="fa fa-edit btn-white btn btn-xs" name="edita" type="button" onclick="window.open('<?php echo $edita;?>','_parent')"></button>
-                                                        <?php if ($cdtipo !== 'R') {?>
-                                                            <button class="fa fa-trash btn-white btn btn-xs" name="apaga" type="button" onclick="window.open('<?php echo $apaga;?>','_parent')"></button>
-                                                        <?php }?>
+                                                        <button class="fa fa-trash btn-white btn btn-xs" name="apaga" type="button" onclick="window.open('<?php echo $apaga;?>','_parent')"></button>
                                                     </div>
                                                 </td>
                                             </tr>
                                         <?php }; ?>    
-                                    </tbody>                                   
+                                    </tbody>                                    
                                 </table>
-                            </div>
-                            
+                            </div>                            
                         </div>
                     </div>
                 </div>
@@ -289,10 +275,11 @@
         $(document).ready(function(){
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
-                buttons: [                    
+                buttons: [
+                    
                     {extend: 'csv'},
-                    {extend: 'excel', title: 'Relatório de veiculos'},
-                    {extend: 'pdf', title: 'Relatório de veiculos'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
 
                     {extend: 'print',
                      customize: function (win){

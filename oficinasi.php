@@ -38,7 +38,6 @@
     } Else {
         header('Location: index.html');
     }
-
     if (isset($_COOKIE['codempresa'])) {
         $codempresa = $_COOKIE['codempresa'];
     } Else {
@@ -49,8 +48,7 @@
         $nomeempresa = $_COOKIE['nomeempresa'];
     } Else {
         header('Location: index.html');
-    } 
-
+    }          
     //localização da foto
     if (isset($_COOKIE['defoto'])) {
         $defoto = $_COOKIE['defoto'];
@@ -70,8 +68,8 @@
     if ($cdtipo == "A") {
         $detipo="Administrador";
     }
-    if ($cdtipo == "R") {
-        $detipo="Representante";
+    if ($cdtipo == "F") {
+        $detipo="Funcionário";
     }
     if ($cdtipo == "O") {
         $detipo="Oficina";
@@ -87,8 +85,10 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    // usuarios
-    $aVeic= ConsultarDados("", "", "","SELECT v.cdveic, v.deplac, v.deanof, v.deanom, v.demarc, v.demode, v.decor, c.cdclie, v.flativ, v.dtcada, v.dtulti, c.declie FROM m_veiculos v, clientes c WHERE v.codempresa = "."'{$codempresa}'"." and left(v.cdclie,11) = left(c.cdclie,11)");
+    $aClie= ConsultarDados("", "", "","select * from oficinas");
+    $aEsta = ConsultarDados("", "", "","select * from estados order by cdesta");
+
+   
 
 ?>
 <!DOCTYPE html>
@@ -99,7 +99,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GiroMecânicas&copy; | Principal </title>
+    <title>GiroMecanicas&copy; | Principal </title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -108,6 +108,83 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+	
+	$("#entrar").click(function(){
+		var ok = true;
+		if ($("#cdclie").val()==''){
+            ok = false;
+			$("#mensagem").html("Informe o CPF ou o CNPJ");
+			$("#cdclie").focus(); // foco no campo
+		}else {
+          $("#mensagem").html("");  
+        }
+
+        if ($("#declie").val() == ''){
+                ok = false;
+                $("#mensagem2").html("Campo obrigatório");
+			    $("#declie").focus(); // foco no campo
+		} else{
+             $("#mensagem2").html(""); 
+        }
+        if ($("#deende").val() == ''){
+                ok = false;
+                $("#mensagem3").html("Campo obrigatório");
+			    $("#deende").focus(); // foco no campo
+		} else{
+             $("#mensagem3").html(""); 
+        }          
+        if ($("#nrende").val() == ''){
+                ok = false;
+                $("#mensagem4").html("Campo obrigatório");
+			    $("#nrende").focus(); // foco no campo
+		} else{
+             $("#mensagem4").html(""); 
+        }  
+
+        if ($("#debair").val() == ''){
+                ok = false;
+                $("#mensagem5").html("Campo obrigatório");
+			    $("#debair").focus(); // foco no campo
+		} else{
+             $("#mensagem5").html(""); 
+        }  
+
+        if ($("#decida").val() == ''){
+                ok = false;
+                $("#mensagem6").html("Campo obrigatório");
+			    $("#decida").focus(); // foco no campo
+		} else{
+             $("#mensagem6").html(""); 
+        }   
+
+        if ($("#cdesta").val() == ''){
+                ok = false;
+                $("#mensagem7").html("Campo obrigatório");
+			    $("#cdesta").focus(); // foco no campo
+		} else{
+             $("#mensagem7").html(""); 
+        }        
+        if ($("#nrtele").val() == ''){
+                ok = false;
+                $("#mensagem8").html("Campo obrigatório");
+			    $("#nrtele").focus(); // foco no campo
+		} else{
+             $("#mensagem8").html(""); 
+        }
+        if (ok == true){        
+			$("#meuform").submit();
+        }	
+	
+    	});
+	
+    });
+</script>
+
 
 <body>
     <div id="wrapper">
@@ -159,7 +236,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo a <strong>GiroMecânicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecanicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -173,69 +250,53 @@
                 <!--div class="col-lg-12"-->
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Cadastro de veiculos</h3>   
+                             <h3> Cadastro de Empresas - Inclusão </h3>   
                          </div>
                         <div class="panel-body">
 
                         <div class="ibox-content">
-                            <div class="pull-left">
-                                <a onclick="#" href="veiculosi.php" class="btn btn-warning ">Incluir novo veiculo</a>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover dataTables-example" >
-                                    <thead>
-                                        <tr>
-                                            <th>Cliente</th>
-                                            <th>Código</th>
-                                            <th>Placa</th>
-                                            <th>Marca</th>
-                                            <th>Modelo</th>
-                                            <th>Cor</th>
-                                            <th>Último Serviço em</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php for ($f =0; $f <= (count($aVeic)-1); $f++) { ?>
-                                            <tr class="gradeX">
+                            <form id="meuform" name="meuform" class="form-horizontal" method="POST" enctype="multipart/form-data" action="oficinasg.php">
 
-                                                <?php $coluna1 = $aVeic[$f]["cdclie"]." - ".$aVeic[$f]["declie"]; ?>
-                                                <?php $coluna2 = $aVeic[$f]["cdveic"]; ?>
-                                                <?php $coluna3 = $aVeic[$f]["deplac"]; ?>
-                                                <?php $coluna4 = $aVeic[$f]["demarc"]; ?>
-                                                <?php $coluna5 = $aVeic[$f]["demode"]; ?>
-                                                <?php $coluna6 = $aVeic[$f]["decor"]; ?>
-                                                <?php $coluna7 = traduz_data_para_exibir($aVeic[$f]["dtulti"]); ?>
+                                <!--div class="tab-content"-->
+                                    <!--div id="tab-1" class="tab-pane active"-->
+                                    <!--form class="form-horizontal" method="POST" enctype="multipart/form-data" action="meusdadosg.php"-->
+                                <div class="row">
+                                    <!--div class="col-lg-6"-->
+                                        <br>
+                                        <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+                                                                                
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label" for="textinput">Nome/Razão Social</label>
+                                            <div class="col-md-8 ">
+                                                <input id="nomeempresa" name="nomeempresa" value="" type="text" placeholder="Informe o Nome/Razão Social" class="form-control" maxlength = "100" required="required">
+                                                <div id="mensagem2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label class="col-md-2 control-label" for="textinput">Ativo</label>
+                                                <div class="col-md-4">
+                                                    <select name="ativo" id="ativo">
+                                                        <option selected= "selected">Sim</option>
+                                                        <option>Não</option>
+                                                    </select>
+                                                </div>
+                                      </div>    
 
-                                                <?php $ver = "veiculosa.php?acao=ver&chave=".$coluna2; ?>
-                                                <?php $edita = "veiculosa.php?acao=edita&chave=".$coluna2; ?>
-                                                <?php $apaga = "veiculosa.php?acao=apaga&chave=".$coluna2; ?>
+                                    <!--/div-->
+                                </div>
+                                    <!--/form-->
+                                    <!--/div-->
+                                <!--/div-->
 
-                                                <td><?php print $coluna1; ?></td>
-                                                <td><?php print $coluna2; ?></td>
-                                                <td><?php print $coluna3; ?></td>
-                                                <td><?php print $coluna4; ?></td>
-                                                <td><?php print $coluna5; ?></td>
-                                                <td><?php print $coluna6; ?></td>
-                                                <td><?php print $coluna7; ?></td>
-                                                <td class="text-right">
-                                                    <div class="btn-group">
-                                                        <button class="fa fa-eye btn-white btn btn-xs" name="ver" type="button" onclick="window.open('<?php echo $ver;?>','_parent')"></button>
-                                                        <button class="fa fa-edit btn-white btn btn-xs" name="edita" type="button" onclick="window.open('<?php echo $edita;?>','_parent')"></button>
-                                                        <?php if ($cdtipo !== 'R') {?>
-                                                            <button class="fa fa-trash btn-white btn btn-xs" name="apaga" type="button" onclick="window.open('<?php echo $apaga;?>','_parent')"></button>
-                                                        <?php }?>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php }; ?>    
-                                    </tbody>                                   
-                                </table>
-                            </div>
-                            
+                                <div>
+                                    
+                                        <button class="btn btn-primary " type="submit"><strong>Salvar</strong></button>
+                                      <!--  <input class="btn btn-primary " type="button" name="entrar" id="entrar" value="Salvar">  -->
+                                        <button class="btn btn-warning " type="button" onClick="history.go(-1)">Retornar</button>
+                                    
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -284,15 +345,87 @@
     <!-- Sparkline demo data  -->
     <script src="js/demo/sparkline-demo.js"></script>
 
+    <script type="text/javascript" >
+    
+        function limpa_formulário_cep() {
+                //Limpa valores do formulário de cep.
+                document.getElementById('deende').value=("");
+                document.getElementById('debair').value=("");
+                document.getElementById('decida').value=("");
+                document.getElementById('cdesta').value=("");
+        }
+
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('deende').value=(conteudo.logradouro);
+                document.getElementById('debair').value=(conteudo.bairro);
+                document.getElementById('decida').value=(conteudo.localidade);
+                document.getElementById('cdesta').value=(conteudo.uf);
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
+            }
+        }
+        
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('deende').value="...";
+                    document.getElementById('debair').value="...";
+                    document.getElementById('decida').value="...";
+                    document.getElementById('cdesta').value="...";
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        };
+
+    </script>
+
+
+
     <script>
 
         $(document).ready(function(){
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
-                buttons: [                    
+                buttons: [
+                    { extend: 'copy'},
                     {extend: 'csv'},
-                    {extend: 'excel', title: 'Relatório de veiculos'},
-                    {extend: 'pdf', title: 'Relatório de veiculos'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
 
                     {extend: 'print',
                      customize: function (win){

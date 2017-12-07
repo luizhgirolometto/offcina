@@ -94,6 +94,9 @@
     if ($cdtipo == "C") {
         $detipo="Cliente";
     }
+    if ($cdtipo == "S") {
+        $detipo="Suporte";
+    }
 
     // reduzir o tamanho do nome do usuario
     $deusua1=$deusua;
@@ -150,8 +153,11 @@
                     <li>
                         <a href="ordem.php"><i class="fa fa-edit"></i><span class="nav-label">Ordem de Serviços</span></a>
                     </li>
+                    <li>
+                        <a href="veiculos.php"><i class="fa fa-car"></i><span class="nav-label">Cadastrar Veiculos</span></a>
+                    </li>                    
 
-                    <?php if ($cdtipo == 'A'){?>
+                    <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                         <li>
                             <a href="fornecedores.php"><i class="fa fa-user"></i><span class="nav-label">Cadastrar Fornecedores</span></a>
                         </li>
@@ -161,14 +167,14 @@
                         </li>
                     <?php }?>
 
-                    <?php if ($cdtipo == 'A'){?>
+                    <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                         <!-- <li class="special_link"> -->
                         <li>
                             <a href="contas.php"><i class="fa fa-money"></i> <span class="nav-label">Contas a Pagar/Receber</span></a>
                         </li>
                     <?php }?>
 
-                    <?php if ($cdtipo == 'A'){?>
+                    <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                         <li>
                             <a href="index.php"><i class="fa fa-calculator"></i> <span class="nav-label">Fluxo de Caixa</span><span class="caret"></span></a>
                             <ul class="nav nav-second-level">
@@ -182,20 +188,20 @@
                         <a href="agenda.php"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span></a>
                     </li>
 
-                    <?php if ($cdtipo == 'A'){?>
+                    <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                           <!-- <li class="special_link"> -->
                         <li>
                             <a href="parametros.php"><i class="fa fa-key"></i> <span class="nav-label">Minha Oficina</span></a>
                         </li>
                     <?php }?>
 
-                    <?php if ($cdtipo == 'A'){?>
+                    <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                       <!--  <li>
                             <a href="historico.php"><i class="fa fa-eye"></i> <span class="nav-label">Histórico</span></a>
                         </li> -->
                     <?php }?>
 
-                   <?php if ($cdtipo == 'A'){?>
+                   <?php if (($cdtipo == 'A') || ($cdtipo == 'S')) {?>
                         <li>
                             <a href="usuarios.php"><i class="fa fa-users"></i> <span class="nav-label">Cadastrar Usuários</span></a>
                         </li>
@@ -208,6 +214,12 @@
                             <a href="servicos.php"><i class="fa fa-car"></i> <span class="nav-label">Cadastrar Serviços</span></a>
                         </li>
                     <?php }?>
+                     <?php if ($cdtipo == 'S'){?>
+                        <li class="special_link"> 
+                           <a href="oficinas.php"><i class="fa fa-key"></i> <span class="nav-label">Cadastrar Empresas</span></a>
+                        </li>
+                    <?php }?>   
+
 
                 </ul>
             </div>
@@ -246,32 +258,29 @@
                     </ul>
                 </nav>
             </div>
+
             <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                             class="fa fa-home"></i> Menu Principal 
-                                </button>
-                            </div>
+                       <!-- <div class="ibox float-e-margins">
+                            
                             <br>
                             <div class="ibox-content">
-                                <div class="col-md-1"></div>
+                                <div class="col-lg-12"></div>
                                 <div class="m-b-sm">
                                     <center>
                                         <img alt="image" class="img-square" src="img/logo.png"
                                                                              style="width: 582px">
                                     </center>
                                 </div>
-                                <!--h1 class="logo-name">Nova Demonstração</h1-->
+                           
                                 <br>
                                 <br>
                                 <strong>Suporte</strong><br>
                                 <small><?php echo $demails; ?></small><br>
                                 <small><?php echo $deteles; ?></small>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

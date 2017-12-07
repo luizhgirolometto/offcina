@@ -219,8 +219,11 @@
                                                     <?php $coluna7 = date("d-m-Y", $datap); ?>
                                                 <?php }?>
 
-                                                <?php if ( $aCont[$f]["vlpago"] > 0 ){ ?>
-                                                    <?php $coluna8 = "Pago"; ?>
+                                                <?php if ( $aCont[$f]["vlpago"] == $aCont[$f]["vlcont"] ){ ?>
+                                                    <?php $coluna8 = "Paga/Recebida"; ?>
+                                                <?php }?>
+                                                <?php if (( $aCont[$f]["vlpago"] <= $aCont[$f]["vlcont"] ) && ($aCont[$f]["vlpago"] > 0)){ ?>
+                                                    <?php $coluna8 = "Pagamento parcial"; ?>
                                                 <?php }?>
 
                                                 <?php if (  $datac < $datah ){ ?>

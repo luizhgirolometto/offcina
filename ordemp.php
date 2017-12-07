@@ -43,6 +43,9 @@
         $cdusua = $_COOKIE['cdusua'];
     }
 
+    if (isset($_COOKIE['codempresa'])) {
+        $codempresa = $_COOKIE['codempresa'];
+    } 
     // nome do usuario
     if (isset($_COOKIE['deusua'])) {
         $deusua = $_COOKIE['deusua'];
@@ -105,15 +108,15 @@
         $dtpago="  ABERTA  ";
     }
 
-    if (strtotime("0000-00-00") == "") {
-        $dtpago="  ABERTA  ";
-    }
+    // if (strtotime("0000-00-00") == "") {
+    //     $dtpago="  ABERTA  ";
+    // }
 
-    if (strtotime("") == "") {
-        $dtpago="  ABERTA  ";
-    }
+    // if (strtotime("") == "") {
+    //     $dtpago="  ABERTA  ";
+    // }
 
-    $aPara = ConsultarDados("", "", "", "select * from parametros");
+    $aPara = ConsultarDados("", "", "", "select * from parametros where codempresa = "."'{$codempresa}'");
     $cdprop=$aPara[0]["cdprop"];
 
     if (strlen($cdclie) > 11 ) {
@@ -225,8 +228,16 @@
             <table class="table invoice-total">
                 <tbody>
                     <tr>
-                        <td>TOTAL   :</td>
+                        <td>TOTAL DA OS   :</td>
                         <td><?php echo number_format($aOrde[0]["vlorde"],2,",","."); ?></td>
+                    </tr>    
+                    <tr>     
+                        <td>VALOR PAGO    :</td>
+                        <td><?php echo number_format($aOrde[0]["vlpago"],2,",","."); ?></td>
+                    </tr>
+                    <tr>    
+                        <td>VALOR RESTANTE:</td>
+                        <td><?php echo number_format(($aOrde[0]["vlorde"] - $aOrde[0]["vlpago"]),2,",","."); ?></td>                        
                     </tr>
                 </tbody>
             </table>

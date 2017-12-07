@@ -213,14 +213,7 @@
                                             <div class="col-md-4">
                                                 <input id="dtorde" name="dtorde" value="<?php echo $datap;?>" type="date" placeholder="" class="form-control" maxlength = "10">
                                             </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Valor</label>
-                                            <div class="col-md-4">
-                                                <input id="vlorde" name="vlorde" value="0,00" type="text" placeholder="" class="form-control" maxlength = "15">
-                                            </div>
-                                        </div>
+                                        </div>                                        
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="textinput">Placa do Veículo</label>
@@ -262,13 +255,13 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="textinput">Data de Pagamento</label>
                                             <div class="col-md-4">
-                                                <input id="dtpago" name="dtpago" value="" type="date" placeholder="" class="form-control" maxlength = "10">
+                                                <input id="dtpago" name="dtpago" value="" type="date" placeholder="Data de Pagamento da OS" class="form-control" maxlength = "10">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Valor Pago</label>
+                                            <label class="col-md-4 control-label" for="textinput">Valor Pago(R$)</label>
                                             <div class="col-md-4">
-                                                <input id="vlpago" name="vlpago" value="" type="text" placeholder="" class="form-control" maxlength = "10">
+                                                <input id="vlpago" name="vlpago" value="0,00" type="text" placeholder="Valor Pago(R$)" class="form-control" maxlength = "10">
                                             </div>
                                         </div>
 
@@ -285,7 +278,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Quantidade Parcelas</label>
+                                            <label class="col-md-4 control-label" for="textinput">Número de Parcelas</label>
                                             <div class="col-md-2">
                                                 <input id="qtform" name="qtform" value="1" type="number" placeholder="" class="form-control" maxlength = "15">
                                             </div>
@@ -297,6 +290,12 @@
                                                 <textarea class="form-control" id="deobse" wrap="physical" cols=50 rows=3 name="deobse" placeholder=""></textarea>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="textinput">Total da OS(R$)</label>
+                                            <div class="col-md-4">
+                                                <input id="vlorde" name="vlorde" value="0,00" type="text" placeholder="" class="form-control" maxlength = "15" readonly="">
+                                            </div>
+                                        </div>                                        
 
                                     </div>
                                     <div class ="col-lg-12">
@@ -306,8 +305,8 @@
                                                     <th style = "width:10%">Sequência</th>
                                                     <th style = "width:40%">Produto/Peça/Serviço</th>
                                                     <th style = "width:10%">Quantidade</th>
-                                                    <th style = "width:10%">Valor Unitário</th>
-                                                    <th style = "width:20%">Valor Total</th>
+                                                    <th style = "width:10%">Valor Unitário(R$)</th>
+                                                    <th style = "width:20%">Valor Total(R$)</th>
                                                 </thead>
                                                 <tbody>
                                                     <?php for ($f =1; $f <= 20; $f++) { ?>
@@ -316,11 +315,11 @@
                                                         <?php $vlitem = "vlitem[".trim($f)."]"; ?>
                                                         <?php $vltota = "vltota[".trim($f)."]"; ?>
                                                         <tr>
-                                                            <td><?php echo $f;?></td>
+                                                            <td style="text-align:right"><?php echo $f;?></td>
                                                             <td>
                                                                 <center>
-                                                                    <input style="width:80px;float:left;" id = "filtra" name="filtra" value = "" onkeyup="filter(this.value, '<?php echo $cditem;?>');" type="text" class="form-control" placeholder="" maxlength = "15">
-                                                                    <select style="width:350px; display: block; " id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();">
+                                                                    <!--<input style="width:80px;float:left;" id = "filtra" name="filtra" value = "" onkeyup="filter(this.value, '<?php echo $cditem;?>');" type="text" class="form-control" placeholder="" maxlength = "15"> -->
+                                                                    <select style="width:350px; display: block; float:left;" id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();">
                                                                         <option value= "X|0|Serviços" selected>SERVIÇOS</option>
                                                                         <?php for($i=0;$i < count($aServ);$i++) { ?>
                                                                           <option value = "<?php echo 'S|'.$aServ[$i]["vlserv"].'|'.$aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?>"><?php echo $aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?></option>
@@ -332,9 +331,9 @@
                                                                     </select>
                                                                 </center>
                                                             </td>
-                                                            <td><center><input id = "<?php echo $qtitem;?>" name="<?php echo $qtitem;?>" value = "1" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
-                                                            <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" value = "0.00" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
-                                                            <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" value = "0.00" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
+                                                            <td><center><input id = "<?php echo $qtitem;?>" style="text-align:right" name="<?php echo $qtitem;?>" value = "1" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
+                                                            <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" style="text-align:right" value = "0.00" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
+                                                            <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" style="text-align:right" value = "0.00" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
                                                         </tr>
                                                     <?php }?>
                                                 </tbody>
