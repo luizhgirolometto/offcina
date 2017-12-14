@@ -145,17 +145,25 @@
                         </div>
                     </li>
 
-                    <!-- <li class="special_link"> -->
+                    <!-- <li class="special_link"> 
                     <li>
                         <a href="cliente.php"><i class="fa fa-user"></i> <span class="nav-label">Cadastrar Clientes</span></a>
-                    </li>
+                    </li> -->
+
+                    <li>
+                            <a href="index.php"><i class="fa fa-user"></i> <span class="nav-label">Clientes</span><span class="caret"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="cliente.php">Cadastro de Clientes</a></li>
+                                <li><a href="veiculos.php">Cadastro de Veiculos</a></li>
+                            </ul>
+                    </li>                    
 
                     <li>
                         <a href="ordem.php"><i class="fa fa-edit"></i><span class="nav-label">Ordem de Serviços</span></a>
                     </li>
-                    <li>
+                   <!-- <li>
                         <a href="veiculos.php"><i class="fa fa-car"></i><span class="nav-label">Cadastrar Veiculos</span></a>
-                    </li>                    
+                    </li> -->                    
 
                     <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                         <li>
