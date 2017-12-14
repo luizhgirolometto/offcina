@@ -28,7 +28,7 @@
 		//campos da tabela
 		$aNomes=array();
 
-		$aNomes[]= "cdpeca";
+		//$aNomes[]= "cdpeca";
 		$aNomes[]= "depeca";
 		$aNomes[]= "qtpeca";
 		$aNomes[]= "vlpeca";
@@ -39,7 +39,7 @@
 
 		//dados da tabela
 		$aDados=array();
-		$aDados[]= $cdpeca;
+		//$aDados[]= $cdpeca;
 		$aDados[]= $depeca;
 		$aDados[]= $qtpeca;
 		$aDados[]= $vlpeca;
