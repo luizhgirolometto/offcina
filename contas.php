@@ -184,7 +184,7 @@
                                 <table class="table table-striped table-bordered table-hover dataTables-example" >
                                     <thead>
                                         <tr>
-                                            <th>Número de Controle</th>
+                                            <th>Cód.</th>
                                             <th>Cliente/Fornecedor</th>
                                             <th>Tipo</th>
                                             <th>OS/Pedido</th>
@@ -222,7 +222,7 @@
                                                 <?php if ( $aCont[$f]["vlpago"] == $aCont[$f]["vlcont"] ){ ?>
                                                     <?php $coluna8 = "Paga/Recebida"; ?>
                                                 <?php }?>
-                                                <?php if (( $aCont[$f]["vlpago"] <= $aCont[$f]["vlcont"] ) && ($aCont[$f]["vlpago"] > 0)){ ?>
+                                                <?php if (( $aCont[$f]["vlpago"] < $aCont[$f]["vlcont"] ) && ($aCont[$f]["vlpago"] > 0)){ ?>
                                                     <?php $coluna8 = "Pagamento parcial"; ?>
                                                 <?php }?>
 
