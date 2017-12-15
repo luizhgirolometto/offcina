@@ -88,7 +88,8 @@
 
     $aClie= ConsultarDados("", "", "","select * from clientes where codempresa = "."'{$codempresa}'"." order by cdclie");
     $aPeca= ConsultarDados("", "", "","select * from pecas where codempresa = "."'{$codempresa}'"." order by depeca");
-    $aServ= ConsultarDados("", "", "","select * from servicos where codempresa = "."'{$codempresa}'"." order by deserv");
+    $aServ= ConsultarDados("", "", "","select * from servicos where codempresa = "."'{$codempresa}'"." order by deserv"); 
+    $aVeic= ConsultarDados("", "", "","select * from m_veiculos where codempresa = "."'{$codempresa}'"." and cdveic < 0 order by dtcada desc"); 
 
 ?>
 <!DOCTYPE html>
@@ -181,6 +182,7 @@
 
                                 <div class="row">
                                     <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+
                                     <div class="col-lg-8">
                                         <!--center><h3><span class="text-warning"><strong>DADOS DO PEDIDO</strong></span></h3></center-->
                                         <div class="form-group">
@@ -188,7 +190,7 @@
                                             <div class="col-md-4">
                                                 <select name="cdclie" id="cdclie" style="width:250%">
                                                     <?php for($i=0;$i < count($aClie);$i++) { ?>
-                                                      <option><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
+                                                      <option value = "<?php echo $aClie[$i]["cdclie"];?>"><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
                                                     <?php }?>
                                                 </select>
                                             </div>
@@ -213,7 +215,19 @@
                                             <div class="col-md-4">
                                                 <input id="dtorde" name="dtorde" value="<?php echo $datap;?>" type="date" placeholder="" class="form-control" maxlength = "10">
                                             </div>
-                                        </div>                                        
+                                        </div>   
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="textinput">Selecione um veiculo</label>
+                                            <div class="col-md-4">
+                                                <select name="cdveic" id="cdveic" style="width:250%">
+                                                    <?php $aVeic= ConsultarDados("", "", "","select * from m_veiculos where codempresa = "."'{$codempresa}'"." and cdclie = "."'{$codcli}'"." order by dtcada desc"); ?>
+                                                    <option>Informar manualmente</option>
+                                                    <?php for($i=0;$i < count($aVeic);$i++) { ?>
+                                                      <option><?php echo str_pad($aVeic[$i]["deplac"],14," ",STR_PAD_LEFT)." - ".$aVeic[$i]["demode"];?></option>
+                                                    <?php }?>
+                                                </select>
+                                            </div>
+                                        </div>                                                                             
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="textinput">Placa do Veículo</label>
@@ -492,6 +506,25 @@
     </script>
 
     <script language="javascript">
+
+
+        function getVeiculos() {
+            code = document.getElementById("cdclie").value; 
+            if (code.length == 0) { 
+                document.getElementById("cdveic").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("cdveic").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "getveiculos.php?q=" +code, true);
+                xmlhttp.send();
+            }
+        }
+
 
         function formatNumber(number)
         {

@@ -156,12 +156,21 @@
                                 <li><a href="cliente.php">Cadastro de Clientes</a></li>
                                 <li><a href="veiculos.php">Cadastro de Veiculos</a></li>
                             </ul>
-                    </li>                    
+                    </li>     
 
+                    <li>
+                            <a href="index.php"><i class="fa fa-edit"></i> <span class="nav-label">Ordem de Serviços</span><span class="caret"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="ordem.php">Incluir Ordens de Serviço</a></li>
+                                <li><a href="agenda.php">Visualizar Ordens de Serviço</a></li>
+                            </ul>
+                    </li>                                    
+
+                    <!-- <li>
                     <li>
                         <a href="ordem.php"><i class="fa fa-edit"></i><span class="nav-label">Ordem de Serviços</span></a>
                     </li>
-                   <!-- <li>
+                   
                         <a href="veiculos.php"><i class="fa fa-car"></i><span class="nav-label">Cadastrar Veiculos</span></a>
                     </li> -->                    
 
@@ -192,9 +201,11 @@
                         </li>
                     <?php }?>
 
+                      <!--
+
                     <li>
                         <a href="agenda.php"><i class="fa fa-calendar"></i> <span class="nav-label">Agenda</span></a>
-                    </li>
+                    </li> -->
 
                     <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                           <!-- <li class="special_link"> -->
