@@ -26,7 +26,7 @@
 // get the q parameter from URL
 $q = $_REQUEST["q"];
 
-$aVeic= ConsultarDados("", "", "","select * from m_veiculos where codempresa = "."'{$codempresa}'"." and cdclie < "."'{$q}'"." order by dtcada desc"); 
+$aVeic= ConsultarDados("", "", "","select * from m_veiculos where codempresa = "."'{$codempresa}'"." and cdclie = "."'{$q}'"." order by dtcada desc"); 
 
 for($i=0;$i < count($aVeic);$i++) {
     echo "<option><? " . str_pad($aVeic[$i]["deplac"],14," ",STR_PAD_LEFT)." - ".$aVeic[$i]["demode"]. "</option>";

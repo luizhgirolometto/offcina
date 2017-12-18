@@ -104,7 +104,10 @@
 
     $demails="marlon.pilonetto@gmail.com";
     $deteles="(46) 98412 1475";
-
+    $totClie = GetTotalClients($codempresa);
+    $totForn = GetTotalForn($codempresa);
+    $totCars = GetTotalCars($codempresa);
+    $totPedi = GetTotalPedi($codempresa);
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,6 +124,9 @@
 
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/AdminLTE.min.css" rel="stylesheet">
+
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
 </head>
 
@@ -165,6 +171,13 @@
                                 <li><a href="agenda.php">Visualizar Ordens de Serviço</a></li>
                             </ul>
                     </li>                                    
+                    <li>
+                            <a href="index.php"><i class="fa fa-edit"></i> <span class="nav-label">Estoque/Serviços</span><span class="caret"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="pecas.php">Cadastrar Produtos</a></li>
+                                <li><a href="servicos.php">Cadastrar Serviços</a></li>
+                            </ul>
+                    </li>   
 
                     <!-- <li>
                     <li>
@@ -224,14 +237,14 @@
                         <li>
                             <a href="usuarios.php"><i class="fa fa-users"></i> <span class="nav-label">Cadastrar Usuários</span></a>
                         </li>
-
+                       <!--             
                         <li>
                             <a href="pecas.php"><i class="fa fa-wrench"></i><span class="nav-label">Cadastrar Peças</span></a>
                         </li>
 
                         <li>
                             <a href="servicos.php"><i class="fa fa-car"></i> <span class="nav-label">Cadastrar Serviços</span></a>
-                        </li>
+                        </li> -->
                     <?php }?>
                      <?php if ($cdtipo == 'S'){?>
                         <li class="special_link"> 
@@ -278,29 +291,64 @@
                 </nav>
             </div>
 
-            <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="wrapper-content">
+                <section class="content">
                 <div class="row">
-                    <div class="col-lg-12">
-                       <!-- <div class="ibox float-e-margins">
-                            
-                            <br>
-                            <div class="ibox-content">
-                                <div class="col-lg-12"></div>
-                                <div class="m-b-sm">
-                                    <center>
-                                        <img alt="image" class="img-square" src="img/logo.png"
-                                                                             style="width: 582px">
-                                    </center>
-                                </div>
-                           
-                                <br>
-                                <br>
-                                <strong>Suporte</strong><br>
-                                <small><?php echo $demails; ?></small><br>
-                                <small><?php echo $deteles; ?></small>
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3> <?php echo $totClie ?> </h3>
+
+                                <p>Total de Clientes</p>
                             </div>
-                        </div> -->
+                            <div class="icon">
+                                <i class="ion ion-person"></i>
+                            </div>
+                            <a href="cliente.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
                     </div>
+
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="small-box bg-yellow">
+                            <div class="inner">
+                                <h3> <?php echo $totCars ?> </h3>
+
+                                <p>Total de Veiculos</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-model-s"></i>
+                            </div>
+                            <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3><?php echo $totForn ?></h3>
+
+                                <p>Total de Fornecedores </p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-stalker"></i>
+                            </div>
+                            <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>                    
+
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="small-box bg-red">
+                            <div class="inner">
+                               <h3> <?php echo $totPedi ?> </h3> 
+
+                                <p>Total de Pedidos</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-compose"></i>
+                            </div>
+                            <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>                    
+
                 </div>
             </div>
         </div>

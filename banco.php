@@ -402,6 +402,78 @@ Function GetvalorRecebido($mes,$codempresa){
     return ($valor);
 }
 
+Function GetTotalClients($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "SELECT count(cdclie) cnt FROM `clientes` where `flativ` = 'S' and  codempresa = "."'$codempresa'";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
+Function GetTotalForn($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "SELECT count(cdforn) cnt FROM `fornecedores` where `flativ` = 'S' and  codempresa = "."'$codempresa'";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
+Function GetTotalCars($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "SELECT count(cdveic) cnt FROM `m_veiculos` where `flativ` = 'S' and  codempresa = "."'$codempresa'";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
+Function GetTotalPedi($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "SELECT count(cdpedi) cnt FROM `pedidos` where `flativ` = 'S' and  codempresa = "."'$codempresa'";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
 Function GetvalorReceber($mes,$codempresa){
     include "conexao.php";
 
