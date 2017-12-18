@@ -173,7 +173,7 @@
             <div class="wrapper wrapper-content">
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Ordens de Serviço - Inclusão </h3>   
+                             <h3> Ordens de Serviço - Abertura </h3>   
                          </div>
                         <div class="panel-body">
 
@@ -190,7 +190,7 @@
                                             <div class="col-md-4">
                                                 <select name="cdclie" id="cdclie" style="width:250%">
                                                     <?php for($i=0;$i < count($aClie);$i++) { ?>
-                                                      <option value = "<?php echo $aClie[$i]["cdclie"];?>"><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
+                                                      <option> <?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
                                                     <?php }?>
                                                 </select>
                                             </div>
@@ -202,9 +202,9 @@
                                                 <select name="cdsitu" id="cdsitu">
                                                     <option>Orçamento</option>
                                                     <option>Pendente</option>
-                                                    <option>Andamento</option>
+                                                  <!--  <option>Andamento</option>
                                                     <option>Concluído</option>
-                                                    <option>Entregue</option>
+                                                    <option>Entregue</option> -->
                                                 </select>
                                             </div>
                                         </div>
@@ -216,7 +216,7 @@
                                                 <input id="dtorde" name="dtorde" value="<?php echo $datap;?>" type="date" placeholder="" class="form-control" maxlength = "10">
                                             </div>
                                         </div>   
-                                        <div class="form-group">
+                                      <!--  <div class="form-group">
                                             <label class="col-md-4 control-label" for="textinput">Selecione um veiculo</label>
                                             <div class="col-md-4">
                                                 <select name="cdveic" id="cdveic" style="width:250%">
@@ -227,7 +227,7 @@
                                                     <?php }?>
                                                 </select>
                                             </div>
-                                        </div>                                                                             
+                                        </div> -->                                                                             
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="textinput">Placa do Veículo</label>
@@ -266,7 +266,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                     <!--   <div class="form-group">
                                             <label class="col-md-4 control-label" for="textinput">Data de Pagamento</label>
                                             <div class="col-md-4">
                                                 <input id="dtpago" name="dtpago" value="" type="date" placeholder="Data de Pagamento da OS" class="form-control" maxlength = "10">
@@ -297,7 +297,7 @@
                                                 <input id="qtform" name="qtform" value="1" type="number" placeholder="" class="form-control" maxlength = "15">
                                             </div>
                                         </div>
-
+                                        -->
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="textinput">Observações</label>
                                             <div class="col-md-8">

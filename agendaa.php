@@ -155,13 +155,13 @@
                         <br>
                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -178,28 +178,16 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Agenda - <small><?php echo $titulo." da OS"; ?></small>
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                                    <h3> Consultar Ordem de Serviço </h3>   
+                        </div>            
+                        <div class="panel-body">
 
                         <div class="ibox-content">
                             <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="ordemaa.php">
 
-                                <div>
-                                    <center>
-                                        <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
-                                        <?php }?>
-                                        <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
-                                        <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
-                                </div>
-                                <br>
+                                
                                 <?php if($acao == "edita") {?>
                                     <div class="row">
                                         <div class="col-lg-8">
@@ -322,7 +310,7 @@
                                                     <input id="veanom" name="veanom" value="<?php echo $aOrde[0]["veanom"];?>" type="text" placeholder="" class="form-control" maxlength = "04">
                                                 </div>
                                             </div>
-
+                                            <!--
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Data de Pagamento</label>
                                                 <div class="col-md-4">
@@ -380,6 +368,7 @@
                                                     <input id="qtform" name="qtform" value="<?php echo $aOrde[0]["qtform"];?>" type="number" placeholder="" class="form-control" maxlength = "15">
                                                 </div>
                                             </div>
+                                            -->
 
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Observações</label>
@@ -574,7 +563,7 @@
                                                     <input id="veanom" name="veanom" value="<?php echo $aOrde[0]["veanom"];?>" type="text" placeholder="" class="form-control" maxlength = "04" readonly="">
                                                 </div>
                                             </div>
-
+                                            <!--    
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Data de Pagamento</label>
                                                 <div class="col-md-4">
@@ -632,7 +621,7 @@
                                                     <input id="qtform" name="qtform" value="<?php echo $aOrde[0]["qtform"];?>" type="number" placeholder="" class="form-control" maxlength = "15" readonly="">
                                                 </div>
                                             </div>
-
+                                            -->    
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Observações</label>
                                                 <div class="col-md-8">
@@ -707,21 +696,21 @@
                                 <?php }?>
 
                                 <div>
-                                    <center>
+                                    
                                         <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
+                                            <button class="btn  btn-primary" name = "edita" type="submit"><strong>Alterar</strong></button>
                                         <?php }?>
                                         <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
+                                            <button class="btn  btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
                                         <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                        <button class="btn  btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                    
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>

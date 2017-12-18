@@ -167,8 +167,13 @@
                     <li>
                             <a href="index.php"><i class="fa fa-edit"></i> <span class="nav-label">Ordem de Serviços</span><span class="caret"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="ordem.php">Incluir Ordens de Serviço</a></li>
-                                <li><a href="agenda.php">Visualizar Ordens de Serviço</a></li>
+                                <li><a href="ordemi.php">Abrir Ordem de Serviço</a></li>
+                                <li><a href="agenda.php">Ordens de Serviço Abertas</a></li>
+                                <li><a href="agenda.php">Fechamento da Ordem de Serviço</a></li>
+
+                                <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>                                   
+                                    <li><a href="ordem.php">Gerenciamento de Ordens de Serviço</a></li>
+                                <?php }?>                                 
                             </ul>
                     </li>                                    
                     <li>

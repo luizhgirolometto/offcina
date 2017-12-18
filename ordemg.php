@@ -13,8 +13,8 @@
 	$cdclie = $_POST["cdclie"];
 	$dtorde = $_POST["dtorde"];
 	$vlorde = $_POST["vlorde"];
-	$vlpago = $_POST["vlpago"];
-	$dtpago = $_POST["dtpago"];
+	$vlpago = 0;//$_POST["vlpago"];
+	$dtpago = "";//$_POST["dtpago"];
 
 	if ($dtpago == ""){
 		$dtpago = "1969-12-31"; //aberta
@@ -93,8 +93,8 @@
 		$aDados[]= $_POST["cdsitu"];
 		$aDados[]= $_POST["dtorde"];
 		$aDados[]= $vlorde;
-		$aDados[]= $_POST["cdform"];
-		$aDados[]= $_POST["qtform"];
+		$aDados[]= "Nenhuma";//$_POST["cdform"];
+		$aDados[]= 0;//$_POST["qtform"];
 		$aDados[]= $vlpago;
 		$aDados[]= $dtpago;
 		$aDados[]= $_POST["deobse"];

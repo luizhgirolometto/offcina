@@ -85,7 +85,7 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $aOrde= ConsultarDados("", "", "","select * from ordem where (cdsitu <> 'Orçamento' and cdsitu <> 'Entregue') and codempresa = "."'{$codempresa}'"." order by dtorde");
+    $aOrde= ConsultarDados("", "", "","select * from ordem where (cdsitu <> 'Concluído' and cdsitu <> 'Entregue') and codempresa = "."'{$codempresa}'"." order by dtorde");
 ?>
 <!DOCTYPE html>
 <html>
@@ -169,7 +169,7 @@
                 <!--div class="col-lg-12"-->
                 <div class="panel panel-warning">
                     <div class="panel-heading">
-                                <h3> Agenda </h3>   
+                                <h3> Ordens de Serviço Abertas </h3>   
                     </div>            
                     <div class="panel-body">
 
