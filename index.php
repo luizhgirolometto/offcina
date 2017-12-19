@@ -169,7 +169,7 @@
                             <ul class="nav nav-second-level">
                                 <li><a href="ordemi.php">Abrir Ordem de Serviço</a></li>
                                 <li><a href="agenda.php">Ordens de Serviço Abertas</a></li>
-                                <li><a href="agenda.php">Fechamento da Ordem de Serviço</a></li>
+                                <li><a href="fechaordem.php">Fechamento da Ordem de Serviço</a></li>
 
                                 <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>                                   
                                     <li><a href="ordem.php">Gerenciamento de Ordens de Serviço</a></li>

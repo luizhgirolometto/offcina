@@ -11,6 +11,10 @@
 	$aVlitem=$_POST["vlitem"];
 
 	$cdclie = $_POST["cdclie"];
+    $pos = strpos($cdclie,"-");
+    $cdclie = trim(substr($cdclie, 0, $pos));
+
+
 	$dtorde = $_POST["dtorde"];
 	$vlorde = $_POST["vlorde"];
 	$vlpago = 0;//$_POST["vlpago"];
@@ -83,7 +87,7 @@
 
 		//dados da tabela
 		$aDados=array();
-		$aDados[]= $_POST["cdclie"];
+		$aDados[]= $cdclie;
 		$aDados[]= $_POST["veplac"];
 		$aDados[]= $_POST["vemarc"];
 		$aDados[]= $_POST["vemode"];
@@ -143,42 +147,42 @@
 			}
 		}
 
-		$aTrab= ConsultarDados("", "", "","select * from ordem where codempresa = '{$codempresa}' and cdorde = '{$cdorde}'");
-		$dtorde = $aTrab[0]["dtorde"];
-		$qtform = $aTrab[0]["qtform"];
+		// $aTrab= ConsultarDados("", "", "","select * from ordem where codempresa = '{$codempresa}' and cdorde = '{$cdorde}'");
+		// $dtorde = $aTrab[0]["dtorde"];
+		// $qtform = $aTrab[0]["qtform"];
 
-		for ($f =1; $f <= $qtform; $f++) {
-			$vlcont = $aTrab[0]["vlorde"]/$qtform;
-			//$vlcont = number_format($vlcont,2,',','.');
+		// for ($f =1; $f <= $qtform; $f++) {
+		// 	$vlcont = $aTrab[0]["vlorde"]/$qtform;
+		// 	//$vlcont = number_format($vlcont,2,',','.');
 
-		    $dtcont=strtotime($dtorde . "+ {$f} months");
-		    $dtcont=date("Y-m-d", $dtcont);
+		//     $dtcont=strtotime($dtorde . "+ {$f} months");
+		//     $dtcont=date("Y-m-d", $dtcont);
 
-			$aNomes=array();
-			$aNomes[]= "decont";
-			$aNomes[]= "dtcont";
-			$aNomes[]= "vlcont";
-			$aNomes[]= "cdtipo";
-			$aNomes[]= "cdquem";
-			$aNomes[]= "cdorig";
-			$aNomes[]= "flativ";
-			$aNomes[]= "dtcada";
-			$aNomes[]= "codempresa";
+		// 	$aNomes=array();
+		// 	$aNomes[]= "decont";
+		// 	$aNomes[]= "dtcont";
+		// 	$aNomes[]= "vlcont";
+		// 	$aNomes[]= "cdtipo";
+		// 	$aNomes[]= "cdquem";
+		// 	$aNomes[]= "cdorig";
+		// 	$aNomes[]= "flativ";
+		// 	$aNomes[]= "dtcada";
+		// 	$aNomes[]= "codempresa";
 
-			$aDados=array();
-			$aDados[]= 'Cliente a Receber';
-			$aDados[]= $dtcont;
-			$aDados[]= $vlcont;
-			$aDados[]= 'Receber';
-			$aDados[]= $aTrab[0]["cdclie"];
-			$aDados[]= $aTrab[0]["cdorde"];
-			$aDados[]= 'Sim';
-			$aDados[]= $dtcada;
-			$aDados[]= $codempresa;
+		// 	$aDados=array();
+		// 	$aDados[]= 'Cliente a Receber';
+		// 	$aDados[]= $dtcont;
+		// 	$aDados[]= $vlcont;
+		// 	$aDados[]= 'Receber';
+		// 	$aDados[]= $aTrab[0]["cdclie"];
+		// 	$aDados[]= $aTrab[0]["cdorde"];
+		// 	$aDados[]= 'Sim';
+		// 	$aDados[]= $dtcada;
+		// 	$aDados[]= $codempresa;
 
-			IncluirDados("contas", $aDados, $aNomes);
+		// 	IncluirDados("contas", $aDados, $aNomes);
 
-		}
+		// }
 
 		$demens = "Cadastro efetuado com sucesso!";
 		$detitu = "GiroMecânicas&copy; | Cadastro de OS";

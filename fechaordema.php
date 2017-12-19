@@ -26,13 +26,13 @@
         $titulo = "Consulta";
         break;
     case 'edita':
-        $titulo = "Alteração";
+        $titulo = "Fechamento";
         break;
     case 'apaga':
         $titulo = "Exclusão";
         break;
     default:
-        header('Location: fechaordem.php');
+        header('Location: fichacadastral.php');
     }
 
     //codigo do usuario
@@ -51,7 +51,8 @@
         $nomeempresa = $_COOKIE['nomeempresa'];
     } Else {
         header('Location: index.html');
-    }  
+    }     
+
     // nome do usuario
     if (isset($_COOKIE['deusua'])) {
         $deusua = $_COOKIE['deusua'];
@@ -104,11 +105,9 @@
 
     $aOrde = ConsultarDados("ordem", "cdorde", $chave);
     $aItem = ConsultarDados("ordemi", "cdorde", $chave);
-    $aClie = ConsultarDados("", "", "","select * from clientes order by declie");
-    $aPeca= ConsultarDados("", "", "","select * from pecas order by depeca");
-    $aServ= ConsultarDados("", "", "","select * from servicos order by deserv");
-
-    $acao="edita";
+    $aClie = ConsultarDados("", "", "","select * from where codempresa = '{$codempresa}' clientes order by declie");
+    $aPeca= ConsultarDados("", "", "","select * from pecas where codempresa = '{$codempresa}' order by depeca");
+    $aServ= ConsultarDados("", "", "","select * from servicos where codempresa = '{$codempresa}' order by deserv");
 
 ?>
 <!DOCTYPE html>
@@ -166,15 +165,15 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-left">
                         <br>
-                       <li>
+                        <li>
                             <?php if (strlen($cdusua) == 14 ) {;?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php } Else {?>
-                                <span><?php echo  $codempresa." - ";?></span>
+                                <h3><?php echo  $codempresa." - ";?></h3>
                             <?php }?>
                         </li>
                         <li>
-                            <span><?php echo  $nomeempresa ;?></span>
+                            <h3><?php echo  $nomeempresa ;?></h3>
                         </li>
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
@@ -191,255 +190,542 @@
             </div>
             <div class="wrapper wrapper-content">
                 <!--div class="col-lg-12"-->
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <button type="button" class="btn btn-warning btn-lg btn-block"><i
-                                                        class="fa fa-user"></i> Fechar OS - <small><?php echo $titulo; ?></small>
-                            </button>
-                        </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                             <h3> Ordens de Serviço - <?php echo $titulo; ?> </h3>   
+                         </div>
+                        <div class="panel-body">
 
                         <div class="ibox-content">
-                            <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="fechaordemaa.php">
+                            <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="ordemaa.php">
 
-                                <div>
-                                    <center>
-                                        <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Salvar</strong></button>
-                                        <?php }?>
-                                        <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
-                                        <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-lg-8">
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Número da OS</label>
-                                            <div class="col-md-4">
-                                                <input id="cdorde" name="cdorde" value="<?php echo $aOrde[0]["cdorde"];?>" type="text" placeholder="" class="form-control" maxlength = "10" readonly="">
+                               
+                                <?php if($acao == "edita") {?>
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                        <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Número da OS</label>
+                                                <div class="col-md-4">
+                                                    <input id="cdorde" name="cdorde" value="<?php echo $aOrde[0]["cdorde"];?>" type="text" placeholder="" class="form-control" maxlength = "10" readonly="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!--center><h3><span class="text-warning"><strong>DADOS DO PEDIDO</strong></span></h3></center-->
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Cliente</label>
-                                            <div class="col-md-4">
-                                                <select name="cdclie" id="cdclie" style="width:250%" disabled="">
-                                                    <option selected=""><?php echo $aOrde[0]["cdclie"];?></option>
-                                                    <?php for($i=0;$i < count($aClie);$i++) { ?>
-                                                      <option><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
-                                                    <?php }?>
-                                                </select>
+                                            <!--center><h3><span class="text-warning"><strong>DADOS DO PEDIDO</strong></span></h3></center-->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Cliente</label>
+                                                <div class="col-md-4">
+                                                    <select name="cdclie" id="cdclie" style="width:250%">
+                                                        <option selected=""><?php echo $aOrde[0]["cdclie"];?></option>
+                                                        <?php for($i=0;$i < count($aClie);$i++) { ?>
+                                                          <option><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
+                                                        <?php }?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Situação</label>
-                                            <div class="col-md-4">
-                                                <select name="cdsitu" id="cdsitu">
-                                                    <option selected="">Concluído</option>
-                                                    <option>Entregue</option>
-                                                </select>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Situação</label>
+                                                <div class="col-md-4">
+                                                    <select name="cdsitu" id="cdsitu">
+                                                        <?php if ($aOrde[0]["cdsitu"] == "") {?>
+                                                            <option selected="">Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Orçamento") {?>
+                                                            <option selected="">Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Pendente") {?>
+                                                            <option>Orçamento</option>
+                                                            <option selected="">Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Andamento") {?>
+                                                            <option>Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option selected="">Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Concluído") {?>
+                                                            <option>Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option selected="">Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Entregue") {?>
+                                                            <option>Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option selected="">Entregue</option>
+                                                        <?php }?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Data de Pagamento</label>
-                                            <div class="col-md-4">
-                                                <input id="dtpago" name="dtpago" value="<?php echo $aOrde[0]["dtpago"];?>" type="date" placeholder="" class="form-control" maxlength = "10">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Data</label>
+                                                <div class="col-md-4">
+                                                    <input id="dtorde" name="dtorde" value="<?php echo date("Y-m-d");?>" type="date" placeholder="" class="form-control" maxlength = "10">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Valor Pago</label>
-                                            <div class="col-md-4">
-                                                <input id="vlpago" name="vlpago" value="<?php echo number_format($aOrde[0]["vlpago"],2);?>" type="text" placeholder="" class="form-control" maxlength = "10">
-                                            </div>
-                                        </div>
 
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Valor</label>
+                                                <div class="col-md-4">
+                                                    <input id="vlorde" name="vlorde" value="<?php echo number_format($aOrde[0]["vlorde"],2,",",".");?>" type="text" placeholder="" class="form-control" maxlength = "15">
+                                                </div>
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Observações</label>
-                                            <div class="col-md-8">
-                                                <textarea class="form-control" id="deobse" wrap="physical" cols=50 rows=3 name="deobse" placeholder=""><?php echo $aOrde[0]["deobse"];?></textarea>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Placa do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="veplac" name="veplac" value="<?php echo $aOrde[0]["veplac"];?>" type="text" placeholder="" class="form-control" maxlength = "7">
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Marca do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="vemarc" name="vemarc" value="<?php echo $aOrde[0]["vemarc"];?>" type="text" placeholder="" class="form-control" maxlength = "50">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Modelo do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="vemode" name="vemode" value="<?php echo $aOrde[0]["vemode"];?>" type="text" placeholder="" class="form-control" maxlength = "50">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Cor do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="vecorv" name="vecorv" value="<?php echo $aOrde[0]["vecorv"];?>" type="text" placeholder="" class="form-control" maxlength = "50">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Ano Fabricação</label>
+                                                <div class="col-md-2">
+                                                    <input id="veanof" name="veanof" value="<?php echo $aOrde[0]["veanof"];?>" type="text" placeholder="" class="form-control" maxlength = "04">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Ano Modelo</label>
+                                                <div class="col-md-2">
+                                                    <input id="veanom" name="veanom" value="<?php echo $aOrde[0]["veanom"];?>" type="text" placeholder="" class="form-control" maxlength = "04">
+                                                </div>
+                                            </div>
+                                            <!--    
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Data de Pagamento</label>
+                                                <div class="col-md-4">
+                                                    <input id="dtpago" name="dtpago" value="<?php echo $aOrde[0]["dtpago"];?>" type="date" placeholder="" class="form-control" maxlength = "10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Valor Pago</label>
+                                                <div class="col-md-4">
+                                                    <input id="vlpago" name="vlpago" value="<?php echo number_format($aOrde[0]["vlpago"],2,",",".");?>" type="text" placeholder="" class="form-control" maxlength = "10">
+                                                </div>
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Data</label>
-                                            <div class="col-md-4">
-                                                <input id="dtorde" name="dtorde" value="<?php echo date("Y-m-d");?>" type="date" placeholder="" class="form-control" maxlength = "10" readonly="">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Forma de Pagamento</label>
+                                                <div class="col-md-4">
+                                                    <select name="cdform" id="cdform" style="width:50%">
+                                                        <?php if ($aOrde[0]["cdform"] == ""){?>
+                                                            <option selected="">Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Dinheiro"){?>
+                                                            <option selected="">Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Débito"){?>
+                                                            <option>Dinheiro</option>
+                                                            <option selected="">Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Crédito"){?>
+                                                            <option>Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option selected="">Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Cheque"){?>
+                                                            <option>Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option selected="">Cheque</option>
+                                                        <?php }?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Valor</label>
-                                            <div class="col-md-4">
-                                                <input id="vlorde" name="vlorde" value="<?php echo number_format($aOrde[0]["vlorde"],2);?>" type="text" placeholder="" class="form-control" maxlength = "15" readonly="">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Quantidade Parcelas</label>
+                                                <div class="col-md-2">
+                                                    <input id="qtform" name="qtform" value="<?php echo $aOrde[0]["qtform"];?>" type="number" placeholder="" class="form-control" maxlength = "15">
+                                                </div>
                                             </div>
-                                        </div>
+                                            -->    
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Observações</label>
+                                                <div class="col-md-8">
+                                                    <textarea class="form-control" id="deobse" wrap="physical" cols=50 rows=3 name="deobse" placeholder=""><?php echo $aOrde[0]["deobse"];?></textarea>
+                                                </div>
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Placa do Veículo</label>
-                                            <div class="col-md-4">
-                                                <input id="veplac" name="veplac" value="<?php echo $aOrde[0]["veplac"];?>" type="text" placeholder="" class="form-control" maxlength = "7" readonly="">
-                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Marca do Veículo</label>
-                                            <div class="col-md-4">
-                                                <input id="vemarc" name="vemarc" value="<?php echo $aOrde[0]["vemarc"];?>" type="text" placeholder="" class="form-control" maxlength = "50" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Modelo do Veículo</label>
-                                            <div class="col-md-4">
-                                                <input id="vemode" name="vemode" value="<?php echo $aOrde[0]["vemode"];?>" type="text" placeholder="" class="form-control" maxlength = "50" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Cor do Veículo</label>
-                                            <div class="col-md-4">
-                                                <input id="vecorv" name="vecorv" value="<?php echo $aOrde[0]["vecorv"];?>" type="text" placeholder="" class="form-control" maxlength = "50" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Ano Fabricação</label>
-                                            <div class="col-md-2">
-                                                <input id="veanof" name="veanof" value="<?php echo $aOrde[0]["veanof"];?>" type="text" placeholder="" class="form-control" maxlength = "04" readonly="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Ano Modelo</label>
-                                            <div class="col-md-2">
-                                                <input id="veanom" name="veanom" value="<?php echo $aOrde[0]["veanom"];?>" type="text" placeholder="" class="form-control" maxlength = "04" readonly="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Forma de Pagamento</label>
-                                            <div class="col-md-4">
-                                                <select name="cdform" id="cdform" style="width:50%" disabled="">
-                                                    <?php if ($aOrde[0]["cdform"] == ""){?>
-                                                        <option selected="">Dinheiro</option>
-                                                        <option>Débito</option>
-                                                        <option>Crédito</option>
-                                                        <option>Cheque</option>
-                                                    <?php }?>
-                                                    <?php if ($aOrde[0]["cdform"] == "Dinheiro"){?>
-                                                        <option selected="">Dinheiro</option>
-                                                        <option>Débito</option>
-                                                        <option>Crédito</option>
-                                                        <option>Cheque</option>
-                                                    <?php }?>
-                                                    <?php if ($aOrde[0]["cdform"] == "Débito"){?>
-                                                        <option>Dinheiro</option>
-                                                        <option selected="">Débito</option>
-                                                        <option>Crédito</option>
-                                                        <option>Cheque</option>
-                                                    <?php }?>
-                                                    <?php if ($aOrde[0]["cdform"] == "Crédito"){?>
-                                                        <option>Dinheiro</option>
-                                                        <option>Débito</option>
-                                                        <option selected="">Crédito</option>
-                                                        <option>Cheque</option>
-                                                    <?php }?>
-                                                    <?php if ($aOrde[0]["cdform"] == "Cheque"){?>
-                                                        <option>Dinheiro</option>
-                                                        <option>Débito</option>
-                                                        <option>Crédito</option>
-                                                        <option selected="">Cheque</option>
-                                                    <?php }?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Quantidade Parcelas</label>
-                                            <div class="col-md-2">
-                                                <input id="qtform" name="qtform" value="<?php echo $aOrde[0]["qtform"];?>" type="number" placeholder="" class="form-control" maxlength = "15" readonly="">
+                                        
+                                        <div class ="col-lg-12">
+                                            <div class="table responsive">
+                                                <table class="table table-striped table-bordered ">
+                                                    <thead>
+                                                        <th style = "width:10%">Sequência</th>
+                                                        <th style = "width:40%">Produto/Peça/Serviço</th>
+                                                        <th style = "width:10%">Quantidade</th>
+                                                        <th style = "width:10%">Valor Unitário</th>
+                                                        <th style = "width:20%">Valor Total</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php for ($f =1; $f <= 10; $f++) { ?>
+                                                            <?php $cditem = "cditem[".trim($f)."]"; ?>
+                                                            <?php $qtitem = "qtitem[".trim($f)."]"; ?>
+                                                            <?php $vlitem = "vlitem[".trim($f)."]"; ?>
+                                                            <?php $vltota = "vltota[".trim($f)."]"; ?>
+                                                            <tr>
+                                                                <td><?php echo $f;?></td>
+                                                                <?php if (isset($aItem[$f-1]["cdpeca"])) {?>
+                                                                    <td>
+                                                                        <center>
+                                                                            <select id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();">
+                                                                                <option value= "X|0|Serviços">SERVIÇOS</option>
+                                                                                <option selected ="" value="<?php echo 'S|'.$aItem[$f-1]["vlpeca"].'|'.$aItem[$f-1]["cdpeca"];?>"><?php echo $aItem[$f-1]["cdpeca"];?></option>
+                                                                                <?php for($i=0;$i < count($aServ);$i++) { ?>
+                                                                                    <option value = "<?php echo 'S|'.$aServ[$i]["vlserv"].'|'.$aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?>"><?php echo $aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?></option>                                                                                    
+                                                                                <?php }?>
+                                                                                <option value="X|0|Peças">PEÇAS</option>
+                                                                                <?php for($i=0;$i < count($aPeca);$i++) { ?>
+                                                                                  <option value = "<?php echo 'P|'.$aPeca[$i]["vlpeca"].'|'.$aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?>"><?php echo $aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?></option>
+                                                                                <?php }?>
+                                                                            </select>
+                                                                        </center>
+                                                                    </td>
+                                                                    <td><center><input id = "<?php echo $qtitem;?>" name="<?php echo $qtitem;?>" value = "<?php echo $aItem[$f-1]["qtpeca"] ;?>" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
+                                                                    <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" value = "<?php echo $aItem[$f-1]["vlpeca"] ;?>" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
+                                                                    <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" value = "<?php echo $aItem[$f-1]["vltota"] ;?>" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
+                                                                <?php } Else {?>
+                                                                    <td>
+                                                                        <center>
+                                                                            <select id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();">
+                                                                                <option value= "X|0|Serviços" selected>SERVIÇOS</option>
+                                                                                <?php for($i=0;$i < count($aServ);$i++) { ?>
+                                                                                  <option value = "<?php echo 'S|'.$aServ[$i]["vlserv"].'|'.$aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?>"><?php echo $aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?></option>
+                                                                                <?php }?>
+                                                                                <option value="X|0|Peças" selected>PEÇAS</option>
+                                                                                <?php for($i=0;$i < count($aPeca);$i++) { ?>
+                                                                                  <option value = "<?php echo 'P|'.$aPeca[$i]["vlpeca"].'|'.$aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?>"><?php echo $aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?></option>
+                                                                                <?php }?>
+                                                                            </select>
+                                                                        </center>
+                                                                    </td>
+                                                                    <td><center><input id = "<?php echo $qtitem;?>" name="<?php echo $qtitem;?>" value = "1" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
+                                                                    <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" value = "0.00" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15"></center></td>
+                                                                    <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" value = "0.00" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
+                                                                <?php }?>
+                                                            </tr>
+                                                        <?php }?>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class ="col-lg-12">
-                                        <div class="table responsive">
-                                            <table class="table table-striped table-bordered ">
-                                                <thead>
-                                                    <th style = "width:10%">Sequência</th>
-                                                    <th style = "width:40%">Produto/Peça/Serviço</th>
-                                                    <th style = "width:10%">Quantidade</th>
-                                                    <th style = "width:10%">Valor Unitário</th>
-                                                    <th style = "width:20%">Valor Total</th>
-                                                </thead>
-                                                <tbody>
-                                                    <?php for ($f =1; $f <= 10; $f++) { ?>
-                                                        <?php $cditem = "cditem[".trim($f)."]"; ?>
-                                                        <?php $qtitem = "qtitem[".trim($f)."]"; ?>
-                                                        <?php $vlitem = "vlitem[".trim($f)."]"; ?>
-                                                        <?php $vltota = "vltota[".trim($f)."]"; ?>
-                                                        <tr>
-                                                            <td><?php echo $f;?></td>
-                                                            <?php if (isset($aItem[$f]["cdpeca"])) {?>
-                                                                <td>
-                                                                    <center>
-                                                                        <select id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();" disabled="">
-                                                                            <option value= "X|0|Serviços">SERVIÇOS</option>
-                                                                            <option selected ="" value="<?php echo 'S|'.$aItem[$f]["vlpeca"].'|'.$aItem[$f]["cdpeca"];?>"><?php echo $aItem[$f]["cdpeca"];?></option>
-                                                                            <?php for($i=0;$i < count($aServ);$i++) { ?>
-                                                                                <option value = "<?php echo 'S|'.$aServ[$i]["vlserv"].'|'.$aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?>"><?php echo $aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?></option>                                                                                    
-                                                                            <?php }?>
-                                                                            <option value="X|0|Peças">PEÇAS</option>
-                                                                            <?php for($i=0;$i < count($aPeca);$i++) { ?>
-                                                                              <option value = "<?php echo 'P|'.$aPeca[$i]["vlpeca"].'|'.$aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?>"><?php echo $aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?></option>
-                                                                            <?php }?>
-                                                                        </select>
-                                                                    </center>
-                                                                </td>
-                                                                <td><center><input id = "<?php echo $qtitem;?>" name="<?php echo $qtitem;?>" value = "<?php echo $aItem[$f]["qtpeca"] ;?>" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
-                                                                <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" value = "<?php echo $aItem[$f]["vlpeca"] ;?>" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
-                                                                <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" value = "<?php echo $aItem[$f]["vltota"] ;?>" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
-                                                            <?php } Else {?>
-                                                                <td>
-                                                                    <center>
-                                                                        <select id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();" disabled="">
-                                                                            <option value= "X|0|Serviços" selected>SERVIÇOS</option>
-                                                                            <?php for($i=0;$i < count($aServ);$i++) { ?>
-                                                                              <option value = "<?php echo 'S|'.$aServ[$i]["vlserv"].'|'.$aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?>"><?php echo $aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?></option>
-                                                                            <?php }?>
-                                                                            <option value="X|0|Peças" selected>PEÇAS</option>
-                                                                            <?php for($i=0;$i < count($aPeca);$i++) { ?>
-                                                                              <option value = "<?php echo 'P|'.$aPeca[$i]["vlpeca"].'|'.$aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?>"><?php echo $aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?></option>
-                                                                            <?php }?>
-                                                                        </select>
-                                                                    </center>
-                                                                </td>
-                                                                <td><center><input id = "<?php echo $qtitem;?>" name="<?php echo $qtitem;?>" value = "1" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
-                                                                <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" value = "0.00" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
-                                                                <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" value = "0.00" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
-                                                            <?php }?>
-                                                        </tr>
-                                                    <?php }?>
-                                                </tbody>
-                                            </table>
+                                <?php } Else {?>
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <input type="hidden" name="codempresa" value="<?php echo $codempresa; ?>">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Número da OS</label>
+                                                <div class="col-md-4">
+                                                    <input id="cdorde" name="cdorde" value="<?php echo $aOrde[0]["cdorde"];?>" type="text" placeholder="" class="form-control" maxlength = "10" readonly="">
+                                                </div>
+                                            </div>
+                                            <!--center><h3><span class="text-warning"><strong>DADOS DO PEDIDO</strong></span></h3></center-->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Cliente</label>
+                                                <div class="col-md-4">
+                                                    <select name="cdclie" id="cdclie" style="width:250%" disabled="">
+                                                        <option selected=""><?php echo $aOrde[0]["cdclie"];?></option>
+                                                        <?php for($i=0;$i < count($aClie);$i++) { ?>
+                                                          <option><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
+                                                        <?php }?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Situação</label>
+                                                <div class="col-md-4">
+                                                    <select name="cdsitu" id="cdsitu" disabled="">
+                                                        <?php if ($aOrde[0]["cdsitu"] == "") {?>
+                                                            <option selected="">Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Orçamento") {?>
+                                                            <option selected="">Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Pendente") {?>
+                                                            <option>Orçamento</option>
+                                                            <option selected="">Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Andamento") {?>
+                                                            <option>Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option selected="">Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Concluído") {?>
+                                                            <option>Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option selected="">Concluído</option>
+                                                            <option>Entregue</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdsitu"] == "Entregue") {?>
+                                                            <option>Orçamento</option>
+                                                            <option>Pendente</option>
+                                                            <option>Andamento</option>
+                                                            <option>Concluído</option>
+                                                            <option selected="">Entregue</option>
+                                                        <?php }?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Data</label>
+                                                <div class="col-md-4">
+                                                    <input id="dtorde" name="dtorde" value="<?php echo date("Y-m-d");?>" type="date" placeholder="" class="form-control" maxlength = "10" readonly="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Valor</label>
+                                                <div class="col-md-4">
+                                                    <input id="vlorde" name="vlorde" value="<?php echo number_format($aOrde[0]["vlorde"],2,",",".");?>" type="text" placeholder="" class="form-control" maxlength = "15" readonly="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Placa do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="veplac" name="veplac" value="<?php echo $aOrde[0]["veplac"];?>" type="text" placeholder="" class="form-control" maxlength = "7" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Marca do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="vemarc" name="vemarc" value="<?php echo $aOrde[0]["vemarc"];?>" type="text" placeholder="" class="form-control" maxlength = "50" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Modelo do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="vemode" name="vemode" value="<?php echo $aOrde[0]["vemode"];?>" type="text" placeholder="" class="form-control" maxlength = "50" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Cor do Veículo</label>
+                                                <div class="col-md-4">
+                                                    <input id="vecorv" name="vecorv" value="<?php echo $aOrde[0]["vecorv"];?>" type="text" placeholder="" class="form-control" maxlength = "50" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Ano Fabricação</label>
+                                                <div class="col-md-2">
+                                                    <input id="veanof" name="veanof" value="<?php echo $aOrde[0]["veanof"];?>" type="text" placeholder="" class="form-control" maxlength = "04" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Ano Modelo</label>
+                                                <div class="col-md-2">
+                                                    <input id="veanom" name="veanom" value="<?php echo $aOrde[0]["veanom"];?>" type="text" placeholder="" class="form-control" maxlength = "04" readonly="">
+                                                </div>
+                                            </div>
+                                            <!--
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Data de Pagamento</label>
+                                                <div class="col-md-4">
+                                                    <input id="dtpago" name="dtpago" value="<?php echo $aOrde[0]["dtpago"];?>" type="date" placeholder="" class="form-control" maxlength = "10" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Valor Pago</label>
+                                                <div class="col-md-4">
+                                                    <input id="vlpago" name="vlpago" value="<?php echo number_format($aOrde[0]["vlpago"],2,",",".");?>" type="text" placeholder="" class="form-control" maxlength = "10" readonly="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Forma de Pagamento</label>
+                                                <div class="col-md-4">
+                                                    <select name="cdform" id="cdform" style="width:50%" disabled="">
+                                                        <?php if ($aOrde[0]["cdform"] == ""){?>
+                                                            <option selected="">Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Dinheiro"){?>
+                                                            <option selected="">Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Débito"){?>
+                                                            <option>Dinheiro</option>
+                                                            <option selected="">Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Crédito"){?>
+                                                            <option>Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option selected="">Crédito</option>
+                                                            <option>Cheque</option>
+                                                        <?php }?>
+                                                        <?php if ($aOrde[0]["cdform"] == "Cheque"){?>
+                                                            <option>Dinheiro</option>
+                                                            <option>Débito</option>
+                                                            <option>Crédito</option>
+                                                            <option selected="">Cheque</option>
+                                                        <?php }?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Quantidade Parcelas</label>
+                                                <div class="col-md-2">
+                                                    <input id="qtform" name="qtform" value="<?php echo $aOrde[0]["qtform"];?>" type="number" placeholder="" class="form-control" maxlength = "15" readonly="">
+                                                </div>
+                                            </div>
+                                            -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Observações</label>
+                                                <div class="col-md-8">
+                                                    <textarea class="form-control" id="deobse" wrap="physical" cols=50 rows=3 name="deobse" placeholder="" readonly=""><?php echo $aOrde[0]["deobse"];?></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class ="col-lg-12">
+                                            <div class="table responsive">
+                                                <table class="table table-striped table-bordered ">
+                                                    <thead>
+                                                        <th style = "width:10%">Sequência</th>
+                                                        <th style = "width:40%">Produto/Peça/Serviço</th>
+                                                        <th style = "width:10%">Quantidade</th>
+                                                        <th style = "width:10%">Valor Unitário</th>
+                                                        <th style = "width:20%">Valor Total</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php for ($f =1; $f <= 20; $f++) { ?>
+                                                            <?php $cditem = "cditem[".trim($f)."]"; ?>
+                                                            <?php $qtitem = "qtitem[".trim($f)."]"; ?>
+                                                            <?php $vlitem = "vlitem[".trim($f)."]"; ?>
+                                                            <?php $vltota = "vltota[".trim($f)."]"; ?>
+                                                            <tr>
+                                                                <td><?php echo $f;?></td>
+                                                                <?php if (isset($aItem[$f-1]["cdpeca"])) {?>
+                                                                    <td>
+                                                                        <center>
+                                                                            <select id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();" disabled="">
+                                                                                <option value= "X|0|Serviços">SERVIÇOS</option>
+                                                                                <option selected ="" value="<?php echo 'S|'.$aItem[$f-1]["vlpeca"].'|'.$aItem[$f-1]["cdpeca"];?>"><?php echo $aItem[$f-1]["cdpeca"];?></option>
+                                                                                <?php for($i=0;$i < count($aServ);$i++) { ?>
+                                                                                    <option value = "<?php echo 'S|'.$aServ[$i]["vlserv"].'|'.$aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?>"><?php echo $aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?></option>                                                                                    
+                                                                                <?php }?>
+                                                                                <option value="X|0|Peças">PEÇAS</option>
+                                                                                <?php for($i=0;$i < count($aPeca);$i++) { ?>
+                                                                                  <option value = "<?php echo 'P|'.$aPeca[$i]["vlpeca"].'|'.$aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?>"><?php echo $aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?></option>
+                                                                                <?php }?>
+                                                                            </select>
+                                                                        </center>
+                                                                    </td>
+                                                                    <td><center><input id = "<?php echo $qtitem;?>" name="<?php echo $qtitem;?>" value = "<?php echo number_format($aItem[$f-1]["qtpeca"],0,",",".") ;?>" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
+                                                                    <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" value = "<?php echo number_format($aItem[$f-1]["vlpeca"],2,",",".") ;?>" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
+                                                                    <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" value = "<?php echo number_format($aItem[$f-1]["vltota"],2,",",".") ;?>" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
+                                                                <?php } Else {?>
+                                                                    <td>
+                                                                        <center>
+                                                                            <select id = "<?php echo $cditem;?>" name="<?php echo $cditem;?>" class="form-control" onclick="colocapreco();" disabled="">
+                                                                                <option value= "X|0|Serviços" selected>SERVIÇOS</option>
+                                                                                <?php for($i=0;$i < count($aServ);$i++) { ?>
+                                                                                  <option value = "<?php echo 'S|'.$aServ[$i]["vlserv"].'|'.$aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?>"><?php echo $aServ[$i]["cdserv"]." - ".$aServ[$i]["deserv"];?></option>
+                                                                                <?php }?>
+                                                                                <option value="X|0|Peças" selected>PEÇAS</option>
+                                                                                <?php for($i=0;$i < count($aPeca);$i++) { ?>
+                                                                                  <option value = "<?php echo 'P|'.$aPeca[$i]["vlpeca"].'|'.$aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?>"><?php echo $aPeca[$i]["cdpeca"]." - ".$aPeca[$i]["depeca"];?></option>
+                                                                                <?php }?>
+                                                                            </select>
+                                                                        </center>
+                                                                    </td>
+                                                                    <td><center><input id = "<?php echo $qtitem;?>" name="<?php echo $qtitem;?>" value = "1" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
+                                                                    <td><center><input id = "<?php echo $vlitem;?>" name="<?php echo $vlitem;?>" value = "0.00" onkeyup="mascara(this, 'soNumeros'); calcula();" type="text" class="form-control" placeholder="" maxlength = "15" readonly=""></center></td>
+                                                                    <td><center><input id = "<?php echo $vltota;?>" name="<?php echo $vltota;?>" value = "0.00" type="text" class="form-control" placeholder="" maxlength = "15" readonly = ""></center></td>
+                                                                <?php }?>
+                                                            </tr>
+                                                        <?php }?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                <?php }?>
+
                                 <div>
-                                    <center>
+                                        <?php $pag = "pagamento.php?acao=fechar&chave=".$chave; ?>
+
                                         <?php if($acao == "edita") {?>
-                                            <button class="btn btn-sm btn-primary" name = "edita" type="submit"><strong>Salvar</strong></button>
+                                            <button class="btn btn-primary" name = "edita" type="button" onclick="window.open('<?php echo $pag;?>','_parent')"><strong>Fechar OS e ir para o pagamento</strong></button>
                                         <?php }?>
                                         <?php if($acao == "apaga") {?>
-                                            <button class="btn btn-sm btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
+                                            <button class="btn  btn-danger" name = "apaga" type="submit"><strong>Apagar</strong></button>
                                         <?php }?>
-                                        <button class="btn btn-sm btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
-                                    </center>
+                                        <button class="btn btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
+                                
                                 </div>
 
                             </form>
                         </div>
                     </div>
-                <!--/div-->
+                </div>
             </div>
         </div>
     </div>
@@ -678,8 +964,78 @@
 
             document.getElementById('vltota[10]').value = formatNumber(n10);
 
+            //item
+            var qt11 = parseInt(document.getElementById('qtitem[11]').value);
+            var vl11 = parseFloat(document.getElementById('vlitem[11]').value);
+            var n11 = parseInt((qt11 * vl11)*100)/100;
+
+            document.getElementById('vltota[11]').value = formatNumber(n11);
+
+            //item
+            var qt12 = parseInt(document.getElementById('qtitem[12]').value);
+            var vl12 = parseFloat(document.getElementById('vlitem[12]').value);
+            var n12 = parseInt((qt12 * vl12)*100)/100;
+
+            document.getElementById('vltota[12]').value = formatNumber(n12);
+
+            //item
+            var qt13 = parseInt(document.getElementById('qtitem[13]').value);
+            var vl13 = parseFloat(document.getElementById('vlitem[13]').value);
+            var n13 = parseInt((qt13 * vl13)*100)/100;
+
+            document.getElementById('vltota[13]').value = formatNumber(n13);
+
+            //item
+            var qt14 = parseInt(document.getElementById('qtitem[14]').value);
+            var vl14 = parseFloat(document.getElementById('vlitem[14]').value);
+            var n14 = parseInt((qt14 * vl14)*100)/100;
+
+            document.getElementById('vltota[14]').value = formatNumber(n14);
+
+            //item
+            var qt15 = parseInt(document.getElementById('qtitem[15]').value);
+            var vl15 = parseFloat(document.getElementById('vlitem[15]').value);
+            var n15 = parseInt((qt10 * vl15)*100)/100;
+
+            document.getElementById('vltota[15]').value = formatNumber(n15);
+
+            //item
+            var qt16 = parseInt(document.getElementById('qtitem[16]').value);
+            var vl16 = parseFloat(document.getElementById('vlitem[16]').value);
+            var n16 = parseInt((qt10 * vl16)*100)/100;
+
+            document.getElementById('vltota[16]').value = formatNumber(n16);
+
+            //item
+            var qt17 = parseInt(document.getElementById('qtitem[17]').value);
+            var vl17 = parseFloat(document.getElementById('vlitem[17]').value);
+            var n17 = parseInt((qt17 * vl17)*100)/100;
+
+            document.getElementById('vltota[17]').value = formatNumber(n17);
+
+            //item
+            var qt18 = parseInt(document.getElementById('qtitem[18]').value);
+            var vl18 = parseFloat(document.getElementById('vlitem[18]').value);
+            var n18 = parseInt((qt18 * vl18)*100)/100;
+
+            document.getElementById('vltota[18]').value = formatNumber(n18);
+
+            //item
+            var qt19 = parseInt(document.getElementById('qtitem[19]').value);
+            var vl19 = parseFloat(document.getElementById('vlitem[19]').value);
+            var n19 = parseInt((qt19 * vl19)*100)/100;
+
+            document.getElementById('vltota[19]').value = formatNumber(n19);
+
+            //item
+            var qt20 = parseInt(document.getElementById('qtitem[20]').value);
+            var vl20 = parseFloat(document.getElementById('vlitem[20]').value);
+            var n20 = parseInt((qt20 * vl20)*100)/100;
+
+            document.getElementById('vltota[20]').value = formatNumber(n20);
+
             //total
-            var nt = n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9 + n10;
+            var nt = n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9 + n10 + n11 + n12 + n13 + n14 + n15 + n16 + n17 + n18 + n19 + n20;
             var nt = parseInt(nt*100)/100;
             document.getElementById('vlorde').value = formatNumber(nt);
 
@@ -697,6 +1053,16 @@
             var n8 = document.getElementById('cditem[8]').value.split('|');
             var n9 = document.getElementById('cditem[9]').value.split('|');
             var n10 = document.getElementById('cditem[10]').value.split('|');
+            var n11 = document.getElementById('cditem[11]').value.split('|');
+            var n12 = document.getElementById('cditem[12]').value.split('|');
+            var n13 = document.getElementById('cditem[13]').value.split('|');
+            var n14 = document.getElementById('cditem[14]').value.split('|');
+            var n15 = document.getElementById('cditem[15]').value.split('|');
+            var n16 = document.getElementById('cditem[16]').value.split('|');
+            var n17 = document.getElementById('cditem[17]').value.split('|');
+            var n18 = document.getElementById('cditem[18]').value.split('|');
+            var n19 = document.getElementById('cditem[19]').value.split('|');
+            var n20 = document.getElementById('cditem[20]').value.split('|');
 
             document.getElementById('vlitem[1]').value = n1[1];
             //document.getElementById('qtitem[1]').value = 1;
@@ -726,6 +1092,36 @@
             //document.getElementById('qtitem[9]').value = 1;
 
             document.getElementById('vlitem[10]').value = n10[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[11]').value = n11[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[12]').value = n12[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[13]').value = n13[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[14]').value = n14[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[15]').value = n15[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[16]').value = n16[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[17]').value = n17[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[18]').value = n18[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[19]').value = n19[1];
+            //document.getElementById('qtitem[10]').value = 1;
+
+            document.getElementById('vlitem[20]').value = n20[1];
             //document.getElementById('qtitem[10]').value = 1;
 
             setTimeout("calcula()",1);

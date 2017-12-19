@@ -5,6 +5,9 @@
 
 	$cdorde = $_POST["cdorde"];
 	$codempresa= $_POST["codempresa"]; 
+	
+	$pos = strpos($_POST["cdclie"], "-");
+	$cdclie = trim(substr($_POST["cdclie"],0,$pos));
 
 	switch (get_post_action('edita','apaga')) {
     case 'edita':
@@ -22,7 +25,7 @@
 		$aQtitem=$_POST["qtitem"];
 		$aVlitem=$_POST["vlitem"];
 
-		$cdclie = $_POST["cdclie"];
+		
 		$dtorde = $_POST["dtorde"];
 		$vlorde = $_POST["vlorde"];
 		$vlpago = $_POST["vlpago"];
@@ -91,7 +94,7 @@
 			//dados da tabela
 			$aDados=array();
 			$aDados[]= $_POST["cdorde"];
-			$aDados[]= $_POST["cdclie"];
+			$aDados[]= $cdclie;
 			$aDados[]= $_POST["veplac"];
 			$aDados[]= $_POST["vemarc"];
 			$aDados[]= $_POST["vemode"];

@@ -474,6 +474,25 @@ Function GetTotalPedi($codempresa){
     return ($count);
 }
 
+Function GetClieOrdem($cdorde,$codempresa){
+    include "conexao.php";
+
+    $count=0;
+    
+    $sql = "SELECT `cdclie` FROM `ordem` WHERE cdorde = '{$codempresa}' and codempresa = '{$codempresa}'";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
 Function GetvalorReceber($mes,$codempresa){
     include "conexao.php";
 
