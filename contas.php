@@ -218,6 +218,9 @@
                                                 <?php if ( empty($datap) !== true and strtotime($aCont[$f]["dtpago"]) !== '-62169984000' and $aCont[$f]["dtpago"] !== '1969-12-31' ){ ?>
                                                     <?php $coluna7 = date("d-m-Y", $datap); ?>
                                                 <?php }?>
+                                                <?php if ($coluna8 == 'Receber'){ ?>
+                                                <?php    $coluna7 = "Não consta"; ?>
+                                                <?php } ?>
 
                                                   
                                                 <?php $ver = "contasa.php?acao=ver&chave=".$coluna1; ?>
