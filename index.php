@@ -112,6 +112,8 @@
     $totalOsPen = GetTotalOsPen($codempresa);
     $totalOsAnd = GetTotalOsAnd($codempresa);
     $totalOsFecHJ = GetTotalOsFecHJ($codempresa);
+    $aCont= ConsultarDados("", "", "","select contas.*,clientes.declie from contas INNER join clientes on clientes.cdclie = contas.cdquem where contas.codempresa = "."'{$codempresa}'"." order by cdcont");
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -432,9 +434,93 @@
                           <h3> Avisos </h3>   
                      </div>
                      <div class="panel-body">   
-                        <center>
-                            <h2> Você não tem avisos ;( </h2>
-                        </center>                       
+                            <!-- Vencimento de contas hoje - INICIO -->
+                            <div class="col-lg-6 col-xs-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                      <center>
+                                        <h4> Contas com vencimento hoje </h4>
+                                      <center>     
+                                    </div> 
+                                    <div class="panel-body"> 
+
+                                        <div class="table-responsive">
+                                                                        <table class="table table-striped table-bordered table-hover dataTables-example" >
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Cód.</th>
+                                                                                    <th>Cliente/Fornecedor</th>
+                                                                                    <th>Histórico</th>
+                                                                                    <th>OS/Pedido</th>
+                                                                                    <th>Valor</th>
+                                                                                    <th>Vencimento</th>                                                                                    
+                                                                                    <th>Situação</th>
+                                                                                   
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <?php for ($f =0; $f <= (count($aCont)-1); $f++) { ?>
+                                                                                    <tr class="gradeX">
+                                                                                        <?php $datac = strtotime($aCont[$f]["dtcont"]) ;?>
+                                                                                        <?php $datap = strtotime($aCont[$f]["dtpago"]) ;?>
+                                                                                        <?php $datah = strtotime(date("d-m-Y")) ;?>
+
+                                                                                        <?php $coluna1 = trim($aCont[$f]["cdcont"]); ?>
+                                                                                        <?php $coluna2 = trim($aCont[$f]["cdquem"]) .'-'. $aCont[$f]["declie"]; ?>
+                                                                                        <?php $coluna3 = trim($aCont[$f]["decont"]); ?>
+                                                                                        <?php $coluna4 = trim($aCont[$f]["cdorig"]); ?>
+                                                                                        <?php $coluna5 = number_format($aCont[$f]["vlcont"],2,',','.'); ?>
+                                                                                        <?php $coluna6 = ""; ?>
+                                                                                        <?php $coluna7 = ""; ?>
+                                                                                        <?php $coluna8 = trim($aCont[$f]["cdtipo"]); ?>
+
+                                                                                        <?php if ( empty($datac) !== true and strtotime($aCont[$f]["dtcont"]) !== '-62169984000' and $aCont[$f]["dtcont"] !== '1969-12-31' ){ ?>
+                                                                                            <?php $coluna6 = date("d-m-Y", $datac); ?>
+                                                                                        <?php }?>
+
+                                                                                      
+
+                                                                                        
+                                                                                        <?php $ver = "contasa.php?acao=ver&chave=".$coluna1; ?>
+                                                                                        <?php $edita = "contasa.php?acao=edita&chave=".$coluna1; ?>
+                                                                                        <?php $apaga = "contasa.php?acao=apaga&chave=".$coluna1; ?>
+                                                                                        <?php $imprime = "contasp.php?acao=imprime&chave=".$coluna1; ?>
+
+                                                                                        <td><?php print $coluna1; ?></td>
+                                                                                        <td><?php print $coluna2; ?></td>
+                                                                                        <td><?php print $coluna3; ?></td>
+                                                                                        <td><?php print $coluna4; ?></td>
+                                                                                        <td><?php print $coluna5; ?></td>
+                                                                                        <td><?php print $coluna6; ?></td>
+                                                                                        
+                                                                                        <td><?php print $coluna8; ?></td>
+                                                                                        
+                                                                                    </tr>
+                                                                                <?php }; ?>    
+                                                                            </tbody>
+                                                                            
+                                                                        </table>
+                                                                    </div>
+
+                                    </div>
+                                </div>
+                           </div>
+                           <!-- vencimento de contas hoje - FIM -->
+                           <div class="col-lg-6 col-xs-6">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                      <center>
+                                        <h4> Próximos retornos agendados </h4>
+                                      <center>     
+                                    </div> 
+                                    <div class="panel-body"> 
+                                        <center>
+                                            <h3> Sem retornos agendados ;(</h3>
+                                        <center>                                     
+                                    </div>
+                                </div>
+                           </div>                                     
+                                            
                      </div>
                    </div>       
                    <!-- Final Avisos -->
