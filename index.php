@@ -296,65 +296,142 @@
                 </nav>
             </div>
 
-            <div class="wrapper-content">
+         <!--   <div class="wrapper-content">
                 <section class="content">
-                <div class="row">
-                    <div class="col-lg-3 col-xs-6">
-                        <div class="small-box bg-aqua">
-                            <div class="inner">
-                                <h3> <?php echo $totClie ?> </h3>
+                <div class="panel panel-warning">
+                     <div class="panel-heading">
+                             <h3> Informações de cadastros </h3>   
+                      </div>
+                 <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-aqua">
+                                    <div class="inner">
+                                        <h3> <?php echo $totClie ?> </h3>
 
-                                <p>Total de Clientes</p>
+                                        <p>Total de Clientes</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person"></i>
+                                    </div>
+                                    <a href="cliente.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-person"></i>
+
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                        <h3> <?php echo $totCars ?> </h3>
+
+                                        <p>Total de Veiculos</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-model-s"></i>
+                                    </div>
+                                    <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
                             </div>
-                            <a href="cliente.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h3><?php echo $totForn ?></h3>
+
+                                        <p>Total de Fornecedores </p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-stalker"></i>
+                                    </div>
+                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>                    
+
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                    <h3> <?php echo $totPedi ?> </h3> 
+
+                                        <p>Total de Pedidos</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-compose"></i>
+                                    </div>
+                                    <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>  -->
+                    <!-- Iniico Quadro de OSs -->
+                     <div class="panel panel-warning">
+                     <div class="panel-heading">
+                             <h3> Ordens de serviço </h3>   
+                      </div>
+                        <div class="panel-body">
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-aqua">
+                                    <div class="inner">
+                                        <h3><?php echo $totForn ?></h3>
+
+                                        <p>Orçametos </p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-stalker"></i>
+                                    </div>
+                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>                        
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-yellow">
+                                    <div class="inner">
+                                        <h3><?php echo $totForn ?></h3>
+
+                                        <p>Ordens Abertas </p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-stalker"></i>
+                                    </div>
+                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>               
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-green">
+                                    <div class="inner">
+                                        <h3><?php echo $totForn ?></h3>
+
+                                        <p>Em andamento </p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-stalker"></i>
+                                    </div>
+                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>                                          
+                            <div class="col-lg-3 col-xs-6">
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                        <h3><?php echo $totForn ?></h3>
+
+                                        <p>Fechadas hoje </p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-stalker"></i>
+                                    </div>
+                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>                            
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-xs-6">
-                        <div class="small-box bg-yellow">
-                            <div class="inner">
-                                <h3> <?php echo $totCars ?> </h3>
-
-                                <p>Total de Veiculos</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-model-s"></i>
-                            </div>
-                            <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-xs-6">
-                        <div class="small-box bg-green">
-                            <div class="inner">
-                                <h3><?php echo $totForn ?></h3>
-
-                                <p>Total de Fornecedores </p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-person-stalker"></i>
-                            </div>
-                            <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>                    
-
-                    <div class="col-lg-3 col-xs-6">
-                        <div class="small-box bg-red">
-                            <div class="inner">
-                               <h3> <?php echo $totPedi ?> </h3> 
-
-                                <p>Total de Pedidos</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-compose"></i>
-                            </div>
-                            <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>                    
-
-                </div>
+                   </div>
+                   <!-- Final Quadro de OSs -->
+                   <!-- Inicio Avisos -->
+                   <div class="panel panel-warning">
+                     <div class="panel-heading">
+                          <h3> Avisos </h3>   
+                     </div>
+                     <div class="panel-body">                        
+                     </div>
+                   </div>       
+                   <!-- Final Avisos -->
+                
             </div>
         </div>
     </div>
