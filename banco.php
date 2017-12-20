@@ -474,6 +474,77 @@ Function GetTotalPedi($codempresa){
     return ($count);
 }
 
+Function GetTotalOrc($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "select count(cdorde) cnt from ordem where (cdsitu = 'Orçamento') and  ordem.codempresa = "."'{$codempresa}'"." order by cdorde";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+Function GetTotalOsPen($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "select count(cdorde) cnt from ordem where (cdsitu = 'Pendente') and  ordem.codempresa = "."'{$codempresa}'"." order by cdorde";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
+Function GetTotalOsAnd($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "select count(cdorde) cnt from ordem where (cdsitu = 'Andamento') and  ordem.codempresa = "."'{$codempresa}'"." order by cdorde";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
+Function GetTotalOsFecHJ($codempresa){
+    include "conexao.php";
+
+    $count=0;
+    $sql = "select count(cdorde) cnt from ordem where (cdsitu = 'Fechada') and month(dtcada)= month(CURRENT_DATE) and year(dtcada) = year(CURRENT_DATE) and day(dtcada) = day(CURRENT_DATE) and  ordem.codempresa = "."'{$codempresa}'"." order by cdorde";  
+
+    $resultado=mysqli_query($conexao, $sql);
+
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            $count=$linha["cnt"];
+        }
+    }
+
+    mysqli_close($conexao);
+    return ($count);
+}
+
 Function GetClieOrdem($cdorde,$codempresa){
     include "conexao.php";
 

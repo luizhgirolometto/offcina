@@ -104,10 +104,14 @@
 
     $demails="marlon.pilonetto@gmail.com";
     $deteles="(46) 98412 1475";
-    $totClie = GetTotalClients($codempresa);
-    $totForn = GetTotalForn($codempresa);
-    $totCars = GetTotalCars($codempresa);
-    $totPedi = GetTotalPedi($codempresa);
+    // $totClie = GetTotalClients($codempresa);
+    // $totForn = GetTotalForn($codempresa);
+    // $totCars = GetTotalCars($codempresa);
+    // $totPedi = GetTotalPedi($codempresa);
+    $totalOrc = GetTotalOrc($codempresa);
+    $totalOsPen = GetTotalOsPen($codempresa);
+    $totalOsAnd = GetTotalOsAnd($codempresa);
+    $totalOsFecHJ = GetTotalOsFecHJ($codempresa);
 ?>
 <!DOCTYPE html>
 <html>
@@ -370,53 +374,53 @@
                             <div class="col-lg-3 col-xs-6">
                                 <div class="small-box bg-aqua">
                                     <div class="inner">
-                                        <h3><?php echo $totForn ?></h3>
+                                        <h3><?php echo $totalOrc ?></h3>
 
-                                        <p>Orçametos </p>
+                                        <p>Orçametos</p>
                                     </div>
                                     <div class="icon">
-                                        <i class="ion ion-person-stalker"></i>
+                                        <i class="ion ion-cash"></i>
                                     </div>
-                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a> 
                                 </div>
                             </div>                        
                             <div class="col-lg-3 col-xs-6">
                                 <div class="small-box bg-yellow">
                                     <div class="inner">
-                                        <h3><?php echo $totForn ?></h3>
+                                        <h3><?php echo $totalOsPen ?></h3>
 
                                         <p>Ordens Abertas </p>
                                     </div>
                                     <div class="icon">
-                                        <i class="ion ion-person-stalker"></i>
+                                        <i class="ion ion-clock"></i>
                                     </div>
-                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>               
                             <div class="col-lg-3 col-xs-6">
                                 <div class="small-box bg-green">
                                     <div class="inner">
-                                        <h3><?php echo $totForn ?></h3>
+                                        <h3><?php echo $totalOsAnd ?></h3>
 
                                         <p>Em andamento </p>
                                     </div>
                                     <div class="icon">
-                                        <i class="ion ion-person-stalker"></i>
+                                        <i class="ion ion-speedometer"></i>
                                     </div>
-                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>                                          
                             <div class="col-lg-3 col-xs-6">
                                 <div class="small-box bg-red">
                                     <div class="inner">
-                                        <h3><?php echo $totForn ?></h3>
+                                        <h3><?php echo $totalOsFecHJ ?></h3>
 
                                         <p>Fechadas hoje </p>
                                     </div>
                                     <div class="icon">
-                                        <i class="ion ion-person-stalker"></i>
+                                        <i class="ion ion-thumbsup"></i>
                                     </div>
-                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>                            
                         </div>
@@ -427,7 +431,10 @@
                      <div class="panel-heading">
                           <h3> Avisos </h3>   
                      </div>
-                     <div class="panel-body">                        
+                     <div class="panel-body">   
+                        <center>
+                            <h2> Você não tem avisos ;( </h2>
+                        </center>                       
                      </div>
                    </div>       
                    <!-- Final Avisos -->
