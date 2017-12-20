@@ -200,8 +200,9 @@
                                             <label class="col-md-4 control-label" for="textinput">Situação</label>
                                             <div class="col-md-4">
                                                 <select name="cdsitu" id="cdsitu">
-                                                    <option>Orçamento</option>
                                                     <option>Pendente</option>
+                                                    <option>Orçamento</option>
+                                                    
                                                   <!--  <option>Andamento</option>
                                                     <option>Concluído</option>
                                                     <option>Entregue</option> -->

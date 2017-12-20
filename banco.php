@@ -479,13 +479,13 @@ Function GetClieOrdem($cdorde,$codempresa){
 
     $count=0;
     
-    $sql = "SELECT `cdclie` FROM `ordem` WHERE cdorde = '{$codempresa}' and codempresa = '{$codempresa}'";  
+    $sql = "SELECT `cdclie` FROM `ordem` WHERE cdorde = '{$cdorde}' and codempresa = '{$codempresa}'";  
 
     $resultado=mysqli_query($conexao, $sql);
 
     if ($resultado) {
         while ($linha = mysqli_fetch_assoc($resultado)) {
-            $count=$linha["cnt"];
+            $count=$linha["cdclie"];
         }
     }
 

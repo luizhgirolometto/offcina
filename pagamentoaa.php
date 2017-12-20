@@ -6,11 +6,11 @@
 	$cdorde = $_POST["cdorde"];
 	$codempresa= $_POST["codempresa"]; 
 	$qtform = $_POST["qtform"];
-	$aClieOrdem = $_POST["aClieOrdem"];
+	$cdclie= GetClieOrdem($cdorde, $codempresa);
+    
 
-
-    $cdclie = $_POST["cdclie"];
-
+	// $pos = strpos($_POST["cdclie"], "-");
+	// $cdclie = trim(substr($_POST["cdclie"],0,$pos));
 
 	switch (get_post_action('confirma','apaga')) {
     case 'confirma':

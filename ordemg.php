@@ -184,9 +184,9 @@
 
 		// }
 
-		$demens = "Cadastro efetuado com sucesso!";
-		$detitu = "GiroMecânicas&copy; | Cadastro de OS";
-		$devolt = "ordem.php";
+		$demens = "Ordem de serviço aberta com sucesso!";
+		$detitu = "GiroMecânicas&copy; | Abertura de OS";
+		$devolt = "index.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}
 

@@ -84,8 +84,8 @@
     // reduzir o tamanho do nome do usuario
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
+    $aCont= ConsultarDados("", "", "","select contas.*,clientes.declie from contas INNER join clientes on clientes.cdclie = contas.cdquem where contas.codempresa = "."'{$codempresa}'"." order by cdcont");
 
-    $aCont= ConsultarDados("", "", "","select * from contas where codempresa = "."'{$codempresa}'"." order by cdcont");
 ?>
 <!DOCTYPE html>
 <html>
@@ -186,7 +186,7 @@
                                         <tr>
                                             <th>Cód.</th>
                                             <th>Cliente/Fornecedor</th>
-                                            <th>Tipo</th>
+                                            <th>Histórico</th>
                                             <th>OS/Pedido</th>
                                             <th>Valor</th>
                                             <th>Vencimento</th>
@@ -203,13 +203,13 @@
                                                 <?php $datah = strtotime(date("d-m-Y")) ;?>
 
                                                 <?php $coluna1 = trim($aCont[$f]["cdcont"]); ?>
-                                                <?php $coluna2 = trim($aCont[$f]["cdquem"]); ?>
-                                                <?php $coluna3 = trim($aCont[$f]["cdtipo"]); ?>
+                                                <?php $coluna2 = trim($aCont[$f]["cdquem"]) .'-'. $aCont[$f]["declie"]; ?>
+                                                <?php $coluna3 = trim($aCont[$f]["decont"]); ?>
                                                 <?php $coluna4 = trim($aCont[$f]["cdorig"]); ?>
                                                 <?php $coluna5 = number_format($aCont[$f]["vlcont"],2,',','.'); ?>
                                                 <?php $coluna6 = ""; ?>
                                                 <?php $coluna7 = ""; ?>
-                                                <?php $coluna8 = "Pendente"; ?>
+                                                <?php $coluna8 = trim($aCont[$f]["cdtipo"]); ?>
 
                                                 <?php if ( empty($datac) !== true and strtotime($aCont[$f]["dtcont"]) !== '-62169984000' and $aCont[$f]["dtcont"] !== '1969-12-31' ){ ?>
                                                     <?php $coluna6 = date("d-m-Y", $datac); ?>
@@ -219,18 +219,6 @@
                                                     <?php $coluna7 = date("d-m-Y", $datap); ?>
                                                 <?php }?>
 
-                                                <?php if ( $aCont[$f]["vlpago"] == $aCont[$f]["vlcont"] ){ ?>
-                                                    <?php $coluna8 = "Paga/Recebida"; ?>
-                                                <?php }?>
-                                                <?php if (( $aCont[$f]["vlpago"] < $aCont[$f]["vlcont"] ) && ($aCont[$f]["vlpago"] > 0)){ ?>
-                                                    <?php $coluna8 = "Pagamento parcial"; ?>
-                                                <?php }?>
-
-                                                <?php if (  $datac < $datah ){ ?>
-                                                    <?php if ( $aCont[$f]["vlpago"] <= 0 ){ ?>
-                                                        <?php $coluna8 = "Atrasada"; ?>
-                                                    <?php }?>
-                                                <?php }?>
                                                   
                                                 <?php $ver = "contasa.php?acao=ver&chave=".$coluna1; ?>
                                                 <?php $edita = "contasa.php?acao=edita&chave=".$coluna1; ?>

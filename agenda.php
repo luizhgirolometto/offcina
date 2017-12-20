@@ -84,8 +84,8 @@
     // reduzir o tamanho do nome do usuario
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
-
-    $aOrde= ConsultarDados("", "", "","select * from ordem where (cdsitu <> 'Concluído' and cdsitu <> 'Entregue') and codempresa = "."'{$codempresa}'"." order by dtorde");
+    $aOrde= ConsultarDados("","","","select ordem.*, clientes.declie from ordem inner join clientes on ordem.cdclie = clientes.cdclie where (cdsitu <> 'Concluído' and cdsitu <> 'Entregue') and  ordem.codempresa = "."'{$codempresa}'"." order by cdorde");
+    //$aOrde= ConsultarDados("", "", "","select * from ordem where (cdsitu <> 'Concluído' and cdsitu <> 'Entregue') and codempresa = "."'{$codempresa}'"." order by dtorde");
 ?>
 <!DOCTYPE html>
 <html>
@@ -195,7 +195,7 @@
 
                                                 <?php $coluna1 = date("d/m/Y",$datap); ?>
                                                 <?php $coluna2 = trim($aOrde[$f]["cdsitu"]); ?>
-                                                <?php $coluna3 = trim($aOrde[$f]["cdclie"]); ?>
+                                                <?php $coluna3 = trim($aOrde[$f]["cdclie"]) .' - '.trim($aOrde[$f]["declie"]); ?>
                                                 <?php $coluna4 = trim($aOrde[$f]["veplac"]); ?>
                                                 <?php $coluna5 = trim($aOrde[$f]["cdorde"]); ?>
                                                

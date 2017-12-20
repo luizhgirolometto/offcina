@@ -4,6 +4,8 @@
 	include "util.php";
 
 	$cdorde = $_POST["cdorde"];
+	$pos = strpos($_POST["cdclie"], "-");
+	$cdclie = trim(substr($_POST["cdclie"],0,$pos));
 
 	switch (get_post_action('edita','apaga')) {
     case 'edita':

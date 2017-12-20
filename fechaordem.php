@@ -84,8 +84,8 @@
     // reduzir o tamanho do nome do usuario
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
-
-    $aOrde= ConsultarDados("", "", "","select * from ordem where (cdsitu <> 'Concluído' and cdsitu <> 'Entregue' and cdsitu <> 'Orçamento' and cdsitu <> 'Fechada') and codempresa = "."'{$codempresa}'"." order by cdorde");
+   $aOrde= ConsultarDados("","","","select ordem.*, clientes.declie from ordem inner join clientes on ordem.cdclie = clientes.cdclie where (cdsitu <> 'Concluído' and cdsitu <> 'Entregue' and cdsitu <> 'Orçamento' and cdsitu <> 'Fechada') and  ordem.codempresa = "."'{$codempresa}'"." order by cdorde");
+   // $aOrde= ConsultarDados("", "", "","select * from ordem where (cdsitu <> 'Concluído' and cdsitu <> 'Entregue' and cdsitu <> 'Orçamento' and cdsitu <> 'Fechada') and codempresa = "."'{$codempresa}'"." order by cdorde");
 ?>
 <!DOCTYPE html>
 <html>
@@ -197,7 +197,7 @@
                                                 <!--?php $datae = strtotime($aOrde[$f]["dtentr"]) ;?-->
 
                                                 <?php $coluna1 = trim($aOrde[$f]["cdorde"]); ?>
-                                                <?php $coluna2 = trim($aOrde[$f]["cdclie"]); ?>
+                                                <?php $coluna2 = trim($aOrde[$f]["cdclie"]) .' - '. trim($aOrde[$f]["declie"]); ?>
                                                 <?php $coluna3 = number_format($aOrde[$f]["vlorde"],2,',','.'); ?>
                                                 <?php $coluna4 = trim($aOrde[$f]["veplac"]); ?>
                                                 <?php $coluna5 = trim($aOrde[$f]["cdsitu"]); ?>

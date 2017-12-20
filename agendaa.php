@@ -91,7 +91,9 @@
     $deusua1=$deusua;
     $deusua = substr($deusua, 0,15);
 
-    $aOrde = ConsultarDados("ordem", "cdorde", $chave);
+    // $aOrde = ConsultarDados("ordem", "cdorde", $chave);
+    
+    $aOrde= ConsultarDados("", "", "","select ordem.*, clientes.declie from ordem inner join clientes on ordem.cdclie = clientes.cdclie where ordem.codempresa = "."'{$codempresa}'"." and cdorde = "."'{$chave}'"." order by cdorde");
     $aItem = ConsultarDados("ordemi", "cdorde", $chave);
     $aClie = ConsultarDados("", "", "","select * from clientes order by declie");
     $aPeca= ConsultarDados("", "", "","select * from pecas order by depeca");
@@ -202,7 +204,8 @@
                                                 <label class="col-md-4 control-label" for="textinput">Cliente</label>
                                                 <div class="col-md-4">
                                                     <select name="cdclie" id="cdclie" style="width:250%">
-                                                        <option selected=""><?php echo $aOrde[0]["cdclie"];?></option>
+                                                        
+                                                        <option selected=""><?php echo str_pad($aOrde[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aOrde[$i]["declie"];?></option>
                                                         <?php for($i=0;$i < count($aClie);$i++) { ?>
                                                           <option><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
                                                         <?php }?>
@@ -455,7 +458,7 @@
                                                 <label class="col-md-4 control-label" for="textinput">Cliente</label>
                                                 <div class="col-md-4">
                                                     <select name="cdclie" id="cdclie" style="width:250%" disabled="">
-                                                        <option selected=""><?php echo $aOrde[0]["cdclie"];?></option>
+                                                        <option selected=""><?php echo str_pad($aOrde[0]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aOrde[0]["declie"];?></option>
                                                         <?php for($i=0;$i < count($aClie);$i++) { ?>
                                                           <option><?php echo str_pad($aClie[$i]["cdclie"],14," ",STR_PAD_LEFT)." - ".$aClie[$i]["declie"];?></option>
                                                         <?php }?>
