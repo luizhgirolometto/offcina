@@ -160,7 +160,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo a <strong>GiroMecânicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem-vindo a <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -218,7 +218,7 @@
                                             </div>
                                         </div>   
                                       <!--  <div class="form-group">
-                                            <label class="col-md-4 control-label" for="textinput">Selecione um veiculo</label>
+                                            <label class="col-md-4 control-label" for="textinput">Selecione um veículo</label>
                                             <div class="col-md-4">
                                                 <select name="cdveic" id="cdveic" style="width:250%">
                                                     <?php $aVeic= ConsultarDados("", "", "","select * from m_veiculos where codempresa = "."'{$codempresa}'"." and cdclie = "."'{$codcli}'"." order by dtcada desc"); ?>

@@ -155,7 +155,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecânicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem-vindo ao <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -187,7 +187,7 @@
                                             <th>Placa do Veículo</th>
                                             <th>Situação</th>
                                             <th>Data de Abertura</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
+                                            <th  data-sort-ignore="true">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -42,21 +42,21 @@
 
 	if ( $qtitem <= 0) {
 		$demens = "É preciso informar os itens do fornecedores!";
-		$detitu = "GiroMecânicas&copy; | Cadastro de fornecedoress";
+		$detitu = "GiroMecânicas&copy; | Cadastros de Fornecedoress";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
 
 	if ( empty($cdclie) == true) {
 		$demens = "É preciso informar o fornecedor!";
-		$detitu = "GiroMecânicas&copy; | Cadastro de fornecedoress";
+		$detitu = "GiroMecânicas&copy; | Cadastros de Fornecedoress";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}
 
 	if ( empty(strtotime($dtorde)) == true) {
 		$demens = "É preciso informar a data do fornecedores!";
-		$detitu = "GiroMecânicas&copy; | Cadastro de fornecedoress";
+		$detitu = "GiroMecânicas&copy; | Cadastros de Fornecedoress";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu);
 		$Flag=false;
 	}

@@ -236,7 +236,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecanicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem-vindo ao <strong>GiroMecanicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -250,7 +250,7 @@
                 <!--div class="col-lg-12"-->
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Cadastro de Clientes - Inclusão </h3>   
+                             <h3> Cadastros de Clientes - Inclusão </h3>   
                          </div>
                         <div class="panel-body">
 

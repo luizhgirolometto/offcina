@@ -173,13 +173,13 @@
                 <!--div class="col-lg-12"-->
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Cadastro de veiculos</h3>   
+                             <h3> Cadastros de veículos</h3>   
                          </div>
                         <div class="panel-body">
 
                         <div class="ibox-content">
                             <div class="pull-left">
-                                <a onclick="#" href="veiculosi.php" class="btn btn-warning ">Incluir novo veiculo</a>
+                                <a onclick="#" href="veiculosi.php" class="btn btn-warning ">Incluir novo veículo</a>
                             </div>
                             <br>
                             <br>
@@ -194,8 +194,8 @@
                                             <th>Marca</th>
                                             <th>Modelo</th>
                                             <th>Cor</th>
-                                            <th>Último Serviço em</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
+                                            <th>Último serviço em</th>
+                                            <th data-sort-ignore="true">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>

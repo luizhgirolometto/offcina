@@ -175,7 +175,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecânicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem-vindo ao <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -189,7 +189,7 @@
                 <!--div class="col-lg-12"-->
                 <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Cadastro de Fornecedores - <?php echo $titulo; ?> </h3>   
+                             <h3> Cadastros de Fornecedores - <?php echo $titulo; ?> </h3>   
                          </div>
                         <div class="panel-body">
 
