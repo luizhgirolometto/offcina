@@ -112,7 +112,8 @@
     $totalOsPen = GetTotalOsPen($codempresa);
     $totalOsAnd = GetTotalOsAnd($codempresa);
     $totalOsFecHJ = GetTotalOsFecHJ($codempresa);
-    $aCont= ConsultarDados("", "", "","select contas.*,clientes.declie from contas INNER join clientes on clientes.cdclie = contas.cdquem where contas.codempresa = "."'{$codempresa}'"." order by cdcont");
+    $aCont= ConsultarDados("", "", "","select contas.*,clientes.declie from contas INNER join clientes on clientes.cdclie = contas.cdquem where WEEKOFYEAR(dtcont) = WEEKOFYEAR(CURDATE()) and contas.codempresa = "."'{$codempresa}'"." order by dtcont");
+    
     
 ?>
 <!DOCTYPE html>
@@ -368,6 +369,7 @@
                         </div>                        
                     </div>  -->
                     <!-- Iniico Quadro de OSs -->
+                   <div class="col-lg-12 col-xs-12"> 
                      <div class="panel panel-warning">
                      <div class="panel-heading">
                              <h3> Ordens de serviço </h3>   
@@ -427,13 +429,14 @@
                             </div>                            
                         </div>
                    </div>
+                 </div>  
                    <!-- Final Quadro de OSs -->
                    <!-- Inicio Avisos -->
-                   <div class="panel panel-warning">
+                <!--   <div class="panel panel-warning">
                      <div class="panel-heading">
                           <h3> Avisos </h3>   
                      </div>
-                     <div class="panel-body">   
+                     <div class="panel-body"> -->   
                             <!-- Vencimento de contas hoje - INICIO -->
                             <div class="col-lg-6 col-xs-6">
                                 <div class="panel panel-warning">
@@ -451,10 +454,10 @@
                                                                                     <th>Código</th>
                                                                                     <th>Cliente/Fornecedor</th>
                                                                                     <th>Histórico</th>
-                                                                                    <th>OS/Pedido</th>
+                                                                                    
                                                                                     <th>Valor(R$)</th>
                                                                                     <th>Vencimento</th>                                                                                    
-                                                                                    <th>Situação</th>
+                                                                                    
                                                                                    
                                                                                 </tr>
                                                                             </thead>
@@ -468,11 +471,11 @@
                                                                                         <?php $coluna1 = trim($aCont[$f]["cdcont"]); ?>
                                                                                         <?php $coluna2 = trim($aCont[$f]["cdquem"]) .'-'. $aCont[$f]["declie"]; ?>
                                                                                         <?php $coluna3 = trim($aCont[$f]["decont"]); ?>
-                                                                                        <?php $coluna4 = trim($aCont[$f]["cdorig"]); ?>
+                                                                                       
                                                                                         <?php $coluna5 = number_format($aCont[$f]["vlcont"],2,',','.'); ?>
                                                                                         <?php $coluna6 = ""; ?>
                                                                                         <?php $coluna7 = ""; ?>
-                                                                                        <?php $coluna8 = trim($aCont[$f]["cdtipo"]); ?>
+                                                                                     
 
                                                                                         <?php if ( empty($datac) !== true and strtotime($aCont[$f]["dtcont"]) !== '-62169984000' and $aCont[$f]["dtcont"] !== '1969-12-31' ){ ?>
                                                                                             <?php $coluna6 = date("d-m-Y", $datac); ?>
@@ -489,11 +492,11 @@
                                                                                         <td><?php print $coluna1; ?></td>
                                                                                         <td><?php print $coluna2; ?></td>
                                                                                         <td><?php print $coluna3; ?></td>
-                                                                                        <td><?php print $coluna4; ?></td>
+                                                                                        
                                                                                         <td><?php print $coluna5; ?></td>
                                                                                         <td><?php print $coluna6; ?></td>
                                                                                         
-                                                                                        <td><?php print $coluna8; ?></td>
+                                                                                       
                                                                                         
                                                                                     </tr>
                                                                                 <?php }; ?>    
@@ -510,7 +513,7 @@
                                 <div class="panel panel-warning">
                                     <div class="panel-heading">
                                       <center>
-                                        <h4> Próximos retornos agendados </h4>
+                                        <h4> Retornos agendados para a semana</h4>
                                       <center>     
                                     </div> 
                                     <div class="panel-body"> 
@@ -520,9 +523,9 @@
                                     </div>
                                 </div>
                            </div>                                     
-                                            
+               <!--                             
                      </div>
-                   </div>       
+                   </div> -->       
                    <!-- Final Avisos -->
                 
             </div>

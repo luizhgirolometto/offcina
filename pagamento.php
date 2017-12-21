@@ -369,7 +369,20 @@
                                                 <div class="col-md-4">
                                                     <input id="vlparc" name="vlparc" value="0,00" type="text" placeholder="" class="form-control" maxlength = "15" readonly="">
                                                 </div>
-                                            </div>                                            
+                                            </div>
+                                            <div class="form-group">
+                                                 <div class="col-md-4 control-label">
+                                                    
+                                                    <label class="control-label" for="checkbox1">
+                                                        <span>Text goes here</span>
+                                                    </label>
+                                               
+                                                    <input type="checkbox" id="checkbox1" checked="checked"/>
+                                                    
+                                                </div>
+                                            </div>                     
+                                            
+                                  
                                             
                                             
 
