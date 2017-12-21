@@ -165,17 +165,17 @@
                     <li>
                             <a href="index.php"><i class="fa fa-user"></i> <span class="nav-label">Clientes</span><span class="caret"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="cliente.php">Cadastro de Clientes</a></li>
-                                <li><a href="veiculos.php">Cadastro de Veiculos</a></li>
+                                <li><a href="cliente.php">Cadastros de Clientes</a></li>
+                                <li><a href="veiculos.php">Cadastros de Veículos</a></li>
                             </ul>
                     </li>     
 
                     <li>
-                            <a href="index.php"><i class="fa fa-edit"></i> <span class="nav-label">Ordem de Serviços</span><span class="caret"></span></a>
+                            <a href="index.php"><i class="fa fa-edit"></i> <span class="nav-label">Ordens de Serviço</span><span class="caret"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="ordemi.php">Abrir Ordem de Serviço</a></li>
-                                <li><a href="agenda.php">Ordens de Serviço Abertas</a></li>
-                                <li><a href="fechaordem.php">Fechamento da Ordem de Serviço</a></li>
+                                <li><a href="ordemi.php">Abrir</a></li>
+                                <li><a href="agenda.php">Abertas</a></li>
+                                <li><a href="fechaordem.php">Fechar</a></li>
 
                                 <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>                                   
                                     <li><a href="ordem.php">Gerenciamento de Ordens de Serviço</a></li>
@@ -183,10 +183,10 @@
                             </ul>
                     </li>                                    
                     <li>
-                            <a href="index.php"><i class="fa fa-edit"></i> <span class="nav-label">Estoque/Serviços</span><span class="caret"></span></a>
+                            <a href="index.php"><i class="fa fa-edit"></i> <span class="nav-label">Produtos/Serviços</span><span class="caret"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="pecas.php">Cadastrar Produtos</a></li>
-                                <li><a href="servicos.php">Cadastrar Serviços</a></li>
+                                <li><a href="pecas.php">Cadastros de Produtos</a></li>
+                                <li><a href="servicos.php">Cadastros de Serviços</a></li>
                             </ul>
                     </li>   
 
@@ -195,12 +195,12 @@
                         <a href="ordem.php"><i class="fa fa-edit"></i><span class="nav-label">Ordem de Serviços</span></a>
                     </li>
                    
-                        <a href="veiculos.php"><i class="fa fa-car"></i><span class="nav-label">Cadastrar Veiculos</span></a>
+                        <a href="veículos.php"><i class="fa fa-car"></i><span class="nav-label">Cadastrar Veículos</span></a>
                     </li> -->                    
 
                     <?php if (($cdtipo == 'A') || ($cdtipo == 'S')){?>
                         <li>
-                            <a href="fornecedores.php"><i class="fa fa-user"></i><span class="nav-label">Cadastrar Fornecedores</span></a>
+                            <a href="fornecedores.php"><i class="fa fa-user"></i><span class="nav-label">Cadastros de Fornecedores</span></a>
                         </li>
 
                         <li>
@@ -291,7 +291,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecanicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem-vindo ao <strong>GiroMecanicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -320,7 +320,7 @@
                                     <div class="icon">
                                         <i class="ion ion-person"></i>
                                     </div>
-                                    <a href="cliente.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="cliente.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
 
@@ -329,12 +329,12 @@
                                     <div class="inner">
                                         <h3> <?php echo $totCars ?> </h3>
 
-                                        <p>Total de Veiculos</p>
+                                        <p>Total de Veículos</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-model-s"></i>
                                     </div>
-                                    <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="veículos.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-xs-6">
@@ -347,7 +347,7 @@
                                     <div class="icon">
                                         <i class="ion ion-person-stalker"></i>
                                     </div>
-                                    <a href="fornecedores.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="fornecedores.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>                    
 
@@ -361,7 +361,7 @@
                                     <div class="icon">
                                         <i class="ion ion-compose"></i>
                                     </div>
-                                    <a href="veiculos.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="veículos.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                           </div>
@@ -378,12 +378,12 @@
                                     <div class="inner">
                                         <h3><?php echo $totalOrc ?></h3>
 
-                                        <p>Orçametos</p>
+                                        <p>Orçamentos</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-cash"></i>
                                     </div>
-                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a> 
+                                    <a href="agenda.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a> 
                                 </div>
                             </div>                        
                             <div class="col-lg-3 col-xs-6">
@@ -391,12 +391,12 @@
                                     <div class="inner">
                                         <h3><?php echo $totalOsPen ?></h3>
 
-                                        <p>Ordens Abertas </p>
+                                        <p>Ordens abertas </p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-clock"></i>
                                     </div>
-                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="agenda.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>               
                             <div class="col-lg-3 col-xs-6">
@@ -409,7 +409,7 @@
                                     <div class="icon">
                                         <i class="ion ion-speedometer"></i>
                                     </div>
-                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="agenda.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>                                          
                             <div class="col-lg-3 col-xs-6">
@@ -422,7 +422,7 @@
                                     <div class="icon">
                                         <i class="ion ion-thumbsup"></i>
                                     </div>
-                                    <a href="agenda.php" class="small-box-footer">Mais Info <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="agenda.php" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>                            
                         </div>
@@ -439,7 +439,7 @@
                                 <div class="panel panel-warning">
                                     <div class="panel-heading">
                                       <center>
-                                        <h4> Contas com vencimento hoje </h4>
+                                        <h4> Contas a receber que vencem na semana </h4>
                                       <center>     
                                     </div> 
                                     <div class="panel-body"> 
@@ -448,11 +448,11 @@
                                                                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                                                                             <thead>
                                                                                 <tr>
-                                                                                    <th>Cód.</th>
+                                                                                    <th>Código</th>
                                                                                     <th>Cliente/Fornecedor</th>
                                                                                     <th>Histórico</th>
                                                                                     <th>OS/Pedido</th>
-                                                                                    <th>Valor</th>
+                                                                                    <th>Valor(R$)</th>
                                                                                     <th>Vencimento</th>                                                                                    
                                                                                     <th>Situação</th>
                                                                                    

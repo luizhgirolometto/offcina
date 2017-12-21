@@ -158,7 +158,7 @@
                     </ul>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bem vindo ao <strong>GiroMecânicas&copy;</strong></span>
+                            <span class="m-r-sm text-muted welcome-message">Bem-vindo ao <strong>GiroMecânicas&copy;</strong></span>
                         </li>
                         <li>
                             <a href="index.html">
@@ -172,13 +172,13 @@
                 <!--div class="col-lg-12"-->
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                             <h3> Cadastro de Clientes </h3>   
+                             <h3> Cadastros de Clientes </h3>   
                          </div>
                         <div class="panel-body">
 
                         <div class="ibox-content">
                             <div class="pull-left">
-                                <a onclick="#" href="clientei.php" class="btn btn-warning ">Cadastrar novo cliente</a>
+                                <a onclick="#" href="clientei.php" class="btn btn-warning ">Incluir novo cliente</a>
                             </div>
                             <br>
                             <br>
@@ -192,7 +192,7 @@
                                             <th>Tipo</th>
                                             <th>Telefone</th>
                                             <th>E-mail</th>
-                                            <th class="text-right" data-sort-ignore="true">Ação</th>
+                                            <th data-sort-ignore="true">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>

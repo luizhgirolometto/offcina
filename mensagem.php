@@ -61,7 +61,7 @@
                 <div class="footer">
                     <table width="100%">
                         <tr>
-                            <td class="aligncenter content-block"> Obrigado por confiar em nós</td>
+                            <td class="aligncenter content-block"> Obrigado por confiar em nós!</td>
                         </tr>
                     </table>
                 </div></div>

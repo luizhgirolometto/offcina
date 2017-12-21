@@ -58,7 +58,7 @@
 
 		$demens = "Cadastro efetuado com sucesso!";
 		$detitu = "GiroMecânicas&copy; | Cadastro de Veículos";
-		$devolt = "veiculos.php";
+		$devolt = "veículos.php";
 		header('Location: mensagem.php?demens='.$demens.'&detitu='.$detitu.'&devolt='.$devolt);
 	}
 
