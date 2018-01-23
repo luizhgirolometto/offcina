@@ -302,7 +302,20 @@ CREATE TABLE IF NOT EXISTS `pecas` (
   PRIMARY KEY (`cdpeca`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Estrutura da tabela `agendamentos`
+--
 
+CREATE TABLE IF NOT EXISTS `agendamentos` (
+  `cdage` MEDIUMINT NOT NULL AUTO_INCREMENT,
+  `cdclie` varchar(100) DEFAULT NULL,
+  `motivo` varchar(100) DEFAULT NULL,
+  `cdorde` bigint(20) DEFAULT NULL,
+  `dtret`  date DEFAULT NULL,
+  `dtcada` date DEFAULT NULL,
+  `codempresa` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`cdpeca`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 --
 -- Estrutura da tabela `pedidos`
 --

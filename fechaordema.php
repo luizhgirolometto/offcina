@@ -381,7 +381,9 @@
                                                     <input id="qtform" name="qtform" value="<?php echo $aOrde[0]["qtform"];?>" type="number" placeholder="" class="form-control" maxlength = "15">
                                                 </div>
                                             </div>
-                                            -->    
+                                            -->   
+                                           
+
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="textinput">Observações</label>
                                                 <div class="col-md-8">
@@ -860,7 +862,7 @@
             if(caminho!="")dominio=dominio.replace(/\.+$/,"")
             v="http://"+dominio+caminho
             return v
-        }
+        }        
 
     </script>
 

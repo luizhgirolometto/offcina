@@ -121,6 +121,25 @@
 
 				IncluirDados("contas", $aDadosP, $aNomesP);                  
             }    
+			if ($_POST['provret'] == 'Sim'){
+				$aNomesA=array();
+				$aNomesA[]= "cdclie";
+				$aNomesA[]= "motivo";
+				$aNomesA[]= "cdorde";
+				$aNomesA[]= "dtret";
+				$aNomesA[]= "dtcada";
+				$aNomesA[]= "codempresa";				
+
+				$aDadosA=array();
+				$aDadosA[]= $cdclie;
+				$aDadosA[]= $_POST['motret'];
+				$aDadosA[]= $cdorde;
+				$aDadosA[]= $_POST['dtret'];
+				$aDadosA[]= date("Y-m-d");
+				$aDadosA[]= $codempresa;				
+
+				IncluirDados("agendamentos", $aDadosA, $aNomesA); 
+			}
 
 			$demens = "Alteração efetuada com sucesso!";
 			$detitu = "GiroMecânicas&copy; | Cadastro de OS";

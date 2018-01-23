@@ -370,26 +370,34 @@
                                                     <input id="vlparc" name="vlparc" value="0,00" type="text" placeholder="" class="form-control" maxlength = "15" readonly="">
                                                 </div>
                                             </div>
+                                            
                                             <div class="form-group">
-                                                 <div class="col-md-4 control-label">
-                                                    
-                                                    <label class="control-label" for="checkbox1">
-                                                        <span>Text goes here</span>
-                                                    </label>
-                                               
-                                                    <input type="checkbox" id="checkbox1" checked="checked"/>
-                                                    
+                                                <label class="col-md-4 control-label" for="textinput">Provisionar retorno</label>
+                                                <div class="col-md-2">
+                                                    <select name="provret" id="provret" onchange="provisionamento()">
+                                                        <option>Sim</option>
+                                                        <option selected= "selected">Não</option>
+                                                    </select>
                                                 </div>
-                                            </div>                     
-                                            
-                                  
-                                            
-                                            
-
+                                            </div>  
+                                                              
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Motivo do retorno</label>
+                                                <div class="col-md-4">
+                                                    <input id="motret" name="motret" value="" type="text" placeholder="Informe o motivo do retorno." class="form-control" maxlength = "50" readonly="">
+                                                </div>
+                                            </div>  
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="textinput">Data do retorno</label>
+                                                <div class="col-md-4">
+                                                    <input id="dtret" name="dtret" value="<?php echo date("Y-m-d");?>" type="date" placeholder="" class="form-control" maxlength = "10" readonly="">
+                                                </div>
+                                            </div>                                            
                                         </div>
                                         
-                                    </div>                                
+                                    </div>        
 
+                                    
                                 <div>
                                  <button class="btn btn-primary" name = "confirma" type="submit"><strong>Confirmar Pagamento</strong></button>
                                  <button class="btn btn-warning " type="button" onClick="history.go(-1)"><strong>Retornar</strong></button>
@@ -535,6 +543,19 @@
             v="http://"+dominio+caminho
             return v
         }
+        function provisionamento(){
+            console.log('provisionamento');
+            var provisionar = document.getElementById('provret').value; //valor total
+               
+            if (provisionar == 'Sim'){
+                document.getElementById('motret').readOnly = false;
+                document.getElementById('dtret').readOnly = false;                    
+            } else {
+                document.getElementById('motret').readOnly = true;
+                document.getElementById('dtret').readOnly = true;
+            }
+                         
+        }         
 
     </script>
 

@@ -442,15 +442,15 @@
                                                 <label class="col-md-2 control-label" for="textinput">Estado</label>
                                                 <div class="col-md-4">
                                                     <input id="cdesta" name="cdesta" value="<?php echo $aClie[0]["cdesta"];?>" type="text" placeholder="" class="form-control" maxlength = "02" readonly="">
-                                                    <!--select name="cdesta" id="cdesta" style="width:350px;"-->
-                                                        <!--?php for($i=0;$i < count($aEsta);$i++) { ?-->
-                                                          <!--?php if ($aClie[0]["cdesta"] == str_pad($aEsta[$i]["cdesta"],02," ",STR_PAD_LEFT)." - ".$aEsta[$i]["deesta"]) {?-->
-                                                            <!--option selected =""><?php echo str_pad($aEsta[$i]["cdesta"],02," ",STR_PAD_LEFT)." - ".$aEsta[$i]["deesta"];?></option-->
-                                                          <!--?php } Else {?-->
-                                                            <!--option><?php echo str_pad($aEsta[$i]["cdesta"],02," ",STR_PAD_LEFT)." - ".$aEsta[$i]["deesta"];?></option-->
-                                                          <!--?php }?-->
-                                                        <!--?php }?-->
-                                                    <!--/select-->
+                                                    select name="cdesta" id="cdesta" style="width:350px;"
+                                                       <?php for($i=0;$i < count($aEsta);$i++) { 
+                                                          <?php if ($aClie[0]["cdesta"] == str_pad($aEsta[$i]["cdesta"],02," ",STR_PAD_LEFT)." - ".$aEsta[$i]["deesta"]) { ?>
+                                                          <?php  option selected =""><?php echo str_pad($aEsta[$i]["cdesta"],02," ",STR_PAD_LEFT)." - ".$aEsta[$i]["deesta"]; ?> </option>
+                                                          <?php } Else { ?>
+                                                            <option><?php echo str_pad($aEsta[$i]["cdesta"],02," ",STR_PAD_LEFT)." - ".$aEsta[$i]["deesta"];?></option>
+                                                          <?php } ?>
+                                                        <?php }
+                                                    /select
                                                 </div>
                                             </div>
 
