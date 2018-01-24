@@ -20,7 +20,8 @@
 }
 
 .loginbackground {
-	background-image: "/img/1702.jpg";
+	background-image: url("../img/1702.jpg") !important;
+  background-repeat: no-repeat;
 }
 
 .login-body {

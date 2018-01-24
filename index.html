@@ -8,17 +8,19 @@
   <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
 
       <link rel="stylesheet" href="css/style1.css">
+      <!-- <link rel="stylesheet" href="css/style.css"> -->
 
   
 </head>
 
-<body>
-    <div class="wrapper loginbackground">
+<body class="loginbackground">
+    <div class="wrapper">
     <form class="form-signin" role="form" method="post" action="validaacesso.php">
-      <center>       
-         <h4 class="form-signin-heading"> Bem-vindo ao GiroMecanicas </h4>
-      </center>
-      <br>
+      <div class="col-md-2">       
+         <img alt="foto" width="300" height="90" src="./img/giro.png" />
+         <br>
+      </div>
+      
       <br>
       
       <input type="text" class="form-control" name="cdusua" id="cdusua" placeholder="Código da sua oficina." required="" autofocus="" />
@@ -32,9 +34,6 @@
       <button class="btn btn-lg btn-warning btn-block" type="submit">Acessar</button>
       <br>
       <br>
-      <center>
-          <p class="text-end"> <small>GiroMecanicas&copy; 2017</small> </p>
-      </center>
 
     </form>
     
